@@ -31,7 +31,6 @@ public class Migrator implements ApplicationListener<ContextRefreshedEvent> {
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent arg0) {
-
         salvaTipoLesao();
         salvaTipoCancer();
         salvaTipoUsuario();
