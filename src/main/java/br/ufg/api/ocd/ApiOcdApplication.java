@@ -50,7 +50,12 @@ public class ApiOcdApplication  implements CommandLineRunner {
 	 */
 	@Override
 	public void run(String... args) {
-
+		salvaTipoLesao();
+		salvaLesao();
+		salvaTipoCancer();
+		salvaFatorDeVunerabilidade();
+		salvaLocalAtendimento();
+		salvaTipoUsuario();
 	}
 
 	private void salvaTipoLesao(){
@@ -156,7 +161,7 @@ public class ApiOcdApplication  implements CommandLineRunner {
 		localAtendimentoRepo.save(r2);
 	}
 
-	private void salvaLocalTipoUsuario(){
+	private void salvaTipoUsuario(){
 		tipoDeUsuarioRepo.deleteAll();
 
 		TipoDeUsuario tu1 = new TipoDeUsuario();
