@@ -79,7 +79,7 @@ public class Migrator implements ApplicationListener<ContextRefreshedEvent> {
         cb.setDescricao("Câncer de Boca");
 
         TipoDeCancer cbu = new TipoDeCancer();
-        cbu.setDescricao("Câncer de Colo do Útero ");
+        cbu.setDescricao("Câncer de Colo do Útero");
 
         tipoDeCancerRepo.save(cb);
         tipoDeCancerRepo.save(cbu);
