@@ -1,0 +1,29 @@
+version: '3'
+services:
+  java:
+    build:
+      dockerfile: ./src/main/docker/Dockerfile
+      context: .
+    image: ocd/cadastros
+    container_name: ocd-docker-java
+    ports:
+      - 9080:8888
+    networks:
+      - java-mongo-network
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo
+    environment:
+      MONGO_INITDB_DATABASE: ocd-cadastros
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 123
+    container_name: ocd-docker-mongo
+    ports:
+      - 27017:27017
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
+    networks:
+      - java-mongo-network
+networks:
+  java-mongo-network:
+    driver: bridge

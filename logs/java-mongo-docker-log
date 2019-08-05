@@ -1,0 +1,20 @@
+2019-07-18 01:00:32.755  INFO 18260 --- [main] b.u.a.o.ApiOcdApplication                : Starting ApiOcdApplication on leandro-Inspiron-5468 with PID 18260 (/home/leandro/Documentos/Projetos/Mestrado/projeto-ocd/projeto-backend/cadastros/target/classes started by root in /home/leandro/Documentos/Projetos/Mestrado/projeto-ocd/projeto-backend/cadastros)
+2019-07-18 01:00:32.760  INFO 18260 --- [main] b.u.a.o.ApiOcdApplication                : The following profiles are active: prod
+2019-07-18 01:00:32.813  INFO 18260 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6709255b: startup date [Thu Jul 18 01:00:32 BRT 2019]; root of context hierarchy
+2019-07-18 01:00:34.629  INFO 18260 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 9080 (http)
+2019-07-18 01:00:34.779  INFO 18260 --- [localhost-startStop-1] o.s.w.c.ContextLoader                    : Root WebApplicationContext: initialization completed in 1970 ms
+2019-07-18 01:00:34.849  INFO 18260 --- [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean        : Servlet dispatcherServlet mapped to [/]
+2019-07-18 01:00:34.853  INFO 18260 --- [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean         : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-07-18 01:00:34.853  INFO 18260 --- [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean         : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-07-18 01:00:34.853  INFO 18260 --- [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean         : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-07-18 01:00:34.854  INFO 18260 --- [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean         : Mapping filter: 'requestContextFilter' to: [/*]
+2019-07-18 01:37:38.263  INFO 20832 --- [main] b.u.a.o.ApiOcdApplication                : Starting ApiOcdApplication on leandro-Inspiron-5468 with PID 20832 (/home/leandro/Documentos/Projetos/Mestrado/projeto-ocd/projeto-backend/cadastros/target/classes started by root in /home/leandro/Documentos/Projetos/Mestrado/projeto-ocd/projeto-backend/cadastros)
+2019-07-18 01:37:38.268  INFO 20832 --- [main] b.u.a.o.ApiOcdApplication                : The following profiles are active: prod
+2019-07-18 01:37:38.318  INFO 20832 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@295ef84a: startup date [Thu Jul 18 01:37:38 BRT 2019]; root of context hierarchy
+2019-07-18 01:37:40.172  INFO 20832 --- [main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 9080 (http)
+2019-07-18 01:37:40.304  INFO 20832 --- [localhost-startStop-1] o.s.w.c.ContextLoader                    : Root WebApplicationContext: initialization completed in 1990 ms
+2019-07-18 01:37:40.375  INFO 20832 --- [localhost-startStop-1] o.s.b.w.s.ServletRegistrationBean        : Servlet dispatcherServlet mapped to [/]
+2019-07-18 01:37:40.379  INFO 20832 --- [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean         : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-07-18 01:37:40.379  INFO 20832 --- [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean         : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-07-18 01:37:40.380  INFO 20832 --- [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean         : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-07-18 01:37:40.380  INFO 20832 --- [localhost-startStop-1] o.s.b.w.s.FilterRegistrationBean         : Mapping filter: 'requestContextFilter' to: [/*]
