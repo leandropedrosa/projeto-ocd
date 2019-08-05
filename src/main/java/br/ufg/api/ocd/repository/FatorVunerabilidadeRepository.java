@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface FatorVunerabilidadeRepository extends MongoRepository<FatorVunerabilidade, String> {
     public List<FatorVunerabilidade> findByIdTipoCancer(String idTipoCancer);
+
 }

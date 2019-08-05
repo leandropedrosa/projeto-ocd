@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TipoDeLesaoRepository extends MongoRepository<TipoDeLesao, String> {
+
+    public TipoDeLesao findByDescricao(String nome);
 }
