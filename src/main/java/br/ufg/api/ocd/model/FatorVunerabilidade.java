@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 public class FatorVunerabilidade {
     @Id
-    private Integer id;
+    private String id;
     private String descricao;
-    private Integer idTipoCancer;
+    private String idTipoCancer;
 }

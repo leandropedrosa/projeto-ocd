@@ -24,5 +24,5 @@ public interface LesaoSwagger {
             @ApiResponse(code = 403, message = "Acessando o recurso que você estava tentando acessar é proibido"),
             @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
     })
-    Collection<Lesao> getByTipoLesao(@PathVariable(value = "idTipoLesao") Integer idTipoLesao);
+    Collection<Lesao> getByTipoLesao(@PathVariable(value = "idTipoLesao") String idTipoLesao);
 }

@@ -50,7 +50,7 @@ public interface UsuarioSwagger {
             @ApiResponse(code = 403, message = "Acessando o recurso que você estava tentando acessar é proibido"),
             @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
     })
-    public String updateSenha(@ApiParam(value = "idUsuario") int idUsuario, @ApiParam(value = "senha") String senha);
+    public String updateSenha(@ApiParam(value = "idUsuario") String idUsuario, @ApiParam(value = "senha") String senha);
 
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Atualizar Status do Usuário", notes = "Atualizar Status do Usuário", response = Usuario.class)
@@ -60,5 +60,5 @@ public interface UsuarioSwagger {
             @ApiResponse(code = 403, message = "Acessando o recurso que você estava tentando acessar é proibido"),
             @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
     })
-    public String updateStatus(@ApiParam(value = "idUsuario") int idUsuario);
+    public String updateStatus(@ApiParam(value = "idUsuario") String idUsuario);
 }

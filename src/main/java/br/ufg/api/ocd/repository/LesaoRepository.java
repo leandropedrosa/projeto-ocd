@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface LesaoRepository extends MongoRepository<Lesao, Integer> {
-    public List<Lesao> findByIdTipoLesao(Integer idTpoLesao);
+public interface LesaoRepository extends MongoRepository<Lesao, String> {
+    public List<Lesao> findByIdTipoLesao(String idTpoLesao);
 }

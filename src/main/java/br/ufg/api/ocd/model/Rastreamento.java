@@ -15,7 +15,7 @@ import java.util.List;
 @Setter
 public class Rastreamento {
     @Id
-    private Integer id;
+    private String id;
     private String nomePaciente;
     private Date dtNascimento;
     private String sexo;
@@ -27,12 +27,12 @@ public class Rastreamento {
     private String localAtendimento;
     private Date dtReferencia;
     private Date dtContraReferencia;
-    private Integer idTipoCancer;
-    private List<Integer> fatoresVunerabilidade;
-    private List<Integer> lesoes;
+    private String idTipoCancer;
+    private List<String> fatoresVunerabilidade;
+    private List<String> lesoes;
     private Blob diagnosticoHistopatologico;
     private Date dtRetornoReal;
     private Date dtRetornoSugerido;
     private Date dtConsulta;
-    private Integer idUsuario;
+    private String idUsuario;
 }

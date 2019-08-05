@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Setter
 public class HistoricoAcesso {
     @Id
-    private Integer id;
+    private String id;
     @DBRef
     private Usuario usuario;
     private String data;

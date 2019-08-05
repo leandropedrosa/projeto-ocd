@@ -22,7 +22,7 @@ public class LesaoController implements LesaoSwagger {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping(value = "/getTipoLesao")
-    public Collection<Lesao> getByTipoLesao(@PathVariable(value = "idTipoLesao") Integer idTipoLesao) {
+    public Collection<Lesao> getByTipoLesao(@PathVariable(value = "idTipoLesao") String idTipoLesao) {
         logger.debug("Getting all lesaos.");
         return serv.findByIdTipoLesao(idTipoLesao);
     }

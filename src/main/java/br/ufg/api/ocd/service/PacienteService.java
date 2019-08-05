@@ -24,11 +24,11 @@ public class PacienteService {
     }
 
 
-    public Optional<Paciente> findById(int id) {
+    public Optional<Paciente> findById(String id) {
         return repository.findById(id);
     }
 
-    public void deleteById(int id) {
+    public void deleteById(String id) {
         repository.deleteById(id);
     }
 

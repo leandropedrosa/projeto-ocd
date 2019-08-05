@@ -24,15 +24,15 @@ public class LesaoService {
     }
 
 
-    public Optional<Lesao> findById(int id) {
+    public Optional<Lesao> findById(String id) {
         return repository.findById(id);
     }
 
-    public List<Lesao> findByIdTipoLesao(int id) {
+    public List<Lesao> findByIdTipoLesao(String id) {
         return repository.findByIdTipoLesao(id);
     }
 
-    public void deleteById(int id) {
+    public void deleteById(String id) {
         repository.deleteById(id);
     }
 

@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 public class Paciente {
     @Id
-    private Integer id;
+    private String id;
     private String nome;
     private String dtNascimento;
     private String nomeMae;

@@ -10,6 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 public class TipoDeCancer {
     @Id
-    private Integer id;
+    private String id;
     private String descricao;
 }

@@ -27,7 +27,7 @@ public class RastreamentoController implements RastreamentoSwagger {
     }
 
     @GetMapping("/getByUsuario")
-    public Page<Rastreamento> getByUsuario(@RequestParam("idUsuario") int idUsuario,
+    public Page<Rastreamento> getByUsuario(@RequestParam("idUsuario") String idUsuario,
                                      @RequestParam(
                     value = "page",
                     required = false,
@@ -41,7 +41,7 @@ public class RastreamentoController implements RastreamentoSwagger {
 
     @GetMapping("/getByNomePaciente")
     public Page<Rastreamento> getByNomePaciente(
-                                           @RequestParam("idUsuario") int idUsuario,
+                                           @RequestParam("idUsuario") String idUsuario,
                                            @RequestParam("nomePaciente") String nomePaciente,
                                            @RequestParam(
                                                    value = "page",

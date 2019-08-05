@@ -31,12 +31,12 @@ public class TipoDeUsuarioService {
     }
 
 
-    public Optional<TipoDeUsuario> findById(int id) {
+    public Optional<TipoDeUsuario> findById(String id) {
         logger.info("-- TipoDeUsuario Salvo --");
         return repository.findById(id);
     }
 
-    public Boolean deleteById(int id) {
+    public Boolean deleteById(String id) {
         repository.deleteById(id);
         logger.info("-- Acompanhamento Deletado --");
         return true;

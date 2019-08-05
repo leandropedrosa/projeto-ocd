@@ -24,11 +24,11 @@ public class TipoDeLesaoService {
     }
 
 
-    public Optional<TipoDeLesao> findById(int id) {
+    public Optional<TipoDeLesao> findById(String id) {
         return repository.findById(id);
     }
 
-    public void deleteById(int id) {
+    public void deleteById(String id) {
         repository.deleteById(id);
     }
 

@@ -24,11 +24,11 @@ public class LocalAtendimentoService {
     }
 
 
-    public Optional<LocalAtendimento> findById(int id) {
+    public Optional<LocalAtendimento> findById(String id) {
         return repository.findById(id);
     }
 
-    public void deleteById(int id) {
+    public void deleteById(String id) {
         repository.deleteById(id);
     }
 

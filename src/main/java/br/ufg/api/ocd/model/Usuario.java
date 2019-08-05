@@ -10,11 +10,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 public class Usuario {
     @Id
-    private Integer id;
+    private String id;
     private String status;
     private String email;
     private String senha;
     private String numConselho;
-    private Integer idTipoUsuario;
+    private String idTipoUsuario;
 
 }

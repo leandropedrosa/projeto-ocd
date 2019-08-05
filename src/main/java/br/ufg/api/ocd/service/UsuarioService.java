@@ -39,12 +39,12 @@ public class UsuarioService {
         return repository.findByEmailAndSenha(email, senha);
     }
 
-    public Optional<Usuario> findById(int id) {
+    public Optional<Usuario> findById(String id) {
         logger.info("-- Usuario Salvo --");
         return repository.findById(id);
     }
 
-    public Boolean deleteById(int id) {
+    public Boolean deleteById(String id) {
         repository.deleteById(id);
         logger.info("-- Acompanhamento Deletado --");
         return true;

@@ -24,11 +24,11 @@ public class HistoricoAcessoService {
     }
 
 
-    public Optional<HistoricoAcesso> findById(int id) {
+    public Optional<HistoricoAcesso> findById(String id) {
         return repository.findById(id);
     }
 
-    public void deleteById(int id) {
+    public void deleteById(String id) {
         repository.deleteById(id);
     }
 

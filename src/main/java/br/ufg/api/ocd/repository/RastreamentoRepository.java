@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface RastreamentoRepository extends MongoRepository<Rastreamento, Integer> {
-    Page<Rastreamento> findByIdUsuario(Integer idUsuario, Pageable pageable);
-    Page<Rastreamento> findByIdUsuarioAndNomePaciente(Integer idUsuario, String nomePaciente, Pageable pageable);
+    Page<Rastreamento> findByIdUsuario(String idUsuario, Pageable pageable);
+    Page<Rastreamento> findByIdUsuarioAndNomePaciente(String idUsuario, String nomePaciente, Pageable pageable);
 }

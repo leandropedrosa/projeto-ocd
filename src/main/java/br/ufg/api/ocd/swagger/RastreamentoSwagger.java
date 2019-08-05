@@ -34,7 +34,7 @@ public interface RastreamentoSwagger {
             @ApiResponse(code = 403, message = "Acessando o recurso que você estava tentando acessar é proibido"),
             @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
     })
-    public Page<Rastreamento> getByUsuario(@RequestParam("idUsuario") int idUsuario,
+    public Page<Rastreamento> getByUsuario(@RequestParam("idUsuario") String idUsuario,
                                            @RequestParam(
                                                    value = "page",
                                                    required = false,
@@ -53,7 +53,7 @@ public interface RastreamentoSwagger {
             @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
     })
     public Page<Rastreamento> getByNomePaciente(
-            @RequestParam("idUsuario") int idUsuario,
+            @RequestParam("idUsuario") String idUsuario,
             @RequestParam("nomePaciente") String nomePaciente,
                                            @RequestParam(
                                                    value = "page",

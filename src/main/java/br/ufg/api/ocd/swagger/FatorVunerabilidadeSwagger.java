@@ -21,5 +21,5 @@ public interface FatorVunerabilidadeSwagger {
             @ApiResponse(code = 403, message = "Acessando o recurso que você estava tentando acessar é proibido"),
             @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
     })
-    Collection<FatorVunerabilidade> getByTipoCancer(@ApiParam(value = "idTipoCancer") Integer idTipoCancer);
+    Collection<FatorVunerabilidade> getByTipoCancer(@ApiParam(value = "idTipoCancer") String idTipoCancer);
 }

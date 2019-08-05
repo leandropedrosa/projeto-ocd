@@ -22,7 +22,7 @@ public class FatorVunerabilidadeController implements FatorVunerabilidadeSwagger
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping(value = "/getByTipoCancer")
-    public Collection<FatorVunerabilidade> getByTipoCancer(@PathVariable(value = "idTipoCancer") Integer idTipoCancer) {
+    public Collection<FatorVunerabilidade> getByTipoCancer(@PathVariable(value = "idTipoCancer") String idTipoCancer) {
         logger.debug("Getting all fatorVunerabilidades.");
         return serv.findByIdTipoCancer(idTipoCancer);
     }

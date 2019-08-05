@@ -42,7 +42,7 @@ public class UsuarioController implements UsuarioSwagger {
     }
 
     @PutMapping(value = "/updateSenha/{idUsuario}/{senha}")
-    public String updateSenha(@PathVariable(value = "idUsuario") int idUsuario, @PathVariable(value = "senha") String senha) {
+    public String updateSenha(@PathVariable(value = "idUsuario") String idUsuario, @PathVariable(value = "senha") String senha) {
         Optional<Usuario> objeto = serv.findById(idUsuario);
         Usuario usuario = objeto.get();
         usuario.setSenha(senha);
@@ -50,7 +50,7 @@ public class UsuarioController implements UsuarioSwagger {
         return "Usuario record for usuario-id= " + usuario.getId() + " updated.";
     }
     @PutMapping(value = "/updateStatus/{idUsuario}")
-    public String updateStatus(@PathVariable(value = "idUsuario") int idUsuario) {
+    public String updateStatus(@PathVariable(value = "idUsuario") String idUsuario) {
         Optional<Usuario> objeto = serv.findById(idUsuario);
         Usuario usuario = objeto.get();
         usuario.setStatus("Ativo");

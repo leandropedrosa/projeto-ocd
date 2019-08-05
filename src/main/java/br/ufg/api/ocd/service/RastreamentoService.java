@@ -34,13 +34,13 @@ public class RastreamentoService {
     }
 
 
-    public Page<Rastreamento> findByIdUsuario(Integer idUsuario, int page, int size) {
+    public Page<Rastreamento> findByIdUsuario(String idUsuario, int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC,"nome");
 
         return repository.findByIdUsuario(idUsuario, pageRequest);
     }
 
-    public Page<Rastreamento>  findByNomePaciente(Integer idUsuario, String nomePaciente, int page, int size) {
+    public Page<Rastreamento>  findByNomePaciente(String idUsuario, String nomePaciente, int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC,"nome");
 
         return repository.findByIdUsuarioAndNomePaciente(idUsuario, nomePaciente, pageRequest);

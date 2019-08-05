@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface FatorVunerabilidadeRepository extends MongoRepository<FatorVunerabilidade, Integer> {
-    public List<FatorVunerabilidade> findByIdTipoCancer(Integer idTipoCancer);
+public interface FatorVunerabilidadeRepository extends MongoRepository<FatorVunerabilidade, String> {
+    public List<FatorVunerabilidade> findByIdTipoCancer(String idTipoCancer);
 }

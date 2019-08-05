@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 public class LocalAtendimento {
     @Id
-    private Integer id;
+    private String id;
     private String descricao;
     private String endereco;
     private String fone;

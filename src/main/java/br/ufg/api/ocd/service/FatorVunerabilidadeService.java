@@ -23,15 +23,15 @@ public class FatorVunerabilidadeService {
         return repository.findAll();
     }
 
-    public List<FatorVunerabilidade> findByIdTipoCancer(Integer idTipoCancer) {
+    public List<FatorVunerabilidade> findByIdTipoCancer(String idTipoCancer) {
         return repository.findByIdTipoCancer(idTipoCancer);
     }
 
-    public Optional<FatorVunerabilidade> findById(Integer id) {
+    public Optional<FatorVunerabilidade> findById(String id) {
         return repository.findById(id);
     }
 
-    public void deleteById(Integer id) {
+    public void deleteById(String id) {
         repository.deleteById(id);
     }
 

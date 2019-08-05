@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 public class Lesao {
     @Id
-    private Integer id;
-    private Integer idTipoLesao;
+    private String id;
+    private String idTipoLesao;
     private String nome;
 }
