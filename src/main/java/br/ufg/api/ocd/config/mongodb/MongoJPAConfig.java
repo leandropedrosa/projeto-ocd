@@ -1,5 +1,9 @@
 package br.ufg.api.ocd.config.mongodb;
 
+public class MongoJPAConfig{
+
+}
+/*
 import com.mongodb.*;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
@@ -99,3 +103,4 @@ public class MongoJPAConfig extends AbstractMongoConfiguration {
 
 
 }
+*/
