@@ -35,7 +35,7 @@ public class UsuarioService implements UserDetailsService {
     public Boolean save(Usuario usuario) {
         usuario.setSenha(bCryptPasswordEncoder.encode(usuario.getSenha()));
         usuario.setStatus("Esperando Ativação");
-        Role userRole = roleRepository.findByRole("ADMIN");
+        Role userRole = roleRepository.findByName("ADM");
         usuario.setRoles(Arrays.asList(userRole));
         repository.save(usuario);
         logger.info("-- Usuario Salvo --");
