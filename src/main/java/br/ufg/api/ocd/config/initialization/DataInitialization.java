@@ -43,13 +43,13 @@ public class DataInitialization implements ApplicationListener<ContextRefreshedE
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent arg0) {
-        criarUsuario();
+        criarTiposDeUsuario();
         criarTipoDeLesao();
         criarTipoDeCancer();
         criarLesoes();
         criarFatorDeVunerabilidade();
         criarLocaDeAtendimento();
-        criarTiposDeUsuario();
+        criarUsuario();
     }
 
     private void criarUsuario() {
@@ -88,15 +88,15 @@ public class DataInitialization implements ApplicationListener<ContextRefreshedE
 
         TipoDeCancer cb = tipoDeCancerRepo.findByDescricao("Câncer de Boca");
 
-        salvaFatorDeVunerabilidade(new FatorVunerabilidade("Idade", cb.getId()));
-        salvaFatorDeVunerabilidade(new FatorVunerabilidade("É fumante", cb.getId()));
-        salvaFatorDeVunerabilidade(new FatorVunerabilidade("Exposição ao sol", cb.getId()));
-        salvaFatorDeVunerabilidade(new FatorVunerabilidade("Possui históriada doença", cb.getId()));
-        salvaFatorDeVunerabilidade(new FatorVunerabilidade("Faz uso de bebida álcoolica", cb.getId()));
+        salvaFatorDeVunerabilidade(new FatorDeVunerabilidade("Idade", cb.getId()));
+        salvaFatorDeVunerabilidade(new FatorDeVunerabilidade("É fumante", cb.getId()));
+        salvaFatorDeVunerabilidade(new FatorDeVunerabilidade("Exposição ao sol", cb.getId()));
+        salvaFatorDeVunerabilidade(new FatorDeVunerabilidade("Possui históriada doença", cb.getId()));
+        salvaFatorDeVunerabilidade(new FatorDeVunerabilidade("Faz uso de bebida álcoolica", cb.getId()));
 
         TipoDeCancer ccu = tipoDeCancerRepo.findByDescricao("Câncer de Colo do Útero");
-        salvaFatorDeVunerabilidade(new FatorVunerabilidade("Fator 1", ccu.getId()));
-        salvaFatorDeVunerabilidade(new FatorVunerabilidade("Fator 2", ccu.getId()));
+        salvaFatorDeVunerabilidade(new FatorDeVunerabilidade("Fator 1", ccu.getId()));
+        salvaFatorDeVunerabilidade(new FatorDeVunerabilidade("Fator 2", ccu.getId()));
     }
 
     private void criarLocaDeAtendimento() {
@@ -136,7 +136,7 @@ public class DataInitialization implements ApplicationListener<ContextRefreshedE
         tipoDeCancerRepo.save(tipo);
     }
 
-    private void salvaFatorDeVunerabilidade(FatorVunerabilidade fator) {
+    private void salvaFatorDeVunerabilidade(FatorDeVunerabilidade fator) {
         fatorVunerabilidadeRepo.save(fator);
     }
 

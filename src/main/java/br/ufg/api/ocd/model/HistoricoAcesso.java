@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
-@Document(collection = "historicoAcesso")
+@Document(collection = "historicoDeAcesso")
 @Getter
 @Setter
 public class HistoricoAcesso {

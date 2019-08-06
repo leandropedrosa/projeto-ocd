@@ -1,6 +1,6 @@
 package br.ufg.api.ocd.service;
 
-import br.ufg.api.ocd.model.FatorVunerabilidade;
+import br.ufg.api.ocd.model.FatorDeVunerabilidade;
 import br.ufg.api.ocd.repository.FatorVunerabilidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,20 +14,20 @@ public class FatorVunerabilidadeService {
     @Autowired
     private FatorVunerabilidadeRepository repository;
 
-    public void save(FatorVunerabilidade fator) {
+    public void save(FatorDeVunerabilidade fator) {
         repository.save(fator);
     }
 
 
-    public List<FatorVunerabilidade> getAll() {
+    public List<FatorDeVunerabilidade> getAll() {
         return repository.findAll();
     }
 
-    public List<FatorVunerabilidade> findByIdTipoCancer(String idTipoCancer) {
+    public List<FatorDeVunerabilidade> findByIdTipoCancer(String idTipoCancer) {
         return repository.findByIdTipoCancer(idTipoCancer);
     }
 
-    public Optional<FatorVunerabilidade> findById(String id) {
+    public Optional<FatorDeVunerabilidade> findById(String id) {
         return repository.findById(id);
     }
 
@@ -36,7 +36,7 @@ public class FatorVunerabilidadeService {
     }
 
 
-    public void update(FatorVunerabilidade fator) {
+    public void update(FatorDeVunerabilidade fator) {
         repository.save(fator);
     }
 

@@ -1,6 +1,6 @@
 package br.ufg.api.ocd.controller;
 
-import br.ufg.api.ocd.model.FatorVunerabilidade;
+import br.ufg.api.ocd.model.FatorDeVunerabilidade;
 import br.ufg.api.ocd.service.FatorVunerabilidadeService;
 import br.ufg.api.ocd.swagger.FatorVunerabilidadeSwagger;
 import org.slf4j.Logger;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Optional;
 
 
 @RestController
@@ -22,7 +21,7 @@ public class FatorVunerabilidadeController implements FatorVunerabilidadeSwagger
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping(value = "/getByTipoCancer")
-    public Collection<FatorVunerabilidade> getByTipoCancer(@PathVariable(value = "idTipoCancer") String idTipoCancer) {
+    public Collection<FatorDeVunerabilidade> getByTipoCancer(@PathVariable(value = "idTipoCancer") String idTipoCancer) {
         logger.debug("Getting all fatorVunerabilidades.");
         return serv.findByIdTipoCancer(idTipoCancer);
     }

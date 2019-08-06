@@ -8,16 +8,16 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "fatorVunerabilidade")
+@Document(collection = "fatorDeVunerabilidade")
 @Getter
 @Setter
-public class FatorVunerabilidade {
-    public FatorVunerabilidade(String descricao,String idTipoCancer) {
+public class FatorDeVunerabilidade {
+    public FatorDeVunerabilidade(String descricao, String idTipoCancer) {
         this.descricao = descricao;
         this.idTipoCancer = idTipoCancer;
     }
 
-    public FatorVunerabilidade() {
+    public FatorDeVunerabilidade() {
     }
     @Id
     private String id;
