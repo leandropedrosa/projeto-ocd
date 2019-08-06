@@ -96,30 +96,30 @@ public class Migrator implements ApplicationListener<ContextRefreshedEvent> {
         f.setIdTipoCancer(cb.getId());
 
         FatorVunerabilidade f2 = new FatorVunerabilidade();
-        f.setDescricao("É fumante");
-        f.setIdTipoCancer(cb.getId());
+        f2.setDescricao("É fumante");
+        f2.setIdTipoCancer(cb.getId());
 
         FatorVunerabilidade f3 = new FatorVunerabilidade();
-        f.setDescricao("Exposição ao sol");
-        f.setIdTipoCancer(cb.getId());
+        f3.setDescricao("Exposição ao sol");
+        f3.setIdTipoCancer(cb.getId());
 
         FatorVunerabilidade f4 = new FatorVunerabilidade();
-        f.setDescricao("Possui históriada doença");
-        f.setIdTipoCancer(cb.getId());
+        f4.setDescricao("Possui históriada doença");
+        f4.setIdTipoCancer(cb.getId());
 
         FatorVunerabilidade f5 = new FatorVunerabilidade();
-        f.setDescricao("Faz uso de bebida álcoolica");
-        f.setIdTipoCancer(cb.getId());
+        f5.setDescricao("Faz uso de bebida álcoolica");
+        f5.setIdTipoCancer(cb.getId());
 
         TipoDeCancer ccu = tipoDeCancerRepo.findByDescricao("Câncer de Colo do Útero");
 
         FatorVunerabilidade f6 = new FatorVunerabilidade();
-        f.setDescricao("Teste 1");
-        f.setIdTipoCancer(ccu.getId());
+        f6.setDescricao("Teste 1");
+        f6.setIdTipoCancer(ccu.getId());
 
         FatorVunerabilidade f7 = new FatorVunerabilidade();
-        f.setDescricao("Teste 2");
-        f.setIdTipoCancer(ccu.getId());
+        f7.setDescricao("Teste 2");
+        f7.setIdTipoCancer(ccu.getId());
 
         fatorVunerabilidadeRepo.save(f);
         fatorVunerabilidadeRepo.save(f2);
