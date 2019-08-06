@@ -27,10 +27,15 @@ public class Usuario {
     @DBRef
     private List<Role> roles;
 
-    public Usuario(String nome, String email, String senha) {
+    public Usuario() {
+    }
+
+    public Usuario(String nome, String email, String senha, String numConselho, String idTipoUsuario) {
         super();
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.numConselho = numConselho;
+        this.idTipoUsuario = idTipoUsuario;
     }
 }
