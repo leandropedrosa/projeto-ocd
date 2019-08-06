@@ -6,14 +6,15 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.security.core.GrantedAuthority;
 
 @Getter
 @Setter
 @Document(collection = "role")
-public class Role {
+public class Role implements GrantedAuthority {
 
     public Role(String name) {
-        this.role = role;
+        this.name = name;
     }
     public Role() {
     }
@@ -22,5 +23,10 @@ public class Role {
     private String id;
     @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
 
-    private String role;
+    private String name;
+
+    @Override
+    public String getAuthority() {
+        return  this.name;
+    }
 }

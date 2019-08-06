@@ -36,7 +36,7 @@ public class UsuarioService implements UserDetailsService {
         usuario.setSenha(bCryptPasswordEncoder.encode(usuario.getSenha()));
         usuario.setStatus("Esperando Ativação");
         Role userRole = roleRepository.findByRole("ADMIN");
-        usuario.setRoles(new HashSet<>(Arrays.asList(userRole)));
+        usuario.setRoles(Arrays.asList(userRole));
         repository.save(usuario);
         logger.info("-- Usuario Salvo --");
         return true;
@@ -54,10 +54,10 @@ public class UsuarioService implements UserDetailsService {
         }
     }
 
-    private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles) {
+    private List<GrantedAuthority> getUserAuthority(List<Role> userRoles) {
         Set<GrantedAuthority> roles = new HashSet<>();
         userRoles.forEach((role) -> {
-            roles.add(new SimpleGrantedAuthority(role.getRole()));
+            roles.add(new SimpleGrantedAuthority(role.getName()));
         });
 
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>(roles);
