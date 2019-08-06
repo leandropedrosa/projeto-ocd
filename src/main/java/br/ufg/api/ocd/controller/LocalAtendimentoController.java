@@ -12,7 +12,7 @@ import java.util.Collection;
 
 
 @RestController
-@RequestMapping(value = "/api/OCD/ceo")
+@RequestMapping(value = "/api/OCD/localDeAtendimento")
 public class LocalAtendimentoController implements LocalAtendimentoSwagger {
 
     @Autowired

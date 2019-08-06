@@ -1,6 +1,5 @@
 package br.ufg.api.ocd.controller;
 
-import br.ufg.api.ocd.dto.UsuarioDTO;
 import br.ufg.api.ocd.model.Usuario;
 import br.ufg.api.ocd.service.UsuarioService;
 import br.ufg.api.ocd.swagger.UsuarioSwagger;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.util.Collection;
 import java.util.Optional;
 
 @RestController
@@ -41,13 +39,13 @@ public class UsuarioController implements UsuarioSwagger {
         if (userExists != null) {
             bindingResult
                     .rejectValue("email", "error.user",
-                            "There is already a user registered with the username provided");
+                            "Já existe um usuário registrado com o nome de usuário fornecido");
         }
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("signup");
         } else {
             serv.save(user);
-            modelAndView.addObject("successMessage", "User has been registered successfully");
+            modelAndView.addObject("successMessage", "Usuário foi registrado com sucesso");
             modelAndView.addObject("user", new Usuario());
             modelAndView.setViewName("login");
 
@@ -61,8 +59,8 @@ public class UsuarioController implements UsuarioSwagger {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Usuario user = serv.findByEmail(auth.getName());
         modelAndView.addObject("currentUser", user);
-        modelAndView.addObject("fullName", "Welcome " + user.getNome());
-        modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
+        modelAndView.addObject("fullName", "Bem vindo " + user.getNome());
+        modelAndView.addObject("adminMessage", "Conteúdo disponível apenas para usuários com função de administrador");
         modelAndView.setViewName("dashboard");
         return modelAndView;
     }

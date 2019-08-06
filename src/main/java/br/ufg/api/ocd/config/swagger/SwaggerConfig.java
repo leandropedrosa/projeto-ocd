@@ -19,8 +19,8 @@ import java.util.Arrays;
 public class SwaggerConfig {
 
     public static final String AUTH_SERVER = "https://ocd-backend.herokuapp.com/oauth";
-    public static final String CLIENT_ID = "fooClientIdPassword";
-    public static final String CLIENT_SECRET = "secret";
+    public static final String CLIENT_ID = "ocdClientId";
+    public static final String CLIENT_SECRET = "0f324881ebb170dc71382d558e1b424d";
 
     @Bean
     public Docket api() {
@@ -61,7 +61,7 @@ public class SwaggerConfig {
     }
 
     private AuthorizationScope[] scopes() {
-        AuthorizationScope[] scopes = {new AuthorizationScope("read", "for read operations"), new AuthorizationScope("write", "for write operations"), new AuthorizationScope("foo", "Access foo API")};
+        AuthorizationScope[] scopes = {new AuthorizationScope("read", "para operações de leitura"), new AuthorizationScope("write", "para operações de gravação"), new AuthorizationScope("foo", "Acesso total à API")};
         return scopes;
     }
 }

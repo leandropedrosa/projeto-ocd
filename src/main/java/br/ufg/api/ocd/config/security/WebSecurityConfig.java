@@ -44,7 +44,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth
                 .userDetailsService(userDetailsService)
                 .passwordEncoder(bCryptPasswordEncoder);
-
     }
 
     @Override
@@ -54,15 +53,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/signup").permitAll()
-                .antMatchers("/home/**").hasAuthority("ADMIN")
-                .antMatchers("/passo1/**").hasAuthority("ADMIN")
-                .antMatchers("/passo2/**").hasAuthority("ADMIN")
-                .antMatchers("/passo3/**").hasAuthority("ADMIN")
-                .antMatchers("/passo4/**").hasAuthority("ADMIN").anyRequest()
+                .antMatchers("/home/**").hasAuthority("ADM")
+                .antMatchers("/passo1/**").hasAuthority("ADM")
+                .antMatchers("/passo2/**").hasAuthority("ADM")
+                .antMatchers("/passo3/**").hasAuthority("ADM")
+                .antMatchers("/passo4/**").hasAuthority("ADM").anyRequest()
                 .authenticated().and().csrf().disable().formLogin().successHandler(customizeAuthenticationSuccessHandler)
                 .loginPage("/login").failureUrl("/login?error=true")
                 .usernameParameter("email")
-                .passwordParameter("password")
+                .passwordParameter("senha")
                 .and().logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/").and().exceptionHandling();
