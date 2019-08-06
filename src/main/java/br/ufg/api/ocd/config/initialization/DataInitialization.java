@@ -55,8 +55,8 @@ public class DataInitialization implements ApplicationListener<ContextRefreshedE
     private void criarUsuario() {
         userRepository.deleteAll();
         roleRepository.deleteAll();
-        TipoDeCancer d = tipoDeCancerRepo.findByDescricao("Dentista");
-        TipoDeCancer asb = tipoDeCancerRepo.findByDescricao("Auxiliar SB");
+        TipoDeUsuario d = tipoDeUsuarioRepo.findByDescricao("Dentista");
+        TipoDeUsuario asb = tipoDeUsuarioRepo.findByDescricao("Auxiliar SB");
 
         salvaUsuario(new Usuario("Administrador", "administrador@gmail.com", passwordEncoder.encode("123"), "3232sdsd", d.getId()), "ADM");
         salvaUsuario(new Usuario("Teste", "teste@gmail.com", passwordEncoder.encode("123"), "3232sdsd", asb.getId()), "USER");
