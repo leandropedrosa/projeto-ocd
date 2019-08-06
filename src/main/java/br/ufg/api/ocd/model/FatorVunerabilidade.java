@@ -12,6 +12,13 @@ import java.util.List;
 @Getter
 @Setter
 public class FatorVunerabilidade {
+    public FatorVunerabilidade(String descricao,String idTipoCancer) {
+        this.descricao = descricao;
+        this.idTipoCancer = idTipoCancer;
+    }
+
+    public FatorVunerabilidade() {
+    }
     @Id
     private String id;
     private String descricao;

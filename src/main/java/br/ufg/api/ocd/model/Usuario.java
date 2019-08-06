@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
 import java.util.Set;
 
 @Document(collection = "usuario")
@@ -24,5 +25,12 @@ public class Usuario {
     private String numConselho;
     private String idTipoUsuario;
     @DBRef
-    private Set<Role> roles;
+    private List<Role> roles;
+
+    public Usuario(String nome, String email, String senha) {
+        super();
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+    }
 }

@@ -12,8 +12,16 @@ import java.util.List;
 @Getter
 @Setter
 public class Lesao {
+
+    public Lesao(String descricao,String idTipoLesao) {
+        this.descricao = descricao;
+        this.idTipoLesao = idTipoLesao;
+    }
+
+    public Lesao() {
+    }
     @Id
     private String id;
     private String idTipoLesao;
-    private String nome;
+    private String descricao;
 }

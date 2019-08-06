@@ -12,6 +12,12 @@ import org.springframework.data.mongodb.core.index.Indexed;
 @Document(collection = "role")
 public class Role {
 
+    public Role(String name) {
+        this.role = role;
+    }
+    public Role() {
+    }
+
     @Id
     private String id;
     @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)

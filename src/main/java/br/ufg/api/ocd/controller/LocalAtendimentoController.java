@@ -1,6 +1,6 @@
 package br.ufg.api.ocd.controller;
 
-import br.ufg.api.ocd.model.LocalAtendimento;
+import br.ufg.api.ocd.model.LocalDeAtendimento;
 import br.ufg.api.ocd.service.LocalAtendimentoService;
 import br.ufg.api.ocd.swagger.LocalAtendimentoSwagger;
 import org.slf4j.Logger;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.Optional;
 
 
 @RestController
@@ -23,7 +22,7 @@ public class LocalAtendimentoController implements LocalAtendimentoSwagger {
 
 
     @GetMapping(value = "/getAll")
-    public Collection<LocalAtendimento> getAll() {
+    public Collection<LocalDeAtendimento> getAll() {
         logger.debug("Getting all ceos.");
         return serv.getAll();
     }

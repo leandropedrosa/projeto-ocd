@@ -9,6 +9,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 public class TipoDeLesao {
+
+    public TipoDeLesao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public TipoDeLesao() {
+    }
+
     @Id
     private String id;
     private String descricao;
