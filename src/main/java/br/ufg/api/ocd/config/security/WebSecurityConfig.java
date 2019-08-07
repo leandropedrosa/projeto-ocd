@@ -51,19 +51,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/signup").permitAll()
-                .antMatchers("/home/**").hasAuthority("ADM")
-                .antMatchers("/passo1/**").hasAuthority("ADM")
-                .antMatchers("/passo2/**").hasAuthority("ADM")
-                .antMatchers("/passo3/**").hasAuthority("ADM")
-                .antMatchers("/passo4/**").hasAuthority("ADM").anyRequest()
+                .antMatchers("/projeto-ocd/projet-backend/login").permitAll()
+                .antMatchers("/projeto-ocd/projet-backend/signup").permitAll()
+                .antMatchers("/projeto-ocd/projet-backend/home/**").hasAuthority("ADM")
+                .antMatchers("/projeto-ocd/projet-backend/passo1/**").hasAuthority("ADM")
+                .antMatchers("/projeto-ocd/projet-backend/passo2/**").hasAuthority("ADM")
+                .antMatchers("/projeto-ocd/projet-backend/passo3/**").hasAuthority("ADM")
+                .antMatchers("/projeto-ocd/projet-backend/passo4/**").hasAuthority("ADM").anyRequest()
                 .authenticated().and().csrf().disable().formLogin().successHandler(customizeAuthenticationSuccessHandler)
-                .loginPage("/login").failureUrl("/login?error=true")
+                .loginPage("/projeto-ocd/projet-backend/login").failureUrl("/projeto-ocd/projet-backend/login?error=true")
                 .usernameParameter("email")
                 .passwordParameter("senha")
                 .and().logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutRequestMatcher(new AntPathRequestMatcher("/projeto-ocd/projet-backend/logout"))
                 .logoutSuccessUrl("/").and().exceptionHandling();
     }
 }
