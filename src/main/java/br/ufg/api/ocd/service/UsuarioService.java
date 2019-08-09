@@ -65,7 +65,7 @@ public class UsuarioService implements UserDetailsService {
     }
 
     private UserDetails buildUserForAuthentication(Usuario user, List<GrantedAuthority> authorities) {
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getSenha(), authorities);
+        return new org.springframework.security.core.userdetails.User(user.getCpf(), user.getSenha(), authorities);
     }
 
     public List<Usuario> getAll() {
@@ -76,8 +76,8 @@ public class UsuarioService implements UserDetailsService {
         return repository.findByEmail(email);
     }
 
-    public Usuario findByEmailAndSenha(String email, String senha) {
-        return repository.findByEmailAndSenha(email, senha);
+    public Usuario findByEmailAndSenha(String cpf, String senha) {
+        return repository.findByCpfAndSenha(cpf, senha);
     }
 
     public Optional<Usuario> findById(String id) {

@@ -19,8 +19,9 @@ public class Usuario {
     private String id;
     private String nome;
     private String status;
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
     private String email;
+    @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
+    private String cpf;
     private String senha;
     private String numConselho;
     private String idTipoUsuario;
@@ -30,8 +31,9 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String nome, String email, String senha, String numConselho, String idTipoUsuario) {
+    public Usuario(String cpf, String nome, String email, String senha, String numConselho, String idTipoUsuario) {
         super();
+        this.cpf = cpf;
         this.nome = nome;
         this.email = email;
         this.senha = senha;

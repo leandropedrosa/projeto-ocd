@@ -58,8 +58,8 @@ public class DataInitialization implements ApplicationListener<ContextRefreshedE
         TipoDeUsuario d = tipoDeUsuarioRepo.findByDescricao("Dentista");
         TipoDeUsuario asb = tipoDeUsuarioRepo.findByDescricao("Auxiliar SB");
 
-        salvaUsuario(new Usuario("Administrador", "administrador@gmail.com", passwordEncoder.encode("123"), "3232sdsd", d.getId()), "ADM");
-        salvaUsuario(new Usuario("Teste", "teste@gmail.com", passwordEncoder.encode("123"), "3232sdsd", asb.getId()), "USER");
+        salvaUsuario(new Usuario("11111111","Administrador", "administrador@gmail.com", passwordEncoder.encode("123"), "3232sdsd", d.getId()), "ADM");
+        salvaUsuario(new Usuario("00000000","Teste", "teste@gmail.com", passwordEncoder.encode("123"), "3232sdsd", asb.getId()), "USER");
     }
 
     private void criarLesoes() {

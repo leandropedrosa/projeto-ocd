@@ -24,54 +24,6 @@ public class UsuarioController implements UsuarioSwagger {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-
-    @PostMapping(value = "/create")
-    public String create(@RequestBody Usuario usuario) {
-        logger.debug("Salvando usuario...");
-        serv.save(usuario);
-        return "Usuário criado...";
-    }
-
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@Valid Usuario user, BindingResult bindingResult) {
-        ModelAndView modelAndView = new ModelAndView();
-        Usuario userExists = serv.findByEmail(user.getEmail());
-        if (userExists != null) {
-            bindingResult
-                    .rejectValue("email", "error.user",
-                            "Já existe um usuário registrado com o nome de usuário fornecido");
-        }
-        if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("signup");
-        } else {
-            serv.save(user);
-            modelAndView.addObject("successMessage", "Usuário foi registrado com sucesso");
-            modelAndView.addObject("user", new Usuario());
-            modelAndView.setViewName("login");
-
-        }
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/dashboard", method = RequestMethod.GET)
-    public ModelAndView dashboard() {
-        ModelAndView modelAndView = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        Usuario user = serv.findByEmail(auth.getName());
-        modelAndView.addObject("currentUser", user);
-        modelAndView.addObject("fullName", "Bem vindo " + user.getNome());
-        modelAndView.addObject("adminMessage", "Conteúdo disponível apenas para usuários com função de administrador");
-        modelAndView.setViewName("dashboard");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
-    public ModelAndView home() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("home");
-        return modelAndView;
-    }
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
@@ -79,7 +31,7 @@ public class UsuarioController implements UsuarioSwagger {
         return modelAndView;
     }
 
-    @GetMapping(value = "/login/{email}/{senha}")
+    @GetMapping(value = "/login/{cpf}/{senha}")
     public Usuario login(@PathVariable(value = "email") String email, @PathVariable(value = "senha") String senha) {
         logger.debug("Buscando todos os usuários...");
         return serv.findByEmailAndSenha(email, senha);

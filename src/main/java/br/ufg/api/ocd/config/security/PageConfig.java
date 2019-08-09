@@ -3,6 +3,7 @@ package br.ufg.api.ocd.config.security;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -15,13 +16,17 @@ public class PageConfig implements WebMvcConfigurer {
     }
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/projeto-ocd/projet-backend/home").setViewName("home");
+        registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/signup").setViewName("signup");
+        registry.addViewController("/dashboard").setViewName("dashboard");
         registry.addViewController("/").setViewName("home");
-        registry.addViewController("/projeto-ocd/projet-backend/dashboard").setViewName("dashboard");
-        registry.addViewController("/projeto-ocd/projet-backend/login.html").setViewName("login");
-        registry.addViewController("/projeto-ocd/projet-backend/passo1").setViewName("rastreamento");
-        registry.addViewController("/projeto-ocd/projet-backend/passo2").setViewName("rastreamento");
-        registry.addViewController("/projeto-ocd/projet-backend/passo3").setViewName("rastreamento");
-        registry.addViewController("/projeto-ocd/projet-backend/passo4").setViewName("rastreamento");
+    }
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("swagger-ui.html")
+                .addResourceLocations("classpath:/META-INF/resources/");
+        registry.addResourceHandler("/webjars/**")
+                .addResourceLocations("classpath:/META-INF/resources/webjars/");
     }
 }

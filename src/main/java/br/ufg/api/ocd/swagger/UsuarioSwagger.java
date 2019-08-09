@@ -12,16 +12,6 @@ import java.util.Optional;
 @Api(value = "/api/OCD/usuario", description = "Manter Usuário", produces = "application/json")
 public interface UsuarioSwagger {
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @ApiOperation(value = "Insere um Usuário", notes = "Insere um Usuário", response = Usuario.class)
-    @ApiResponses({
-            @ApiResponse(code = 201, message = "Você não está autorizado a ver o recurso"),
-            @ApiResponse(code = 401, message = "Não autorizado"),
-            @ApiResponse(code = 403, message = "Acessando o recurso que você estava tentando acessar é proibido"),
-            @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
-    })
-    String create(@RequestBody Usuario usuario);
-
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Efetua o login pelo Email e a Senha", notes = "Efetua o login pelo Email e a Senha", response = Usuario.class)
     @ApiResponses({
