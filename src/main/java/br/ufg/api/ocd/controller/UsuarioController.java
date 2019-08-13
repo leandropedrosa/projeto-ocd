@@ -37,10 +37,10 @@ public class UsuarioController implements UsuarioSwagger {
         return serv.findByEmailAndSenha(email, senha);
     }
 
-    @GetMapping(value = "/esqueceuSenha/{email}")
-    public Usuario esqueceuSenha(@PathVariable(value = "email") String email) {
-        logger.debug("Obtendo usuários com id= {}...", email);
-        return serv.findByEmail(email);
+    @GetMapping(value = "/esqueceuSenha/{cpf}")
+    public Usuario esqueceuSenha(@PathVariable(value = "cpf") String cpf) {
+        logger.debug("Obtendo usuários com id= {}...", cpf);
+        return serv.findByCpf(cpf);
     }
 
     @PutMapping(value = "/updateSenha/{idUsuario}/{senha}")

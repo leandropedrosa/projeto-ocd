@@ -43,9 +43,9 @@ public class UsuarioService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String cpf) throws UsernameNotFoundException {
 
-        Usuario user = repository.findByEmail(email);
+        Usuario user = repository.findByCpf(cpf);
         if(user != null) {
             List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
             return buildUserForAuthentication(user, authorities);
@@ -72,8 +72,8 @@ public class UsuarioService implements UserDetailsService {
         return repository.findAll();
     }
 
-    public Usuario findByEmail(String email) {
-        return repository.findByEmail(email);
+    public Usuario findByCpf(String email) {
+        return repository.findByCpf(email);
     }
 
     public Usuario findByEmailAndSenha(String cpf, String senha) {

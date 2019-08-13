@@ -35,4 +35,6 @@ public class Rastreamento {
     private Date dtRetornoSugerido;
     private Date dtConsulta;
     private String idUsuario;
+    private String bairro;
+    private String cidade;
 }
