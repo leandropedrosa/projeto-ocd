@@ -18,7 +18,7 @@ import java.util.Arrays;
 @EnableSwagger2
 public class SwaggerConfig {
 
-    public static final String AUTH_SERVER = "http://localhost:8080/oauth";
+    public static final String AUTH_SERVER = "https://ocd-backend.herokuapp.com/oauth";
     public static final String CLIENT_ID = "ocdClientId";
     public static final String CLIENT_SECRET = "0f324881ebb170dc71382d558e1b424d";
 
