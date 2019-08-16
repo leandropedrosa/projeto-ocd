@@ -13,16 +13,6 @@ import java.util.Optional;
 public interface UsuarioSwagger {
 
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Efetua o login pelo Email e a Senha", notes = "Efetua o login pelo Email e a Senha", response = Usuario.class)
-    @ApiResponses({
-            @ApiResponse(code = 201, message = "Você não está autorizado a ver o recurso"),
-            @ApiResponse(code = 401, message = "Não autorizado"),
-            @ApiResponse(code = 403, message = "Acessando o recurso que você estava tentando acessar é proibido"),
-            @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
-    })
-    public Usuario login(@ApiParam(value = "email") String email, @ApiParam(value = "senha") String senha);
-
-    @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Busca usuário pelo email", notes = "Busca usuário pelo email", response = Usuario.class)
     @ApiResponses({
             @ApiResponse(code = 201, message = "Você não está autorizado a ver o recurso"),

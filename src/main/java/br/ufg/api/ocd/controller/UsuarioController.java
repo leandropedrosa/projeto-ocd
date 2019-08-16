@@ -6,13 +6,9 @@ import br.ufg.api.ocd.swagger.UsuarioSwagger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
@@ -29,12 +25,6 @@ public class UsuarioController implements UsuarioSwagger {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
         return modelAndView;
-    }
-
-    @GetMapping(value = "/login/{cpf}/{senha}")
-    public Usuario login(@PathVariable(value = "email") String email, @PathVariable(value = "senha") String senha) {
-        logger.debug("Buscando todos os usuários...");
-        return serv.findByEmailAndSenha(email, senha);
     }
 
     @GetMapping(value = "/esqueceuSenha/{cpf}")

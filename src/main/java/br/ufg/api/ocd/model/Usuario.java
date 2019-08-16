@@ -31,6 +31,17 @@ public class Usuario {
     public Usuario() {
     }
 
+    public Usuario(Usuario user) {
+        super();
+        this.cpf = user.cpf;
+        this.nome = user.nome;
+        this.email = user.email;
+        this.senha = user.senha;
+        this.numConselho = user.numConselho;
+        this.idTipoUsuario = user.idTipoUsuario;
+        this.roles = user.getRoles();
+    }
+
     public Usuario(String cpf, String nome, String email, String senha, String numConselho, String idTipoUsuario) {
         super();
         this.cpf = cpf;
