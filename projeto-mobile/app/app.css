@@ -1,0 +1,14 @@
+@import '~nativescript-theme-core/css/core.light.android.css';
+
+.btn-primary {
+  height: 50;
+  background-color: #0bbdd5;
+  border-radius: 5;
+  font-size: 20;
+  font-weight: 600;
+  color: white;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+}

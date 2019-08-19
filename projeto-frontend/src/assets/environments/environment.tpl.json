@@ -1,0 +1,19 @@
+{
+  "production": true,
+  "configuration": {
+    "server": {
+      "protocol": "${API_PROTOCOL}",
+      "host": "${API_HOST}",
+      "port": "${API_PORT}"
+    },
+    "firebase": {
+      "apiKey": "${FIREBASE_API_KEY}",
+      "authDomain": "${FIREBASE_AUTH_DOMAIN}",
+      "databaseURL": "${FIREBASE_DATABASE_URL}",
+      "projectId": "${FIREBASE_PROJECT_ID}",
+      "storageBucket": "${FIREBASE_STORAGE_BUCKET}",
+      "messagingSenderId": "${FIREBASE_MESSAGING_SENDER_ID}"
+    },
+    "version": "v1"
+  }
+}

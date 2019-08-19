@@ -1,0 +1,27 @@
+image: docker:latest
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay
+  IMAGE_TAG: registry.gitlab.com/leandropedrosalp/projeto-ocd:latest
+
+stages:
+  - build
+  - package
+
+node-build:
+  image: node:8.11.3-jessie
+  stage: build
+  only:
+    - develop
+  script: "npm set progress=false && npm config set depth 0 && npm cache clean --force && npm i"
+
+docker-build:
+  stage: package
+  only:
+    - develop
+  script:
+    - docker build -t $IMAGE_TAG .
+    - docker login -u $CI_REGISTRY_USER -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+    - docker push $IMAGE_TAG

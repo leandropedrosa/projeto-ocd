@@ -1,0 +1,84 @@
+<div [ngSwitch]="acao">
+    <div *ngSwitchCase="'PASSO2'">
+        <ActionBar title="RASTREAMENTO"></ActionBar>
+        <FlexboxLayout class="page">
+            <StackLayout class="form">
+                <GridLayout rows="auto, auto, auto">
+                    <StackLayout row="0" style="padding-top:2px">
+                        <Label class="header" text="Passo 2 - Fatores de Funerabilidade:"></Label>
+                    </StackLayout>
+                    <StackLayout row="1" style="height:70%">
+                        <ScrollView sdkExampleTitle sdkToggleNavButton>
+                            <GridLayout class="m-15" rows="auto auto auto auto auto">
+                                <StackLayout row="0">
+                                    <Label text="Local de antendimento:"></Label>
+                                    <ListPicker [items]="listPickerCountries"
+                                        [(ngModel)]="selectedListPickerIndex1"></ListPicker>
+                                </StackLayout>
+                                <StackLayout row="1">
+                                    <Label text="Tipo de câncer:"></Label>
+                                    <ListPicker [items]="listTiposDeCancer"
+                                        (selectedIndexChange)="selectedIndexChanged($event)"
+                                        [(ngModel)]="selectedListPickerIndex2"></ListPicker>
+                                </StackLayout>
+                                <StackLayout row="2">
+                                    <Label text="Data de Referência:"></Label>
+                                    <DatePicker [year]="currentYear" [month]="currentMonth"
+                                        [day]="currentDay" minDate="1970-01-01"
+                                        maxDate="2100-12-31"></DatePicker>
+                                </StackLayout>
+                                <StackLayout row="3">
+                                    <Label text="Data de contra-referência:"></Label>
+                                    <DatePicker [year]="currentYear" [month]="currentMonth"
+                                        [day]="currentDay" minDate="1970-01-01"
+                                        maxDate="2100-12-31"></DatePicker>
+                                </StackLayout>
+                                <StackLayout row="4">
+                                    <Label text="Fator de vunerabilidade:"></Label>
+                                    <RadListView [items]="dataItems"
+                                        selectionBehavior="Press"
+                                        multipleSelection="true"
+                                        (itemSelected)="onItemSelected($event)"
+                                        (itemSelecting)="onItemSelecting($event)"
+                                        (itemDeselecting)="onItemDeselecting($event)"
+                                        (itemDeselected)="onItemDeselected($event)">
+                                        <ng-template tkListItemTemplate let-item="item">
+                                            <StackLayout class="listItemStackLayout">
+                                                <Label class="nameLabel"
+                                                    [text]="item.id"></Label>
+                                                <Label class="descriptionLabel"
+                                                    [text]="item.nome"></Label>
+                                            </StackLayout>
+                                        </ng-template>
+                                        <ListViewLinearLayout
+                                            tkListViewLayout itemHeight="50"
+                                            scrollDirection="Vertical"></ListViewLinearLayout>
+                                    </RadListView>
+
+                                </StackLayout>
+                            </GridLayout>
+                        </ScrollView>
+                    </StackLayout>
+                    <StackLayout row="2">
+                        <GridLayout row="auto" columns="*, *">
+                            <StackLayout row="0" col="0">
+                                <Button text="< Anterior" class="btn btn-outline-secondary m-t-20"
+                                    (tap)="continuarFluxo('PASSO1')"></Button>
+                            </StackLayout>
+                            <StackLayout row="0" col="1">
+                                <Button text="Próximo >" class="btn btn-outline-primary m-t-20"
+                                    (tap)="continuarFluxo('PASSO3')"></Button>
+                            </StackLayout>
+                        </GridLayout>
+                    </StackLayout>
+                </GridLayout>
+            </StackLayout>
+        </FlexboxLayout>
+    </div>
+    <div *ngSwitchCase="'PASSO1'">
+        <passo1 android:[rastreamento]="rastreamento" ios:[rastreamento]="rastreamento"></passo1>
+    </div>
+    <div *ngSwitchCase="'PASSO3'">
+        <passo3 android:[rastreamento]="rastreamento" ios:[rastreamento]="rastreamento"></passo3>
+    </div>
+</div>
