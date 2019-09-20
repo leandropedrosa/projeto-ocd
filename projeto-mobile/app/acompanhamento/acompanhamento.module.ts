@@ -7,8 +7,7 @@ import { Passo1Component } from "./passo1/passo1.component";
 import { Passo2Component } from "./passo2/passo2.component";
 import { Passo3Component } from "./passo3/passo3.component";
 import { Passo4Component } from "./passo4/passo4.component";
-import { TipoCancerService } from "../shared/tipoCancer.service";
-import { TipoLesaoService } from "../shared/tipoLesao.service";
+import { DadosIniciaisService } from "../shared/dadosIniciais.service";
 import { RastreamentoService } from "../shared/rastreamento.service";
 
 @NgModule({
@@ -24,8 +23,7 @@ import { RastreamentoService } from "../shared/rastreamento.service";
         Passo4Component,
     ],
     providers: [
-        TipoCancerService,
-        TipoLesaoService,
+        DadosIniciaisService,
         RastreamentoService,
     ],
     schemas: [

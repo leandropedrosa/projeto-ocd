@@ -1,29 +1,35 @@
 import { User } from "./user.model";
 import { LocalAtendimento } from "./localAtendimento.model";
-import { TipoCancer } from "./tipoCancer.model";
-import { FatoresDeVunerabilidade } from "./fatoresVunerabilidade.model";
-import { TipoLesao } from "./tipoLesao.model";
+import { FatoresDeRisco } from "./fatoresDeRisco.model";
+import { Lesao } from "./lesao.model";
 
 export class Rastreamento {
+    // passo1
     id: number;
     nomePaciente: string;
+    nomeMae: string;
+    bairro: string;
+    cidade: string;
     dtNascimento: string;
     sexo: number = 0;
-    nomeMae: string;
     cpf: string;
-    numCartaoSus: string;
-    numTelefone: string;
     email: string;
-    localAtendimento: LocalAtendimento;
+
+    // passo2
+    localAtendimento: string;
+    dataAtendimento: string;
+    profissionalAtendimento: string;
+
+    // passo3
+    listFatoresRisco: Array<FatoresDeRisco> = new Array<FatoresDeRisco>();
+    listPresencaLesao: Array<Lesao> = new Array<Lesao>();
+    localReferencia: string;
+    dataSugeridaRetorno: string;
+
     dtReferencia: string;
     dtcontraReferencia: string;
-    tipoCancer: TipoCancer;
-    fatoresDeVunerabilidade: Array<FatoresDeVunerabilidade>;
-    tipoLesao: Array<TipoLesao>;
     histopatologico: File;
-    usuario: User;
-    dtRetornoSugerido: string;
-    dtRetorno: string;
     dtConsulta: string;
-    user: User;
+    listPickerLocalAtendimento: Array<string> = new Array<string>();
+    regiao: string;
 }

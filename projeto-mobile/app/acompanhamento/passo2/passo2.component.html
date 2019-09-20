@@ -5,57 +5,33 @@
             <StackLayout class="form">
                 <GridLayout rows="auto, auto, auto">
                     <StackLayout row="0" style="padding-top:2px">
-                        <Label class="header" text="Passo 2 - Fatores de Funerabilidade:"></Label>
+                        <Label class="header" text="Passo 2 - Dados do Atendimento:"></Label>
                     </StackLayout>
                     <StackLayout row="1" style="height:70%">
                         <ScrollView sdkExampleTitle sdkToggleNavButton>
-                            <GridLayout class="m-15" rows="auto auto auto auto auto">
+                            <GridLayout class="m-15" rows="auto auto auto">
+
                                 <StackLayout row="0">
                                     <Label text="Local de antendimento:"></Label>
-                                    <ListPicker [items]="listPickerCountries"
+                                    <ListPicker [items]="rastreamento.listPickerLocalAtendimento"
                                         [(ngModel)]="selectedListPickerIndex1"></ListPicker>
                                 </StackLayout>
-                                <StackLayout row="1">
-                                    <Label text="Tipo de câncer:"></Label>
-                                    <ListPicker [items]="listTiposDeCancer"
-                                        (selectedIndexChange)="selectedIndexChanged($event)"
-                                        [(ngModel)]="selectedListPickerIndex2"></ListPicker>
-                                </StackLayout>
-                                <StackLayout row="2">
-                                    <Label text="Data de Referência:"></Label>
-                                    <DatePicker [year]="currentYear" [month]="currentMonth"
-                                        [day]="currentDay" minDate="1970-01-01"
-                                        maxDate="2100-12-31"></DatePicker>
-                                </StackLayout>
-                                <StackLayout row="3">
-                                    <Label text="Data de contra-referência:"></Label>
-                                    <DatePicker [year]="currentYear" [month]="currentMonth"
-                                        [day]="currentDay" minDate="1970-01-01"
-                                        maxDate="2100-12-31"></DatePicker>
-                                </StackLayout>
-                                <StackLayout row="4">
-                                    <Label text="Fator de vunerabilidade:"></Label>
-                                    <RadListView [items]="dataItems"
-                                        selectionBehavior="Press"
-                                        multipleSelection="true"
-                                        (itemSelected)="onItemSelected($event)"
-                                        (itemSelecting)="onItemSelecting($event)"
-                                        (itemDeselecting)="onItemDeselecting($event)"
-                                        (itemDeselected)="onItemDeselected($event)">
-                                        <ng-template tkListItemTemplate let-item="item">
-                                            <StackLayout class="listItemStackLayout">
-                                                <Label class="nameLabel"
-                                                    [text]="item.id"></Label>
-                                                <Label class="descriptionLabel"
-                                                    [text]="item.nome"></Label>
-                                            </StackLayout>
-                                        </ng-template>
-                                        <ListViewLinearLayout
-                                            tkListViewLayout itemHeight="50"
-                                            scrollDirection="Vertical"></ListViewLinearLayout>
-                                    </RadListView>
 
+                                <StackLayout row="1">
+                                    <Label text="Data de Atendimento:" col="0"></Label>
+                                    <DatePicker col="1" [year]="currentYear"
+                                        [month]="currentMonth" [day]="currentDay"
+                                        minDate="1970-01-01" maxDate="2100-12-31"
+                                        loaded="onDateAtendimentoLoaded"></DatePicker>
                                 </StackLayout>
+
+                                <StackLayout row="2">
+                                    <Label text="Profissional do Atendimento:"
+                                        col="0"></Label>
+                                    <TextField [(ngModel)]="rastreamento.user"
+                                        hint="Informe..."></TextField>
+                                </StackLayout>
+
                             </GridLayout>
                         </ScrollView>
                     </StackLayout>

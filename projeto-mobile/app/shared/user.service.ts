@@ -2,37 +2,90 @@
 // Feel free to swap in your own service / APIs / etc here for your own apps.
 
 import { Injectable } from "@angular/core";
-import * as Kinvey from "kinvey-nativescript-sdk";
-// TODO: should be imported from kinvey-nativescript-sdk/angular but declaration file is currently missing
-import { UserService as KinveyUserService } from "kinvey-nativescript-sdk/lib/angular";
+import { Http } from '@angular/http';
 import { User } from "./user.model";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of, from } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class UserService {
-    constructor(private kinveyUserService: KinveyUserService) { }
 
-    register(user: User) {
-        return this.kinveyUserService.signup({ username: user.email, password: user.password })
-            .catch(this.handleErrors);
+    private url = 'http://localhost:8000';
+
+
+    constructor(
+        private httpClient: HttpClient
+    ) {
     }
 
-    login(user: User) {
-        return this.kinveyUserService.login(user.email, user.password)
-            .catch(this.handleErrors);
+    login(cpf: String, password: String) {
+        return this.httpClient.post<User>(this.url + '/authenticate', { cpf, password }).pipe(
+            map(
+                userData => {
+                    sessionStorage.setItem('nameUser', userData.nome);
+                    sessionStorage.setItem('regionUser', userData.regiao);
+                    sessionStorage.setItem('cpfUser', userData.cpf);
+                    sessionStorage.setItem('nivelAtencaoUser', userData.nivelAtencao);
+                    let tokenStr = 'OCD ' + userData.token;
+                    sessionStorage.setItem('token', tokenStr);
+                    return userData;
+                }
+            )
+
+        );
+    }
+
+    authenticateBasic(cpf: String, password: String) {
+        const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(cpf + ':' + password) });
+        return this.httpClient.get<User>(this.url + '/authenticateBasic', { headers }).pipe(
+            map(
+                userData => {
+                    sessionStorage.setItem('nameUser', userData.nome);
+                    sessionStorage.setItem('regionUser', userData.regiao);
+                    sessionStorage.setItem('cpfUser', userData.cpf);
+                    sessionStorage.setItem('nivelAtencaoUser', userData.nivelAtencao);
+                    return userData;
+                }
+            )
+        );
+    }
+
+    authenticateBasicAuth(cpf: String, password: String) {
+        const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(cpf + ':' + password) });
+        return this.httpClient.get<User>(this.url + '/authenticateBasic', { headers }).pipe(
+            map(
+                userData => {
+                    sessionStorage.setItem('nameUser', userData.nome);
+                    sessionStorage.setItem('regionUser', userData.regiao);
+                    sessionStorage.setItem('cpfUser', userData.cpf);
+                    sessionStorage.setItem('nivelAtencaoUser', userData.nivelAtencao);
+                    let authString = 'Basic ' + btoa(cpf + ':' + password);
+                    sessionStorage.setItem('basicauth', authString);
+                    return userData;
+                }
+            )
+        );
     }
 
     logout() {
-        return this.kinveyUserService.logout()
-            .catch(this.handleErrors);
+        sessionStorage.removeItem('nameUser');
+        sessionStorage.removeItem('regionUser');
+        sessionStorage.removeItem('cpfUser');
+        sessionStorage.removeItem('nivelAtencaoUser');
+        sessionStorage.removeItem('token');
     }
 
-    resetPassword(email) {
-        return this.kinveyUserService.resetPassword(email)
-            .catch(this.handleErrors);
+    isUserLoggedIn() {
+        let cpfSession = sessionStorage.getItem('cpfUser')
+        //console.log(!(user === null))
+        return !(cpfSession === null)
     }
 
-    handleErrors(error: Kinvey.Errors.BaseError) {
-        console.error(error.message);
-        return Promise.reject(error.message);
+    resetPassword(cpf) {
+        return this.httpClient.get<any>(this.url + '/resetPassword/' + cpf);
     }
+
 }

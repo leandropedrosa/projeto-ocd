@@ -43,6 +43,7 @@ export class Passo1Component implements OnInit {
     continuarFluxo(opcao: string) {
         this.acao = opcao;
     }
+
     onDateNascimentoLoaded(data: EventData) {
         const datePicker = <DatePicker>data.object;
         datePicker.on("dateChange", (dtNascimento) => {

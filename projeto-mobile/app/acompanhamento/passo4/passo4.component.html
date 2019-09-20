@@ -2,78 +2,48 @@
     <div *ngSwitchCase="'PASSO4'">
         <ActionBar title="RASTREAMENTO"></ActionBar>
         <FlexboxLayout class="page">
-            <StackLayout class="form"> 
+            <StackLayout class="form">
                 <GridLayout rows="auto, auto, auto">
                     <StackLayout row="0" style="padding-top:2px">
                         <Label class="header" text="Passo 4 - Confirmação dos dados:"></Label>
-                    </StackLayout> 
-                    <StackLayout row="1" style="height:70%">
-                        <TabView>
-                            <StackLayout *tabItem="{title: 'Passo 1'}">
-                                <GridLayout rows="auto, auto, auto, auto, auto">
-                                    <StackLayout row="0">
-                                    </StackLayout>
-                                    <StackLayout row="1">
-                                        <Label text="Nome do Paciente:" col="0"></Label>
-                                        <TextField [(ngModel)]="textFieldValue"
-                                            hint="Informe..."></TextField>
-                                    </StackLayout>
-                                    <StackLayout row="2">
-                                        <Label text="Data de Nascimento:" col="0"></Label>
-                                        <DatePicker col="1" [year]="currentYear"
-                                            [month]="currentMonth" [day]="currentDay"
-                                            minDate="1970-01-01" maxDate="2100-12-31"></DatePicker>
-                                    </StackLayout>
-                                    <StackLayout row="3">
-                                        <Label text="Sexo:" col="0"></Label>
-                                        <SegmentedBar col="1" [items]="segmentedBarItems"
-                                            [(ngModel)]="selectedBarIndex"></SegmentedBar>
-                                    </StackLayout>
-                                </GridLayout>
+                    </StackLayout>
+                    <Slider value="80"></Slider>
+                    <StackLayout row="0" orientation="vertical">
+                        <ScrollView orientation="vertical">
+                            <StackLayout class="page-inner">
+                                <RadListView [items]="standings">
+                                    <ng-template let-item="item" let-i="index">
+                                        <GridLayout columns="80,160"
+                                            class="p-5" [backgroundColor]="i == 0 ? '#ccc' : 'white'">
+                                            <Label col="0" text="Nome do Paciente: "></Label>
+                                            <Label col="1" [text]="rastreamento.nomePaciente"></Label>
+                                            <Label col="0" text="Nome da Mãe: "></Label>
+                                            <Label col="1" [text]="rastreamento.nomeMae"></Label>
+                                            <Label col="0" text="Bairro: "></Label>
+                                            <Label col="1" [text]="rastreamento.bairro"></Label>
+                                            <Label col="0" text="Cidade: "></Label>
+                                            <Label col="1" [text]="rastreamento.cidade"></Label>
+                                            <Label col="0" text="Data de Nascimento: "></Label>
+                                            <Label col="1" [text]="rastreamento.dtNascimento"></Label>
+                                            <Label col="0" text="Sexo: "></Label>
+                                            <Label col="1" [text]="rastreamento.sexo"></Label>
+                                            <Label col="0" text="CPF: "></Label>
+                                            <Label col="1" [text]="rastreamento.cpf"></Label>
+                                            <Label col="0" text="e-mail: "></Label>
+                                            <Label col="1" [text]="rastreamento.email"></Label>
+                                            <Label col="0" text="Local de Atendimento: "></Label>
+                                            <Label col="1" [text]="rastreamento.localAtendimento"></Label>
+                                            <Label col="0" text="Data de Atendimento: "></Label>
+                                            <Label col="9" [text]="rastreamento.dtAtendimento"></Label>
+                                            <Label col="0" text="Fatores de Risco: "></Label>
+                                            <Label col="1" [text]="fatores"></Label>
+                                            <Label col="0" text="Lesões: "></Label>
+                                            <Label col="1" [text]="lesoes"></Label>
+                                        </GridLayout>
+                                    </ng-template>
+                                </RadListView>
                             </StackLayout>
-                            <StackLayout *tabItem="{title: 'Passo 2'}">
-                                <GridLayout rows="auto, auto, auto, auto, auto, auto">
-                                    <StackLayout row="0">
-                                    </StackLayout>
-                                    <StackLayout row="1">
-                                        <Label text="CPF do Paciente:" col="0"></Label>
-                                        <TextField [(ngModel)]="textFieldValue"
-                                            hint="999.999.999-99"></TextField>
-                                    </StackLayout>
-                                    <StackLayout row="2">
-                                        <Label text="Nome da MÃÂ£e do Paciente:"
-                                            col="0"></Label>
-                                        <TextField [(ngModel)]="textFieldValue"
-                                            hint="Informe..."></TextField>
-                                    </StackLayout>
-                                    <StackLayout row="3">
-                                        <Label text="Num do CartÃÂ£o SUS do Paciente:"
-                                            col="0"></Label>
-                                        <TextField [(ngModel)]="textFieldValue"
-                                            hint="Informe..."></TextField>
-                                    </StackLayout>
-                                    <StackLayout row="4">
-                                        <Label text="Telefone com DDD:" col="0"></Label>
-                                        <TextField [(ngModel)]="textFieldValue"
-                                            hint="(99) 99999-9999)"></TextField>
-                                    </StackLayout>
-                                    <StackLayout row="5">
-                                        <Label text="Email do Paciente:" col="0"></Label>
-                                        <TextField [(ngModel)]="textFieldValue"
-                                            hint="exemplo@com.br"></TextField>
-                                    </StackLayout>
-                                </GridLayout>
-                            </StackLayout>
-                            <StackLayout *tabItem="{title: 'Passo 3'}">
-                                <Label text="Label in Tab 3"></Label>
-                            </StackLayout>
-                            <StackLayout *tabItem="{title: 'Passo 4'}">
-                                <Label text="Label in Tab 4"></Label>
-                            </StackLayout>
-                            <StackLayout *tabItem="{title: 'Passo 5'}">
-                                <Label text="Label in Tab 5"></Label>
-                            </StackLayout>
-                        </TabView>
+                        </ScrollView>
                     </StackLayout>
                     <StackLayout row="2">
                         <GridLayout row="auto" columns="*, *">
@@ -83,7 +53,7 @@
                             </StackLayout>
                             <StackLayout row="0" col="1">
                                 <Button text="Finalizar" class="btn btn-outline-primary m-t-20"
-                                    (tap)="continuarFluxo('PASSO4')"></Button>
+                                    (tap)="finalizar()"></Button>
                             </StackLayout>
                         </GridLayout>
                     </StackLayout>

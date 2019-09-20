@@ -9,13 +9,13 @@ import { HomeModule } from "./home/home.module";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { LoginComponent } from "./login/login.component";
-import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular/listview-directives"
+import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular/listview-directives";
 
 // TODO: should be imported from kinvey-nativescript-sdk/angular but declaration file is currently missing
 import { KinveyModule, UserService as KinveyUserService } from "kinvey-nativescript-sdk/lib/angular";
 import { DatePipe } from '@angular/common';
 import { UserService } from "./shared/user.service";
-import { PacienteService } from "./shared/paciente.service";
+import { BasicAuthHtppInterceptorService } from "./shared/BasicAuthHtppInterceptorService";
 
 
 @NgModule({
@@ -41,8 +41,8 @@ import { PacienteService } from "./shared/paciente.service";
     ],
     providers: [
         UserService,
-        PacienteService,
-        DatePipe
+        DatePipe,
+        BasicAuthHtppInterceptorService,
     ],
     schemas: [
         NO_ERRORS_SCHEMA

@@ -1,6 +1,10 @@
 export class User {
-    email: string;
-    password: string;
-    confirmPassword: string;
-    numConselho: string;
+    public status: string;
+    public cpf: string;
+    public nome: string;
+    public password: string;
+    public nivelAtencao: string;
+    public regiao: string;
+    public token: string;
+
 }

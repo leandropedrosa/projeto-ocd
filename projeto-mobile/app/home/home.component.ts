@@ -1,9 +1,8 @@
 import { ItemEventData } from "tns-core-modules/ui/list-view"
 import { Component, OnInit } from "@angular/core";
-import { Paciente } from "../shared/paciente.model";
-import { PacienteService } from "../shared/paciente.service";
 import { RouterExtensions } from "nativescript-angular/router";
-
+import { RastreamentoService } from "../shared/rastreamento.service";
+import { Paciente } from "../shared/paciente.model";
 @Component({
     selector: "Home",
     moduleId: module.id,
@@ -11,21 +10,25 @@ import { RouterExtensions } from "nativescript-angular/router";
     styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-    ngOnInit(): void {
-    }
+
+    pacientes: Array<Paciente>;
     onButtonTap(): void {
         console.log("Button was pressed");
     }
 
     textFieldValue: string = "";
-
-    pacientes: Array<Paciente>;
     onItemTap(args: ItemEventData): void {
         console.log('Item with index: ' + args.index + ' tapped');
     }
 
-    constructor(private routerExtensions: RouterExtensions, private pacienteService: PacienteService) {
-        this.pacientes = pacienteService.getDataItems();
+    constructor(private routerExtensions: RouterExtensions, private rastreamentoService: RastreamentoService) {
+    }
+
+    ngOnInit(): void {
+        this.rastreamentoService.getPaciente(localStorage.getItem('regionUser')).subscribe(
+            response => {
+                this.pacientes = response;
+            });
     }
 
     goAcompanhamento(): void {
