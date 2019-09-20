@@ -34,24 +34,21 @@ public class Rastreamento {
     @Id
     private String id;
     private String nomePaciente;
-    private Date dtNascimento;
-    private String sexo;
     private String nomeMae;
-    private String cpf;
-    private String numSus;
-    private String numTelefone;
-    private String email;
-    private String localAtendimento;
-    private Date dtReferencia;
-    private Date dtContraReferencia;
-    private String idTipoCancer;
-    private List<String> fatoresVunerabilidade;
-    private List<String> lesoes;
-    private Blob diagnosticoHistopatologico;
-    private Date dtRetornoReal;
-    private Date dtRetornoSugerido;
-    private Date dtConsulta;
-    private String idUsuario;
     private String bairro;
     private String cidade;
+    private Date dtNascimento;
+    private String sexo;
+    private String cpf;
+    private String email;
+
+    private String localAtendimento;
+    private Date dataAtendimento;
+    private String idUsuario;
+
+    private List<FatorDeRisco> fatoresDeRisco;
+    private List<Lesao> lesoes;
+    private String localReferencia;
+    private Date dtRetornoSugerido;
+    private Date dataSugeridaRetorno;
 }

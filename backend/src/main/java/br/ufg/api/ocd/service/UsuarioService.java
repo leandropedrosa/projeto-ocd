@@ -33,7 +33,7 @@ public class UsuarioService implements UserDetailsService {
 
 
     public Boolean save(Usuario usuario) {
-        usuario.setSenha(bCryptPasswordEncoder.encode(usuario.getSenha()));
+        usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
         usuario.setStatus("Esperando Ativação");
         Role userRole = roleRepository.findByName("ADM");
         usuario.setRoles(Arrays.asList(userRole));
@@ -65,7 +65,7 @@ public class UsuarioService implements UserDetailsService {
     }
 
     private UserDetails buildUserForAuthentication(Usuario user, List<GrantedAuthority> authorities) {
-        return new org.springframework.security.core.userdetails.User(user.getCpf(), user.getSenha(), authorities);
+        return new org.springframework.security.core.userdetails.User(user.getCpf(), user.getPassword(), authorities);
     }
 
     public List<Usuario> getAll() {
@@ -76,8 +76,8 @@ public class UsuarioService implements UserDetailsService {
         return repository.findByCpf(email);
     }
 
-    public Usuario findByEmailAndSenha(String cpf, String senha) {
-        return repository.findByCpfAndSenha(cpf, senha);
+    public Usuario findByCpfAndPassword(String cpf, String password) {
+        return repository.findByCpfAndPassword(cpf, password);
     }
 
     public Optional<Usuario> findById(String id) {
@@ -85,24 +85,11 @@ public class UsuarioService implements UserDetailsService {
         return repository.findById(id);
     }
 
-    public Boolean deleteById(String id) {
-        repository.deleteById(id);
-        logger.info("-- Acompanhamento Deletado --");
-        return true;
-    }
-
-
     public Boolean update(Usuario usuario) {
         repository.save(usuario);
         logger.info("-- Usuario atualizado --");
         return true;
     }
 
-
-    public Boolean deleteAll() {
-        repository.deleteAll();
-        logger.info("-- Todos os Usuarios foram deletados --");
-        return true;
-    }
 
 }

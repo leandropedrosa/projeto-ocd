@@ -1,8 +1,12 @@
 package br.ufg.api.ocd.service;
 
 import br.ufg.api.ocd.model.LocalDeAtendimento;
+import br.ufg.api.ocd.model.Rastreamento;
 import br.ufg.api.ocd.repository.LocalAtendimentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,31 +18,16 @@ public class LocalAtendimentoService {
     @Autowired
     private LocalAtendimentoRepository repository;
 
-    public void save(LocalDeAtendimento localDeAtendimento) {
-        repository.save(localDeAtendimento);
-    }
-
 
     public List<LocalDeAtendimento> getAll() {
         return repository.findAll();
     }
 
 
-    public Optional<LocalDeAtendimento> findById(String id) {
-        return repository.findById(id);
+    public Page<LocalDeAtendimento> findByRegiao(String regiao, int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC,"nome");
+
+        return repository.findByRegiao(regiao, pageRequest);
     }
 
-    public void deleteById(String id) {
-        repository.deleteById(id);
-    }
-
-
-    public void update(LocalDeAtendimento localDeAtendimento) {
-        repository.save(localDeAtendimento);
-    }
-
-
-    public void deleteAll() {
-        repository.deleteAll();
-    }
 }

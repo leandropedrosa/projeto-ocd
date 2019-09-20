@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(value = "/api/OCD/acompanhamento")
+@RequestMapping(value = "/api/acompanhamento")
 public class RastreamentoController implements RastreamentoSwagger {
 
     @Autowired
@@ -19,7 +19,7 @@ public class RastreamentoController implements RastreamentoSwagger {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @PostMapping(value = "/create")
+    @PostMapping
     public String create(@RequestBody Rastreamento rastreamento) {
         logger.debug("Saving acompanhamento.");
         serv.save(rastreamento);

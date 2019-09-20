@@ -28,8 +28,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 public class LocalDeAtendimento {
 
-    public LocalDeAtendimento(String descricao) {
-        this.descricao = descricao;
+    public LocalDeAtendimento(String nome, String tipo, String regiao, String bairro, String cidade) {
+        this.nome = nome;
+        this.tipo = tipo;
+        this.regiao = regiao;
+        this.bairro = bairro;
+        this.cidade = cidade;
     }
 
     public LocalDeAtendimento() {
@@ -37,7 +41,9 @@ public class LocalDeAtendimento {
 
     @Id
     private String id;
-    private String descricao;
-    private String endereco;
-    private String fone;
+    private String nome;
+    private String tipo;
+    private String regiao;
+    private String bairro;
+    private String cidade;
 }

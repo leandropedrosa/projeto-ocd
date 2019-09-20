@@ -14,10 +14,6 @@ public class PacienteService {
     @Autowired
     private PacienteRepository repository;
 
-    public void save(Paciente paciente) {
-        repository.save(paciente);
-    }
-
 
     public List<Paciente> getAll() {
         return repository.findAll();
@@ -26,20 +22,6 @@ public class PacienteService {
 
     public Optional<Paciente> findById(String id) {
         return repository.findById(id);
-    }
-
-    public void deleteById(String id) {
-        repository.deleteById(id);
-    }
-
-
-    public void update(Paciente paciente) {
-        repository.save(paciente);
-    }
-
-
-    public void deleteAll() {
-        repository.deleteAll();
     }
 
 }

@@ -69,7 +69,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
         @Override
         public String getPassword() {
-            return  super.getSenha();
+            return  super.getPassword();
         }
 
     }

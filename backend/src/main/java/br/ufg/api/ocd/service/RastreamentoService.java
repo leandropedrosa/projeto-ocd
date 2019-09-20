@@ -50,32 +50,9 @@ public class RastreamentoService {
         return repository.findById(id);
     }
 
-    public Boolean deleteById(int id) {
-
-        repository.deleteById(id);
-        logger.info("-- Acompanhamento Deletado --");
-        return true;
-    }
-
-    public Boolean updateByDtRetorno(Integer id, Date DtRetorno) {
-        Optional<Rastreamento> rastreamento = repository.findById(id);
-        Rastreamento objeto = rastreamento.get();
-        objeto.setDtRetornoReal(DtRetorno);
-        repository.save(objeto);
-        logger.info("-- Acompanhamento atualizado --");
-        return true;
-    }
-
     public Boolean update(Rastreamento rastreamento) {
         repository.save(rastreamento);
         logger.info("-- Acompanhamento atualizado --");
-        return true;
-    }
-
-
-    public Boolean deleteAll() {
-        repository.deleteAll();
-        logger.info("-- Todos os Acompanhamentos foram deletados --");
         return true;
     }
 

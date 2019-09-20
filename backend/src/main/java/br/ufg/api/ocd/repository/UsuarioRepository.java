@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UsuarioRepository extends MongoRepository<Usuario, String> {
-    public Usuario findByCpfAndSenha(String cpf, String senha);
+    public Usuario findByCpfAndPassword(String cpf, String password);
     public Usuario findByCpf(String cpf);
 }

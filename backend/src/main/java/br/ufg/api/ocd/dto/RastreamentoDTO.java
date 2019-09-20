@@ -23,6 +23,7 @@ public class RastreamentoDTO {
     // passo2
     private String localAtendimento;
     private String dataAtendimento;
+    private String idUsuario;
     private String profissionalAtendimento;
 
     // passo3

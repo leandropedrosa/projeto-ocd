@@ -28,14 +28,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Paciente {
     @Id
     private String id;
-    private String nome;
-    private String dtNascimento;
-    private String nomeMae;
-    private String sexo;
-    private String fone;
-    private String endereco;
-    private String statusPaciente;
-    private String email;
-    private String cartaoSus;
-    private String cpf;
+    private String nomePaciente;
+    private String regiao;
+    private String ultimaData;
+    private String ultimoProcedimento;
+    private String status;
 }

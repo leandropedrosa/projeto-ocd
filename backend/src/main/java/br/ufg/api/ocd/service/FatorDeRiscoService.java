@@ -1,7 +1,7 @@
 package br.ufg.api.ocd.service;
 
-import br.ufg.api.ocd.model.Lesao;
-import br.ufg.api.ocd.repository.LesaoRepository;
+import br.ufg.api.ocd.model.FatorDeRisco;
+import br.ufg.api.ocd.repository.FatorDeRiscoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,12 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class LesaoService {
+public class FatorDeRiscoService {
 
     @Autowired
-    private LesaoRepository repository;
+    private FatorDeRiscoRepository repository;
 
-    public List<Lesao> getAll() {
+    public List<FatorDeRisco> getAll() {
         return repository.findAll();
     }
 

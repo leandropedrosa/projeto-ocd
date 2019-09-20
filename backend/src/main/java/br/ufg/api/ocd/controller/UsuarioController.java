@@ -6,6 +6,7 @@ import br.ufg.api.ocd.swagger.UsuarioSwagger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,35 +21,17 @@ public class UsuarioController implements UsuarioSwagger {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public ModelAndView login() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-        return modelAndView;
-    }
-
-    @GetMapping(value = "/esqueceuSenha/{cpf}")
+    @GetMapping(value = "/resetPassword/{cpf}")
     public Usuario esqueceuSenha(@PathVariable(value = "cpf") String cpf) {
         logger.debug("Obtendo usuários com id= {}...", cpf);
         return serv.findByCpf(cpf);
     }
 
-    @PutMapping(value = "/updateSenha/{idUsuario}/{senha}")
-    public String updateSenha(@PathVariable(value = "idUsuario") String idUsuario, @PathVariable(value = "senha") String senha) {
-        Optional<Usuario> objeto = serv.findById(idUsuario);
-        Usuario usuario = objeto.get();
-        usuario.setSenha(senha);
-        serv.update(usuario);
-        return "Usuario record for usuario-id= " + usuario.getId() + " updated.";
-    }
-
-    @PutMapping(value = "/updateStatus/{idUsuario}")
-    public String updateStatus(@PathVariable(value = "idUsuario") String idUsuario) {
-        Optional<Usuario> objeto = serv.findById(idUsuario);
-        Usuario usuario = objeto.get();
-        usuario.setStatus("Ativo");
-        serv.update(usuario);
-        return "Usuario record for usuario-id= " + usuario.getId() + " updated.";
+    @PostMapping(value = "/authenticate")
+    public Usuario loginBasic(@PathVariable(value = "cpf") String cpf,
+                                 @PathVariable(value = "password") String password
+    ) {
+        return serv.findByCpfAndPassword(cpf,password);
     }
 }
 

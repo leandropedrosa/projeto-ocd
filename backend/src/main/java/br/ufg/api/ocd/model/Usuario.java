@@ -34,38 +34,39 @@ import java.util.Set;
 public class Usuario {
     @Id
     private String id;
-    private String nome;
     private String status;
+    private String cpf;
+    private String nome;
+    private String password;
+    private String nivelAtencao;
+    private String regiao;
+    private String token;
     private String email;
     @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
-    private String cpf;
-    private String senha;
-    private String numConselho;
-    private String idTipoUsuario;
     @DBRef
     private List<Role> roles;
 
     public Usuario() {
     }
-
     public Usuario(Usuario user) {
         super();
+        this.status = user.status;
         this.cpf = user.cpf;
         this.nome = user.nome;
+        this.password = user.password;
+        this.nivelAtencao = user.nivelAtencao;
+        this.regiao = user.regiao;
         this.email = user.email;
-        this.senha = user.senha;
-        this.numConselho = user.numConselho;
-        this.idTipoUsuario = user.idTipoUsuario;
-        this.roles = user.getRoles();
     }
 
-    public Usuario(String cpf, String nome, String email, String senha, String numConselho, String idTipoUsuario) {
+    public Usuario(String status, String cpf, String nome, String password, String nivelAtencao, String regiao, String email) {
         super();
+        this.status = status;
         this.cpf = cpf;
         this.nome = nome;
+        this.password = password;
+        this.nivelAtencao = nivelAtencao;
+        this.regiao = regiao;
         this.email = email;
-        this.senha = senha;
-        this.numConselho = numConselho;
-        this.idTipoUsuario = idTipoUsuario;
     }
 }

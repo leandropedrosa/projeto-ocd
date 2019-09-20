@@ -20,19 +20,21 @@ package br.ufg.api.ocd.model;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "tipoDeUsuario")
+import java.util.List;
+
+@Document(collection = "fatorDeRisco")
 @Getter
 @Setter
-public class TipoDeUsuario {
-    public TipoDeUsuario(String descricao) {
+public class FatorDeRisco {
+    public FatorDeRisco(String descricao) {
         this.descricao = descricao;
     }
 
-    public TipoDeUsuario() {
+    public FatorDeRisco() {
     }
-
     @Id
     private String id;
     private String descricao;
