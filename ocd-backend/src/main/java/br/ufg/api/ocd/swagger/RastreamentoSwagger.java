@@ -1,19 +1,18 @@
 package br.ufg.api.ocd.swagger;
 
+import br.ufg.api.ocd.dto.RastreamentoDTO;
 import br.ufg.api.ocd.model.Rastreamento;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.Optional;
-
-@Api(value = "/api/OCD/acompanhamento", description = "Manter Acompanhamento", produces = "application/json")
+@Api(value = "/api/OCD/rastreamento", description = "Manter Acompanhamento", produces = "application/json")
 public interface RastreamentoSwagger {
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -24,7 +23,7 @@ public interface RastreamentoSwagger {
             @ApiResponse(code = 403, message = "Acessando o recurso que você estava tentando acessar é proibido"),
             @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
     })
-    String create(@RequestBody Rastreamento rastreamento);
+    String create(@RequestBody RastreamentoDTO rastreamentoDTO);
 
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Busca Rastreamento pelo id usuário", notes = "Busca Rastreamento pelo id usuário", response = Rastreamento.class)
@@ -34,7 +33,7 @@ public interface RastreamentoSwagger {
             @ApiResponse(code = 403, message = "Acessando o recurso que você estava tentando acessar é proibido"),
             @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
     })
-    public Page<Rastreamento> getByUsuario(@RequestParam("idUsuario") String idUsuario,
+    public Page<RastreamentoDTO> getByUsuario(@RequestParam("idUsuario") String idUsuario,
                                            @RequestParam(
                                                    value = "page",
                                                    required = false,
@@ -52,7 +51,7 @@ public interface RastreamentoSwagger {
             @ApiResponse(code = 403, message = "Acessando o recurso que você estava tentando acessar é proibido"),
             @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
     })
-    public Page<Rastreamento> getByNomePaciente(
+    public Page<RastreamentoDTO> getByNomePaciente(
             @RequestParam("idUsuario") String idUsuario,
             @RequestParam("nomePaciente") String nomePaciente,
                                            @RequestParam(

@@ -1,37 +1,29 @@
 package br.ufg.api.ocd.controller;
 
-import br.ufg.api.ocd.model.Usuario;
+import br.ufg.api.ocd.dto.UsuarioDTO;
 import br.ufg.api.ocd.service.UsuarioService;
 import br.ufg.api.ocd.swagger.UsuarioSwagger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/api/OCD/usuario")
+@RequestMapping(value = "/api/usuario")
 public class UsuarioController implements UsuarioSwagger {
 
     @Autowired
     UsuarioService serv;
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private ModelMapper modelMapper = new ModelMapper();
 
     @GetMapping(value = "/resetPassword/{cpf}")
-    public Usuario esqueceuSenha(@PathVariable(value = "cpf") String cpf) {
-        logger.debug("Obtendo usuários com id= {}...", cpf);
-        return serv.findByCpf(cpf);
+    public UsuarioDTO esqueceuSenha(@PathVariable(value = "cpf") String cpf) {
+        return modelMapper.map(serv.findByCpf(cpf), UsuarioDTO.class);
     }
 
-    @PostMapping(value = "/authenticate")
-    public Usuario loginBasic(@PathVariable(value = "cpf") String cpf,
-                                 @PathVariable(value = "password") String password
-    ) {
-        return serv.findByCpfAndPassword(cpf,password);
+    @PostMapping(value = "/authenticate/{user}")
+    public UsuarioDTO loginBasic(@PathVariable(value = "user") UsuarioDTO user) {
+        return modelMapper.map(serv.findByCpfAndPassword(user.getCpf(), user.getPassword()), UsuarioDTO.class);
     }
 }
 

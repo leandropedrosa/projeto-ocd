@@ -35,16 +35,17 @@ public class Usuario {
     @Id
     private String id;
     private String status;
+    @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
     private String cpf;
     private String nome;
     private String password;
-    private String nivelAtencao;
+    private String cargo;
     private String regiao;
     private String token;
     private String email;
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
-    @DBRef
-    private List<Role> roles;
+    //@Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
+    //@DBRef
+    //private Set<Role> roles;
 
     public Usuario() {
     }
@@ -54,18 +55,18 @@ public class Usuario {
         this.cpf = user.cpf;
         this.nome = user.nome;
         this.password = user.password;
-        this.nivelAtencao = user.nivelAtencao;
+        this.cargo = user.cargo;
         this.regiao = user.regiao;
         this.email = user.email;
     }
 
-    public Usuario(String status, String cpf, String nome, String password, String nivelAtencao, String regiao, String email) {
+    public Usuario(String status, String cpf, String nome, String password, String cargo, String regiao, String email) {
         super();
         this.status = status;
         this.cpf = cpf;
         this.nome = nome;
         this.password = password;
-        this.nivelAtencao = nivelAtencao;
+        this.cargo = cargo;
         this.regiao = regiao;
         this.email = email;
     }

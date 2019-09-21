@@ -29,13 +29,13 @@ import java.util.List;
 @Getter
 @Setter
 public class FatorDeRisco {
-    public FatorDeRisco(String descricao) {
-        this.descricao = descricao;
+    public FatorDeRisco(String nome) {
+        this.nome = nome;
     }
 
     public FatorDeRisco() {
     }
     @Id
     private String id;
-    private String descricao;
+    private String nome;
 }

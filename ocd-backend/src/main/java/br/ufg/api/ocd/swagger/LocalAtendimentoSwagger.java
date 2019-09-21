@@ -1,16 +1,17 @@
 package br.ufg.api.ocd.swagger;
 
-import br.ufg.api.ocd.model.LocalDeAtendimento;
+import br.ufg.api.ocd.dto.LocalAtendimentoDTO;
 import br.ufg.api.ocd.model.Rastreamento;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.util.Collection;
-
-@Api(value = "/api/localAtendimento", description = "Manter CEO", produces = "application/json")
+@Api(value = "/api/localDeAtendimento", description = "Manter CEO", produces = "application/json")
 public interface LocalAtendimentoSwagger {
 
     @ResponseStatus(HttpStatus.OK)
@@ -21,12 +22,12 @@ public interface LocalAtendimentoSwagger {
             @ApiResponse(code = 403, message = "Acessando o recurso que você estava tentando acessar é proibido"),
             @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
     })
-    public Page<LocalDeAtendimento> getByRegiao(@RequestParam("regiao") String regiao,
-                                           @RequestParam(
+    public Page<LocalAtendimentoDTO> getByRegiao(@RequestParam("regiao") String regiao,
+                                                 @RequestParam(
                                                    value = "page",
                                                    required = false,
                                                    defaultValue = "0") int page,
-                                           @RequestParam(
+                                                 @RequestParam(
                                                    value = "size",
                                                    required = false,
                                                    defaultValue = "10") int size);

@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -29,14 +30,13 @@ public class UsuarioService implements UserDetailsService {
     private RoleRepository roleRepository;
 
     @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-
+    PasswordEncoder passwordEncoder;
 
     public Boolean save(Usuario usuario) {
-        usuario.setPassword(bCryptPasswordEncoder.encode(usuario.getPassword()));
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         usuario.setStatus("Esperando Ativação");
-        Role userRole = roleRepository.findByName("ADM");
-        usuario.setRoles(Arrays.asList(userRole));
+        Role userRole = roleRepository.findByName("USER");
+        //usuario.setRoles(new HashSet<>(Arrays.asList(userRole)));
         repository.save(usuario);
         logger.info("-- Usuario Salvo --");
         return true;
@@ -47,14 +47,15 @@ public class UsuarioService implements UserDetailsService {
 
         Usuario user = repository.findByCpf(cpf);
         if(user != null) {
-            List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
+            List<GrantedAuthority> authorities = null;
+            //List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
             return buildUserForAuthentication(user, authorities);
         } else {
             throw new UsernameNotFoundException("username not found");
         }
     }
 
-    private List<GrantedAuthority> getUserAuthority(List<Role> userRoles) {
+    private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles) {
         Set<GrantedAuthority> roles = new HashSet<>();
         userRoles.forEach((role) -> {
             roles.add(new SimpleGrantedAuthority(role.getName()));
@@ -77,7 +78,7 @@ public class UsuarioService implements UserDetailsService {
     }
 
     public Usuario findByCpfAndPassword(String cpf, String password) {
-        return repository.findByCpfAndPassword(cpf, password);
+        return repository.findByCpfAndPassword(cpf, passwordEncoder.encode(password));
     }
 
     public Optional<Usuario> findById(String id) {

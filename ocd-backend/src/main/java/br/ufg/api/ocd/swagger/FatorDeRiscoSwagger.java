@@ -1,13 +1,17 @@
 package br.ufg.api.ocd.swagger;
 
+import br.ufg.api.ocd.dto.FatoresDeRiscoDTO;
 import br.ufg.api.ocd.model.FatorDeRisco;
-import io.swagger.annotations.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.util.Collection;
+import java.util.List;
 
-@Api(value = "/api/fatorVunerabilidade", description = "Manter Fator Vunerabilidade", produces = "application/json")
+@Api(value = "/api/fatorDeRisco", description = "Manter Fator Vunerabilidade", produces = "application/json")
 public interface FatorDeRiscoSwagger {
 
     @ResponseStatus(HttpStatus.OK)
@@ -18,5 +22,5 @@ public interface FatorDeRiscoSwagger {
             @ApiResponse(code = 403, message = "Acessando o recurso que você estava tentando acessar é proibido"),
             @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
     })
-    Collection<FatorDeRisco> getAll();
+    List<FatoresDeRiscoDTO> getAll();
 }

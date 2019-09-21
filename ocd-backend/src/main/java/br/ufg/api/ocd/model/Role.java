@@ -39,7 +39,6 @@ public class Role implements GrantedAuthority {
     @Id
     private String id;
     @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
-
     private String name;
 
     @Override

@@ -1,57 +1,63 @@
 package br.ufg.api.ocd.controller;
 
+import br.ufg.api.ocd.dto.RastreamentoDTO;
 import br.ufg.api.ocd.model.Rastreamento;
 import br.ufg.api.ocd.service.RastreamentoService;
 import br.ufg.api.ocd.swagger.RastreamentoSwagger;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.stream.Collectors;
 
 
 @RestController
-@RequestMapping(value = "/api/acompanhamento")
+@RequestMapping(value = "/api/rastreamento")
 public class RastreamentoController implements RastreamentoSwagger {
 
     @Autowired
     RastreamentoService serv;
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private ModelMapper modelMapper = new ModelMapper();
 
     @PostMapping
-    public String create(@RequestBody Rastreamento rastreamento) {
-        logger.debug("Saving acompanhamento.");
-        serv.save(rastreamento);
-        return "Usuário records created.";
+    public String create(@RequestBody RastreamentoDTO rastreamentoDTO) {
+        serv.save(modelMapper.map(rastreamentoDTO, Rastreamento.class));
+        return "Rastreamento records created.";
     }
 
     @GetMapping("/getByUsuario")
-    public Page<Rastreamento> getByUsuario(@RequestParam("idUsuario") String idUsuario,
-                                     @RequestParam(
-                    value = "page",
-                    required = false,
-                    defaultValue = "0") int page,
-                                    @RequestParam(
-                    value = "size",
-                    required = false,
-                    defaultValue = "10") int size) {
-        return serv.findByIdUsuario(idUsuario, page, size);
+    public Page<RastreamentoDTO> getByUsuario(@RequestParam("idUsuario") String idUsuario,
+                                              @RequestParam(
+                                                      value = "page",
+                                                      required = false,
+                                                      defaultValue = "0") int page,
+                                              @RequestParam(
+                                                      value = "size",
+                                                      required = false,
+                                                      defaultValue = "10") int size) {
+        return new PageImpl<RastreamentoDTO>(serv.findByIdUsuario(idUsuario, page, size).stream()
+                .map(post -> modelMapper.map(post, RastreamentoDTO.class))
+                .collect(Collectors.toList()));
     }
 
     @GetMapping("/getByNomePaciente")
-    public Page<Rastreamento> getByNomePaciente(
-                                           @RequestParam("idUsuario") String idUsuario,
-                                           @RequestParam("nomePaciente") String nomePaciente,
-                                           @RequestParam(
-                                                   value = "page",
-                                                   required = false,
-                                                   defaultValue = "0") int page,
-                                           @RequestParam(
-                                                   value = "size",
-                                                   required = false,
-                                                   defaultValue = "10") int size) {
-        return serv.findByNomePaciente(idUsuario, nomePaciente, page, size);
+    public Page<RastreamentoDTO> getByNomePaciente(
+            @RequestParam("idUsuario") String idUsuario,
+            @RequestParam("nomePaciente") String nomePaciente,
+            @RequestParam(
+                    value = "page",
+                    required = false,
+                    defaultValue = "0") int page,
+            @RequestParam(
+                    value = "size",
+                    required = false,
+                    defaultValue = "10") int size) {
+        return new PageImpl<RastreamentoDTO>(serv.findByNomePaciente(idUsuario, nomePaciente, page, size).stream()
+                .map(post -> modelMapper.map(post, RastreamentoDTO.class))
+                .collect(Collectors.toList()));
     }
 }
 

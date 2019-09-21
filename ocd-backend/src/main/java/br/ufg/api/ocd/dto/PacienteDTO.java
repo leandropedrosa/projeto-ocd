@@ -1,8 +1,10 @@
 package br.ufg.api.ocd.dto;
 
+import br.ufg.api.ocd.model.Lesao;
 import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
+import java.text.ParseException;
 
 @Getter
 public class PacienteDTO {

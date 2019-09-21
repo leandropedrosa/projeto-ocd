@@ -1,8 +1,10 @@
 package br.ufg.api.ocd.dto;
 
+import br.ufg.api.ocd.model.Lesao;
 import lombok.Getter;
 
 import javax.validation.constraints.NotBlank;
+import java.text.ParseException;
 
 @Getter
 public class UsuarioDTO {
@@ -16,21 +18,24 @@ public class UsuarioDTO {
     private String password;
     @NotBlank(message = "{usuario.nome.not.blank}")
     private String nome;
-    @NotBlank(message = "{usuario.nivelAtencao.not.blank}")
-    private String nivelAtencao;
+    @NotBlank(message = "{usuario.cargo.not.blank}")
+    private String cargo;
     @NotBlank(message = "{usuario.regiao.not.blank}")
     private String regiao;
-    @NotBlank(message = "{usuario.token.not.blank}")
     private String token;
+    @NotBlank(message = "{usuario.email.not.blank}")
+    private String email;
 
-    public UsuarioDTO(Integer id, String status, String cpf, String password, String nome, String nivelAtencao, String regiao, String token) {
+    public UsuarioDTO(Integer id, String status, String cpf, String password, String nome, String cargo, String regiao, String token, String email) {
         this.id = id;
         this.status = status;
         this.cpf = cpf;
         this.password = password;
         this.nome = nome;
-        this.nivelAtencao = nivelAtencao;
+        this.cargo = cargo;
         this.regiao = regiao;
         this.token = token;
+        this.email = email;
     }
+
 }

@@ -27,13 +27,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Setter
 public class Lesao {
 
-    public Lesao(String descricao) {
-        this.descricao = descricao;
+    public Lesao(String nome) {
+        this.nome = nome;
     }
 
     public Lesao() {
     }
     @Id
     private String id;
-    private String descricao;
+    private String nome;
 }
