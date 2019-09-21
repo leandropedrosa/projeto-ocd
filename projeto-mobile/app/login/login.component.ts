@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from "@angular/core";
+import { Component, ElementRef, ViewChild, OnInit } from "@angular/core";
 import { alert, prompt } from "tns-core-modules/ui/dialogs";
 import { Page } from "tns-core-modules/ui/page";
 import { RouterExtensions } from "nativescript-angular/router";
@@ -13,7 +13,7 @@ import { ListPicker } from "tns-core-modules/ui/list-picker";
     templateUrl: "./login.component.html",
     styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
     isLoggingIn = true;
     user: User;
     processing = false;
@@ -22,9 +22,11 @@ export class LoginComponent {
     @ViewChild("password", { static: false }) password: ElementRef;
 
     constructor(private page: Page, private userService: UserService, private routerExtensions: RouterExtensions) {
+    }
+    ngOnInit(): void {
         this.page.actionBarHidden = true;
         this.user = new User();
-        this.carregaTipoUsuario();
+        //this.carregaTipoUsuario();
     }
 
     toggleForm() {
@@ -46,7 +48,7 @@ export class LoginComponent {
     }
 
     login() {
-        (this.userService.login(this.user.cpf, this.user.password).subscribe(
+        (this.userService.authenticateBasic(this.user).subscribe(
             data => {
                 this.processing = false;
                 this.routerExtensions.navigate(["/home"], { clearHistory: true });
@@ -80,26 +82,26 @@ export class LoginComponent {
             }
         })
     }
-            focusPassword() {
-                this.password.nativeElement.focus();
-            }
+    focusPassword() {
+        this.password.nativeElement.focus();
+    }
 
     public selectedIndexChanged(args) {
-                let picker = <ListPicker>args.object;
-                this.user.nivelAtencao = this.nivelDeAtencao[picker.selectedIndex];
-            }
+        let picker = <ListPicker>args.object;
+        this.user.nivelAtencao = this.nivelDeAtencao[picker.selectedIndex];
+    }
 
     alert(message: string) {
-                return alert({
-                    title: "SobreVida-Mobile",
-                    okButtonText: "OK",
-                    message: message
-                });
-            }
+        return alert({
+            title: "SobreVida-Mobile",
+            okButtonText: "OK",
+            message: message
+        });
+    }
 
     carregaTipoUsuario(): void {
-                this.nivelDeAtencao.push("Primária");
-                this.nivelDeAtencao.push("Secundária");
-            }
+        this.nivelDeAtencao.push("Primária");
+        this.nivelDeAtencao.push("Secundária");
+    }
 }
 

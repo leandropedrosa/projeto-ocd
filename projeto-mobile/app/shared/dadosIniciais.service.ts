@@ -5,11 +5,11 @@ import { FatoresDeRisco } from "./fatoresDeRisco.model";
 import { Lesao } from "./lesao.model";
 import { User } from "./user.model";
 import { LocalAtendimento } from "./localAtendimento.model";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class DadosIniciaisService {
-    private url = 'http://localhost:8000'
+    private url = 'https://ocd-backend.herokuapp.com/api';
 
     constructor(
         private httpClient: HttpClient
@@ -17,17 +17,17 @@ export class DadosIniciaisService {
     }
 
     getLesoes() {
-        console.log("test call");
-        return this.httpClient.get<Lesao[]>(this.url + '/lesoes');
+        const headers = new HttpHeaders({ Authorization: btoa("admin" + ':' + "cf43d9b315407fd561c9ec352129d6ca") });
+        return this.httpClient.get<Lesao[]>(this.url + '/lesao', { headers });
     }
 
     getLocalAtendimento(regiao: String) {
-        console.log("test call");
-        return this.httpClient.get<LocalAtendimento[]>(this.url + '/localAtendimento/' + regiao);
+        const headers = new HttpHeaders({ Authorization: btoa("admin" + ':' + "cf43d9b315407fd561c9ec352129d6ca") });
+        return this.httpClient.get<LocalAtendimento[]>(this.url + '/localDeAtendimento/' + regiao, { headers });
     }
 
     getFatoresDeRisco() {
-        console.log("test call");
-        return this.httpClient.get<FatoresDeRisco[]>(this.url + '/fatoresDeRisco');
+        const headers = new HttpHeaders({ Authorization: btoa("admin" + ':' + "cf43d9b315407fd561c9ec352129d6ca") });
+        return this.httpClient.get<FatoresDeRisco[]>(this.url + '/fatorDeRisco', { headers });
     }
 }

@@ -13,8 +13,7 @@ import { map } from 'rxjs/operators';
 })
 export class UserService {
 
-    private url = 'http://localhost:8000';
-
+    private url = 'https://ocd-backend.herokuapp.com/api/usuario';
 
     constructor(
         private httpClient: HttpClient
@@ -28,7 +27,7 @@ export class UserService {
                     sessionStorage.setItem('nameUser', userData.nome);
                     sessionStorage.setItem('regionUser', userData.regiao);
                     sessionStorage.setItem('cpfUser', userData.cpf);
-                    sessionStorage.setItem('nivelAtencaoUser', userData.nivelAtencao);
+                    sessionStorage.setItem('cargoUser', userData.cargo);
                     let tokenStr = 'OCD ' + userData.token;
                     sessionStorage.setItem('token', tokenStr);
                     return userData;
@@ -38,31 +37,31 @@ export class UserService {
         );
     }
 
-    authenticateBasic(cpf: String, password: String) {
-        const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(cpf + ':' + password) });
-        return this.httpClient.get<User>(this.url + '/authenticateBasic', { headers }).pipe(
+    authenticateBasic(user: User) { 
+        const headers = new HttpHeaders({ Authorization: btoa("admin" + ':' + "cf43d9b315407fd561c9ec352129d6ca") });
+        return this.httpClient.post<User>(this.url + '/authenticate/' + user, { headers }).pipe(
             map(
                 userData => {
                     sessionStorage.setItem('nameUser', userData.nome);
                     sessionStorage.setItem('regionUser', userData.regiao);
                     sessionStorage.setItem('cpfUser', userData.cpf);
-                    sessionStorage.setItem('nivelAtencaoUser', userData.nivelAtencao);
+                    sessionStorage.setItem('cargoUser', userData.cargo);
                     return userData;
                 }
             )
         );
     }
 
-    authenticateBasicAuth(cpf: String, password: String) {
-        const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa(cpf + ':' + password) });
-        return this.httpClient.get<User>(this.url + '/authenticateBasic', { headers }).pipe(
+    authenticateBasicAuth(user: User) {
+        const headers = new HttpHeaders({ Authorization: btoa("admin" + ':' + "cf43d9b315407fd561c9ec352129d6ca") });
+        return this.httpClient.post<User>(this.url + '/authenticateBasic' + user, { headers }).pipe(
             map(
                 userData => {
                     sessionStorage.setItem('nameUser', userData.nome);
                     sessionStorage.setItem('regionUser', userData.regiao);
                     sessionStorage.setItem('cpfUser', userData.cpf);
-                    sessionStorage.setItem('nivelAtencaoUser', userData.nivelAtencao);
-                    let authString = 'Basic ' + btoa(cpf + ':' + password);
+                    sessionStorage.setItem('cargoUser', userData.cargo);
+                    let authString = btoa(userData.cpf + ':' + userData.password);
                     sessionStorage.setItem('basicauth', authString);
                     return userData;
                 }
@@ -74,7 +73,7 @@ export class UserService {
         sessionStorage.removeItem('nameUser');
         sessionStorage.removeItem('regionUser');
         sessionStorage.removeItem('cpfUser');
-        sessionStorage.removeItem('nivelAtencaoUser');
+        sessionStorage.removeItem('cargoUser');
         sessionStorage.removeItem('token');
     }
 
@@ -85,7 +84,8 @@ export class UserService {
     }
 
     resetPassword(cpf) {
-        return this.httpClient.get<any>(this.url + '/resetPassword/' + cpf);
+        const headers = new HttpHeaders({ Authorization: btoa("admin" + ':' + "cf43d9b315407fd561c9ec352129d6ca") });
+        return this.httpClient.get<any>(this.url + '/resetPassword/' + cpf, { headers });
     }
 
 }

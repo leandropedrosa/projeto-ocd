@@ -9,18 +9,16 @@
                 <TextField [(ngModel)]="textFieldValue" hint="Pesquisar..."></TextField>
             </StackLayout>
             <StackLayout row="1" style="height:60%">
-                <ListView class="list-group" [items]="rastreamentos"
-                    (itemTap)="onItemTap($event)">
-                    <ng-template let-rastreamento="item">
+                <ListView class="list-group" [items]="pacientes" (itemTap)="onItemTap($event)">
+                    <ng-template let-paciente="item">
                         <FlexboxLayout flexDirection="row" class="list-group-item">
-                            <Label [text]="rastreamento.nomePaciente" class="list-group-item-heading"
+                            <Label [text]="paciente.nomePaciente" class="list-group-item-heading"
                                 verticalAlignment="center" style="width: 40%"></Label>
-                            <Label [text]="rastreamento.ultimaData"
-                                class="list-group-item-heading"
+                            <Label [text]="paciente.ultimaData" class="list-group-item-heading"
                                 verticalAlignment="center" style="width: 30%"></Label>
-                            <Label [text]="rastreamento.ultimoProcedimento" class="list-group-item-heading"
+                            <Label [text]="paciente.ultimoProcedimento" class="list-group-item-heading"
                                 verticalAlignment="center" style="width: 20%"></Label>
-                            <Label [text]="rastreamento.status" class="list-group-item-heading"
+                            <Label [text]="paciente.status" class="list-group-item-heading"
                                 verticalAlignment="center" style="width: 10%"></Label>
                         </FlexboxLayout>
                     </ng-template>
