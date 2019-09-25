@@ -6,10 +6,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.util.List;
 
 @Api(value = "/api/localDeAtendimento", description = "Manter CEO", produces = "application/json")
 public interface LocalAtendimentoSwagger {
@@ -22,14 +23,6 @@ public interface LocalAtendimentoSwagger {
             @ApiResponse(code = 403, message = "Acessando o recurso que você estava tentando acessar é proibido"),
             @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
     })
-    public Page<LocalAtendimentoDTO> getByRegiao(@RequestParam("regiao") String regiao,
-                                                 @RequestParam(
-                                                   value = "page",
-                                                   required = false,
-                                                   defaultValue = "0") int page,
-                                                 @RequestParam(
-                                                   value = "size",
-                                                   required = false,
-                                                   defaultValue = "10") int size);
+    public List<LocalAtendimentoDTO> getByRegiao(@RequestParam("regiao") String regiao);
 
 }

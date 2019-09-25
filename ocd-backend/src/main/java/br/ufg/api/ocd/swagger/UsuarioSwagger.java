@@ -18,7 +18,7 @@ public interface UsuarioSwagger {
             @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
     })
     public UsuarioDTO esqueceuSenha(@ApiParam(value = "cpf") String cpf);
-
+/*
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value = "Efetua login", notes = "Efetua login", response = Usuario.class)
     @ApiResponses({
@@ -27,5 +27,5 @@ public interface UsuarioSwagger {
             @ApiResponse(code = 403, message = "Acessando o recurso que você estava tentando acessar é proibido"),
             @ApiResponse(code = 404, message = "O recurso que você estava tentando acessar não foi encontrado")
     })
-    public UsuarioDTO loginBasic(@ApiParam(value = "user") UsuarioDTO user);
+    public UsuarioDTO loginBasic(@ApiParam(value = "user") UsuarioDTO user); */
 }

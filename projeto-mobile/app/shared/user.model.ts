@@ -1,14 +1,12 @@
 export class User {
-    public status: string;
-    public cpf: string;
-    public nome: string;
-    public password: string;
-    public cargo: string;
-    public regiao: string;
-    public token: string;
-    public email: string;
-    criarUsuario(cpf: string, password: string) {
-        this.cpf = cpf;
-        this.password = password;
-    }
+    id: string;
+    status: string;
+    cpf: string;
+    nome: string;
+    password: string;
+    cargo: string;
+    regiao: string;
+    token: string;
+    email: string;
+    authdata?: string;
 }

@@ -1,9 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { RouterExtensions } from "nativescript-angular/router";
-import { SegmentedBarItem } from "ui/segmented-bar";
-import { Rastreamento } from "../../shared/rastreamento.model";
-import { ActivatedRoute } from '@angular/router';
-import { RastreamentoService } from "../../shared/rastreamento.service";
+import {Component, Input, OnInit} from "@angular/core";
+import {ActivatedRoute} from '@angular/router';
+import {RastreamentoService} from "../../shared/rastreamento.service";
+import {Rastreamento} from "../../shared/rastreamento.model";
 
 @Component({
     selector: "passo4",
@@ -12,18 +10,21 @@ import { RastreamentoService } from "../../shared/rastreamento.service";
     styleUrls: ['./passo4.component.css']
 })
 export class Passo4Component implements OnInit {
-    @Input("rastreamento")
-    public rastreamento: Rastreamento;
-    acao: string;
+    public acao: string;
     submitted: boolean;
-    fatores: string;
-    lesoes: string;
+    public fatores: string;
+    public lesoes: string;
+    public rastreamento: Rastreamento;
 
-    constructor(private rastreamentoService: RastreamentoService, private route: ActivatedRoute, private routerExtensions: RouterExtensions) {
-        this.route.params.subscribe(res => this.rastreamento = res.rastreamento);
+    constructor(private rastreamentoService: RastreamentoService, private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
+        this.route.queryParams.subscribe(params => {
+            this.rastreamento =  JSON.parse(params['rastreamento']);
+        });
+
+        console.log(this.rastreamento);
         this.acao = "PASSO4";
         for (let i = 0; i < this.rastreamento.listFatoresRisco.length; i++) {
 
@@ -41,21 +42,27 @@ export class Passo4Component implements OnInit {
             if (j == 0) {
                 this.lesoes += this.rastreamento.listPresencaLesao[0].nome += ", ";
             }
-                if (j < 0 && this.rastreamento.listPresencaLesao.length - 1) {
-                    this.lesoes += this.rastreamento.listPresencaLesao[0].nome;
-                    if (this.rastreamento.listPresencaLesao.length != j)
-                        this.lesoes += ", ";
-                }
+            if (j < 0 && this.rastreamento.listPresencaLesao.length - 1) {
+                this.lesoes += this.rastreamento.listPresencaLesao[0].nome;
+                if (this.rastreamento.listPresencaLesao.length != j)
+                    this.lesoes += ", ";
             }
         }
-
-        finalizar() {
-            this.rastreamentoService.finalizar(this.rastreamento).subscribe(
-                response => {
-                    alert("Rastreamento Salvo com Sucesso!!");
-                }, err => { alert("Infelizmente, ocorreu um erro ao tentar salvar o Rastreamento."); });
-        }
-
     }
+
+    continuarFluxo(opcao: string) {
+        this.acao = opcao;
+    }
+
+    finalizar() {
+        this.rastreamentoService.finalizar(this.rastreamento).subscribe(
+            response => {
+                alert("Rastreamento Salvo com Sucesso!!");
+            }, err => {
+                alert("Infelizmente, ocorreu um erro ao tentar salvar o Rastreamento.");
+            });
+    }
+
+}
 
 

@@ -8,7 +8,7 @@
                         <Label class="header" text="Passo 2 - Dados do Atendimento:"></Label>
                     </StackLayout>
                     <StackLayout row="1" style="height:70%">
-                        <ScrollView sdkExampleTitle sdkToggleNavButton>
+                        <ScrollView sdkExampleTitle sdkToggleNavButton width="1450">
                             <GridLayout class="m-15" rows="auto auto auto">
 
                                 <StackLayout row="0">
@@ -28,7 +28,7 @@
                                 <StackLayout row="2">
                                     <Label text="Profissional do Atendimento:"
                                         col="0"></Label>
-                                    <TextField [(ngModel)]="rastreamento.user"
+                                    <TextField [(ngModel)]="rastreamento.profissionalAtendimento"
                                         hint="Informe..."></TextField>
                                 </StackLayout>
 
@@ -39,11 +39,11 @@
                         <GridLayout row="auto" columns="*, *">
                             <StackLayout row="0" col="0">
                                 <Button text="< Anterior" class="btn btn-outline-secondary m-t-20"
-                                    (tap)="continuarFluxo('PASSO1')"></Button>
+                                    (tap)="passo1()"></Button>
                             </StackLayout>
                             <StackLayout row="0" col="1">
                                 <Button text="Próximo >" class="btn btn-outline-primary m-t-20"
-                                    (tap)="continuarFluxo('PASSO3')"></Button>
+                                    (tap)="passo3()"></Button>
                             </StackLayout>
                         </GridLayout>
                     </StackLayout>
@@ -52,9 +52,9 @@
         </FlexboxLayout>
     </div>
     <div *ngSwitchCase="'PASSO1'">
-        <passo1 android:[rastreamento]="rastreamento" ios:[rastreamento]="rastreamento"></passo1>
+        <passo1></passo1>
     </div>
     <div *ngSwitchCase="'PASSO3'">
-        <passo3 android:[rastreamento]="rastreamento" ios:[rastreamento]="rastreamento"></passo3>
+        <passo3></passo3>
     </div>
 </div>

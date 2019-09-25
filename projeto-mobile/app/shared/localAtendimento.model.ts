@@ -6,5 +6,6 @@ export class LocalAtendimento {
         public regiao: string,
         public bairro: string,
         public cidade: string,
-    ) { }
+    ) {
+    }
 }

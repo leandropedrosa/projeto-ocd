@@ -8,7 +8,7 @@
                         <Label class="header" text="Passo 3 - Dados do Rastreamento:"></Label>
                     </StackLayout>
                     <StackLayout row="1" style="height:70%">
-                        <ScrollView sdkExampleTitle sdkToggleNavButton>
+                        <ScrollView sdkExampleTitle sdkToggleNavButton width="1450">
                             <GridLayout class="m-15" rows="auto auto auto auto">
 
                                 <StackLayout row="0">
@@ -90,9 +90,9 @@
         </FlexboxLayout>
     </div>
     <div *ngSwitchCase="'PASSO2'">
-        <passo2 android:[rastreamento]="rastreamento" ios:[rastreamento]="rastreamento"></passo2>
+        <passo2></passo2>
     </div>
     <div *ngSwitchCase="'PASSO4'">
-        <passo4 android:[rastreamento]="rastreamento" ios:[rastreamento]="rastreamento"></passo4>
+        <passo4></passo4>
     </div>
 </div>

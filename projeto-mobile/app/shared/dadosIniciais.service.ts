@@ -1,33 +1,26 @@
-import { Injectable } from "@angular/core";
-import { UserService as KinveyUserService } from "kinvey-nativescript-sdk/lib/angular";
-import { ObservableArray } from "data/observable-array";
-import { FatoresDeRisco } from "./fatoresDeRisco.model";
-import { Lesao } from "./lesao.model";
-import { User } from "./user.model";
-import { LocalAtendimento } from "./localAtendimento.model";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Injectable} from "@angular/core";
+import {environment} from "../../environments/environment";
+import {FatoresDeRisco} from "./fatoresDeRisco.model";
+import {Lesao} from "./lesao.model";
+import {LocalAtendimento} from "./localAtendimento.model";
+import {HttpClient} from '@angular/common/http';
 
 @Injectable()
 export class DadosIniciaisService {
-    private url = 'https://ocd-backend.herokuapp.com/api';
-
     constructor(
-        private httpClient: HttpClient
+        private http: HttpClient
     ) {
     }
 
     getLesoes() {
-        const headers = new HttpHeaders({ Authorization: btoa("admin" + ':' + "cf43d9b315407fd561c9ec352129d6ca") });
-        return this.httpClient.get<Lesao[]>(this.url + '/lesao', { headers });
+        return this.http.get<Lesao[]>(environment.apiUrl + '/lesao');
     }
 
     getLocalAtendimento(regiao: String) {
-        const headers = new HttpHeaders({ Authorization: btoa("admin" + ':' + "cf43d9b315407fd561c9ec352129d6ca") });
-        return this.httpClient.get<LocalAtendimento[]>(this.url + '/localDeAtendimento/' + regiao, { headers });
+        return this.http.get<LocalAtendimento[]>(environment.apiUrl + '/localDeAtendimento/regiao/{regiao}?regiao=' + regiao);
     }
 
     getFatoresDeRisco() {
-        const headers = new HttpHeaders({ Authorization: btoa("admin" + ':' + "cf43d9b315407fd561c9ec352129d6ca") });
-        return this.httpClient.get<FatoresDeRisco[]>(this.url + '/fatorDeRisco', { headers });
+        return this.http.get<FatoresDeRisco[]>(environment.apiUrl + '/fatorDeRisco');
     }
 }

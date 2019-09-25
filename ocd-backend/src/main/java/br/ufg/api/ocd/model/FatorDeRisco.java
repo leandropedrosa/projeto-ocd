@@ -33,8 +33,6 @@ public class FatorDeRisco {
         this.nome = nome;
     }
 
-    public FatorDeRisco() {
-    }
     @Id
     private String id;
     private String nome;

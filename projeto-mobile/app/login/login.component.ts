@@ -5,6 +5,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 
 import { User } from "../shared/user.model";
 import { UserService } from "../shared/user.service";
+import { AuthenticationService } from "../shared/authentication.service";
 import { ListPicker } from "tns-core-modules/ui/list-picker";
 
 @Component({
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
     picked: string;
     @ViewChild("password", { static: false }) password: ElementRef;
 
-    constructor(private page: Page, private userService: UserService, private routerExtensions: RouterExtensions) {
+    constructor(private page: Page, private userService: UserService, private authenticationService: AuthenticationService, private routerExtensions: RouterExtensions) {
     }
     ngOnInit(): void {
         this.page.actionBarHidden = true;
@@ -48,7 +49,7 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        (this.userService.authenticateBasic(this.user).subscribe(
+        (this.authenticationService.loginBasic(this.user).subscribe(
             data => {
                 this.processing = false;
                 this.routerExtensions.navigate(["/home"], { clearHistory: true });
@@ -88,7 +89,7 @@ export class LoginComponent implements OnInit {
 
     public selectedIndexChanged(args) {
         let picker = <ListPicker>args.object;
-        this.user.nivelAtencao = this.nivelDeAtencao[picker.selectedIndex];
+        this.user.cargo = this.nivelDeAtencao[picker.selectedIndex];
     }
 
     alert(message: string) {

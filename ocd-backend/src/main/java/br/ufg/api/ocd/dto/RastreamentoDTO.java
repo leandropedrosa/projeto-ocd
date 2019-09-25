@@ -1,14 +1,16 @@
 package br.ufg.api.ocd.dto;
 
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Getter
+@Setter
 public class RastreamentoDTO {
 
-    private Integer id;
+    private String id;
 
     // passo1
     @NotBlank(message = "{rastreamento.nomePaciente.not.blank}")

@@ -1,17 +1,15 @@
-import { ItemEventData } from "tns-core-modules/ui/list-view"
-import { Component, Input, OnInit } from "@angular/core";
-import { RouterExtensions } from "nativescript-angular/router";
-import { SegmentedBarItem } from "ui/segmented-bar";
-import { DadosIniciaisService } from "../../shared/dadosIniciais.service";
-import { LocalAtendimento } from "../../shared/localAtendimento.model";
-import { UserService } from "../../shared/user.service";
-import { Rastreamento } from "../../shared/rastreamento.model";
-import { ActivatedRoute, Router } from '@angular/router';
-import { ListPicker } from "tns-core-modules/ui/list-picker";
-import { RadListView, SwipeActionsEventData, ListViewEventData } from "nativescript-ui-listview";
-import { DatePicker } from "tns-core-modules/ui/date-picker";
-import { DatePipe } from '@angular/common';
-import { EventData, Observable } from "tns-core-modules/data/observable";
+import {Component, Input, OnInit} from "@angular/core";
+import {DadosIniciaisService} from "../../shared/dadosIniciais.service";
+import {LocalAtendimento} from "../../shared/localAtendimento.model";
+import {ActivatedRoute} from '@angular/router';
+import {ListPicker} from "tns-core-modules/ui/list-picker";
+import {DatePicker} from "tns-core-modules/ui/date-picker";
+import {DatePipe} from '@angular/common';
+import {EventData} from "tns-core-modules/data/observable";
+import {AuthenticationService} from "../../shared/authentication.service";
+import {User} from "../../shared/user.model";
+import {RouterExtensions} from "nativescript-angular";
+import {Rastreamento} from "../../shared/rastreamento.model";
 
 @Component({
     selector: "passo2",
@@ -20,36 +18,32 @@ import { EventData, Observable } from "tns-core-modules/data/observable";
     styleUrls: ['./passo2.component.css']
 })
 export class Passo2Component implements OnInit {
-
-    @Input("rastreamento")
-    public rastreamento: Rastreamento;
-    acao: string;
+    public acao: string;
     submitted: boolean;
-    selectedListPickerIndex1: number = 0;
-    private _selectedItems: string;
-
-    onItemTap(args: ItemEventData): void {
-        console.log('Item with index: ' + args.index + ' tapped');
-    }
-
-    localAtendimento: LocalAtendimento[];
+    public selectedListPickerIndex1: number = 0;
+    public rastreamento: Rastreamento;
+    public localAtendimento: LocalAtendimento[];
 
     currentDay: number = new Date().getDate();
     currentMonth: number = new Date().getMonth() + 1;
     currentYear: number = new Date().getFullYear();
-    selectedBarIndex: number = 0;
 
-    constructor(private userService: UserService, private dadosIniciaisService: DadosIniciaisService, private router: Router, private route: ActivatedRoute, private datePipe: DatePipe, private routerExtensions: RouterExtensions) {
-        this.route.params.subscribe(res => this.rastreamento = res.rastreamento);
+    constructor(private authenticationService: AuthenticationService, private dadosIniciaisService: DadosIniciaisService, private datePipe: DatePipe, private router: RouterExtensions, private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
+        this.route.queryParams.subscribe(params => {
+            this.rastreamento =  JSON.parse(params['rastreamento']);
+        });
+
+        console.dir(this.rastreamento);
         this.acao = "PASSO2";
-        this.rastreamento.regiao = localStorage.getItem('regionUser');
-        this.dadosIniciaisService.getLocalAtendimento(localStorage.getItem('regionUser')).subscribe(
+        let currentUser: User = this.authenticationService.getLoggedInUser();
+        this.rastreamento.regiao = currentUser.regiao;
+        this.dadosIniciaisService.getLocalAtendimento(currentUser.regiao).subscribe(
             response => {
                 this.localAtendimento = response;
-                this.rastreamento.profissionalAtendimento = localStorage.getItem('nameUser');
+                this.rastreamento.profissionalAtendimento = currentUser.nome;
                 for (let local of this.localAtendimento) {
                     this.rastreamento.listPickerLocalAtendimento.push(local.nome);
                 }
@@ -61,8 +55,12 @@ export class Passo2Component implements OnInit {
         this.rastreamento.localAtendimento = this.rastreamento.listPickerLocalAtendimento[picker.selectedIndex];
     }
 
-    continuarFluxo(opcao: string) {
-        this.acao = opcao;
+    passo1() {
+        this.router.navigate(['/passo1'], { queryParams: {rastreamento:JSON.stringify(this.rastreamento)} });
+    }
+
+    passo3() {
+        this.router.navigate(['/passo3'], { queryParams: {rastreamento:JSON.stringify(this.rastreamento)} });
     }
 
     onDateAtendimentoLoaded(data: EventData) {

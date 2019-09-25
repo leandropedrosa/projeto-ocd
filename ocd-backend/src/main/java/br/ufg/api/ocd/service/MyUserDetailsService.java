@@ -3,16 +3,16 @@ package br.ufg.api.ocd.service;
 import br.ufg.api.ocd.model.Usuario;
 import br.ufg.api.ocd.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.core.userdetails.UserDetailsService;
+//import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
-@Service
-public class MyUserDetailsService implements UserDetailsService {
+//@Service
+public class MyUserDetailsService { /* implements UserDetailsService {
     private final UsuarioRepository userRepository;
 
     @Autowired
@@ -73,4 +73,5 @@ public class MyUserDetailsService implements UserDetailsService {
         }
 
     }
+    */
 }

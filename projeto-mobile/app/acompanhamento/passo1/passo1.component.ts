@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { RouterExtensions } from "nativescript-angular/router";
-import { SegmentedBarItem } from "ui/segmented-bar";
-import { Rastreamento } from "../../shared/rastreamento.model";
-import { EventData, Observable } from "tns-core-modules/data/observable"
-import { DatePicker } from "tns-core-modules/ui/date-picker";
-import { DatePipe } from '@angular/common';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Component, Input, OnInit} from "@angular/core";
+import {RouterExtensions} from "nativescript-angular/router";
+import {Rastreamento} from "../../shared/rastreamento.model";
+import {EventData} from "tns-core-modules/data/observable"
+import {DatePicker} from "tns-core-modules/ui/date-picker";
+import {DatePipe} from '@angular/common';
+import {ActivatedRoute} from '@angular/router';
+
 @Component({
     selector: "passo1",
     moduleId: module.id,
@@ -13,35 +13,31 @@ import { ActivatedRoute, Router } from '@angular/router';
     styleUrls: ['./passo1.component.css']
 })
 export class Passo1Component implements OnInit {
-    @Input("rastreamento")
-    public rastreamento: Rastreamento;
-    acao: string;
+    public acao: string;
     submitted: boolean;
-    currentDay: number = new Date().getDate();
-    currentMonth: number = new Date().getMonth() + 1;
-    currentYear: number = new Date().getFullYear();
+    public currentDay: number = new Date().getDate();
+    public currentMonth: number = new Date().getMonth() + 1;
+    public currentYear: number = new Date().getFullYear();
+    public rastreamento: Rastreamento;
 
-    selectedBarIndex: number = 0;
-
-    private getSegmentedBarItems = () => {
-        let segmentedBarItem1 = new SegmentedBarItem();
-        segmentedBarItem1.title = "Masculino";
-        let segmentedBarItem2 = new SegmentedBarItem();
-        segmentedBarItem2.title = "Feminino";
-        return [segmentedBarItem1, segmentedBarItem2];
-    }
-    segmentedBarItems: Array<SegmentedBarItem> = this.getSegmentedBarItems();
-
-    constructor(private routerExtensions: RouterExtensions, private datePipe: DatePipe) {
-        this.rastreamento = new Rastreamento();
+    constructor(private router: RouterExtensions, private route: ActivatedRoute, private datePipe: DatePipe) {
     }
 
     ngOnInit(): void {
+        this.route.queryParams.subscribe(params => {
+            this.rastreamento =  JSON.parse(params['rastreamento']);
+        });
+
+        console.dir(this.rastreamento);
+        if (!this.rastreamento) {
+            this.rastreamento = new Rastreamento();
+        }
         this.acao = "PASSO1";
+        console.dir("Passo1");
     }
 
-    continuarFluxo(opcao: string) {
-        this.acao = opcao;
+    passo2() {
+        this.router.navigate(['/passo2'], { queryParams: {rastreamento:JSON.stringify(this.rastreamento)} });
     }
 
     onDateNascimentoLoaded(data: EventData) {

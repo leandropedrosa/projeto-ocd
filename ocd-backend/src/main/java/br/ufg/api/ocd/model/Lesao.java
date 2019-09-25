@@ -30,9 +30,6 @@ public class Lesao {
     public Lesao(String nome) {
         this.nome = nome;
     }
-
-    public Lesao() {
-    }
     @Id
     private String id;
     private String nome;

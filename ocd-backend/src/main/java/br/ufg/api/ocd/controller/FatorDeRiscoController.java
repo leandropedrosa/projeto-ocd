@@ -19,8 +19,8 @@ public class FatorDeRiscoController implements FatorDeRiscoSwagger {
 
     @Autowired
     FatorDeRiscoService serv;
-
-    private ModelMapper modelMapper = new ModelMapper();
+    @Autowired
+    private ModelMapper modelMapper;
 
     @GetMapping
     public List<FatoresDeRiscoDTO> getAll() {

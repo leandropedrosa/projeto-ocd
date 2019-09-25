@@ -1,16 +1,15 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { RouterExtensions } from "nativescript-angular/router";
-import { SegmentedBarItem } from "ui/segmented-bar";
-import { Rastreamento } from "../../shared/rastreamento.model";
-import { ActivatedRoute, Router } from '@angular/router';
-import { DatePicker } from "tns-core-modules/ui/date-picker";
-import { ListPicker } from "tns-core-modules/ui/list-picker";
-import { RadListView, SwipeActionsEventData, ListViewEventData } from "nativescript-ui-listview";
-import { DatePipe } from '@angular/common';
-import { EventData, Observable } from "tns-core-modules/data/observable";
-import { DadosIniciaisService } from "../../shared/dadosIniciais.service";
-import { FatoresDeRisco } from "../../shared/fatoresDeRisco.model";
-import { Lesao } from "../../shared/lesao.model";
+import {Component, Input, OnInit} from "@angular/core";
+import {RouterExtensions} from "nativescript-angular/router";
+import {Rastreamento} from "../../shared/rastreamento.model";
+import {ActivatedRoute} from '@angular/router';
+import {DatePicker} from "tns-core-modules/ui/date-picker";
+import {ListPicker} from "tns-core-modules/ui/list-picker";
+import {ListViewEventData, RadListView} from "nativescript-ui-listview";
+import {DatePipe} from '@angular/common';
+import {EventData} from "tns-core-modules/data/observable";
+import {DadosIniciaisService} from "../../shared/dadosIniciais.service";
+import {FatoresDeRisco} from "../../shared/fatoresDeRisco.model";
+import {Lesao} from "../../shared/lesao.model";
 
 @Component({
     selector: "passo3",
@@ -24,31 +23,21 @@ export class Passo3Component implements OnInit {
     currentMonth: number = new Date().getMonth() + 1;
     currentYear: number = new Date().getFullYear();
 
-    selectedListPickerIndex1: number = 0;
-
-    private _dataItemsFR: Array<FatoresDeRisco>;
-    private _selectedItemsFR: string;
-    private _dataItemsLE: Array<Lesao>;
-
-    @Input("rastreamento")
+    public _dataItemsFR: Array<FatoresDeRisco>;
+    public _dataItemsLE: Array<Lesao>;
     public rastreamento: Rastreamento;
     acao: string;
     submitted: boolean;
-    private getSegmentedBarItems = () => {
-        let segmentedBarItem1 = new SegmentedBarItem();
-        segmentedBarItem1.title = "Masculino";
-        let segmentedBarItem2 = new SegmentedBarItem();
-        segmentedBarItem2.title = "Feminino";
-        return [segmentedBarItem1, segmentedBarItem2];
-    }
-    segmentedBarItems: Array<SegmentedBarItem> = this.getSegmentedBarItems();
-    selectedBarIndex: number = 0;
 
-    constructor(private dadosIniciaisService: DadosIniciaisService, private router: Router, private route: ActivatedRoute, private datePipe: DatePipe, private routerExtensions: RouterExtensions) {
-        this.route.params.subscribe(res => this.rastreamento = res.rastreamento);
+    constructor(private dadosIniciaisService: DadosIniciaisService, private router: RouterExtensions, private route: ActivatedRoute, private datePipe: DatePipe) {
     }
 
     ngOnInit(): void {
+        this.route.queryParams.subscribe(params => {
+            this.rastreamento =  JSON.parse(params['rastreamento']);
+        });
+
+        console.log(this.rastreamento);
         this.acao = "PASSO3";
         this.dadosIniciaisService.getFatoresDeRisco().subscribe(
             response => {

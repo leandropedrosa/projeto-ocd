@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.stream.Collectors;
 
 
@@ -19,8 +18,8 @@ public class RastreamentoController implements RastreamentoSwagger {
 
     @Autowired
     RastreamentoService serv;
-
-    private ModelMapper modelMapper = new ModelMapper();
+    @Autowired
+    private ModelMapper modelMapper;
 
     @PostMapping
     public String create(@RequestBody RastreamentoDTO rastreamentoDTO) {
@@ -38,7 +37,8 @@ public class RastreamentoController implements RastreamentoSwagger {
                                                       value = "size",
                                                       required = false,
                                                       defaultValue = "10") int size) {
-        return new PageImpl<RastreamentoDTO>(serv.findByIdUsuario(idUsuario, page, size).stream()
+        Page<Rastreamento> lista = serv.findByIdUsuario(idUsuario, page, size);
+        return new PageImpl<RastreamentoDTO>(lista.stream()
                 .map(post -> modelMapper.map(post, RastreamentoDTO.class))
                 .collect(Collectors.toList()));
     }
@@ -55,7 +55,8 @@ public class RastreamentoController implements RastreamentoSwagger {
                     value = "size",
                     required = false,
                     defaultValue = "10") int size) {
-        return new PageImpl<RastreamentoDTO>(serv.findByNomePaciente(idUsuario, nomePaciente, page, size).stream()
+        Page<Rastreamento> lista = serv.findByNomePaciente(idUsuario, nomePaciente, page, size);
+        return new PageImpl<RastreamentoDTO>(lista.stream()
                 .map(post -> modelMapper.map(post, RastreamentoDTO.class))
                 .collect(Collectors.toList()));
     }

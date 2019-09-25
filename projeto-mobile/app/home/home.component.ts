@@ -3,6 +3,8 @@ import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "nativescript-angular/router";
 import { RastreamentoService } from "../shared/rastreamento.service";
 import { Paciente } from "../shared/paciente.model";
+import {environment} from "../../environments/environment";
+import {AuthenticationService} from "~/shared/authentication.service";
 @Component({
     selector: "Home",
     moduleId: module.id,
@@ -21,14 +23,15 @@ export class HomeComponent implements OnInit {
         console.log('Item with index: ' + args.index + ' tapped');
     }
 
-    constructor(private routerExtensions: RouterExtensions, private rastreamentoService: RastreamentoService) {
+    constructor(private routerExtensions: RouterExtensions, private rastreamentoService: RastreamentoService, private authenticationService: AuthenticationService) {
     }
 
     ngOnInit(): void {
-        this.rastreamentoService.getPaciente(localStorage.getItem('regionUser')).subscribe(
+        let currentUser = this.authenticationService.getLoggedInUser();
+        /*this.rastreamentoService.getPaciente(currentUser.regiao).subscribe(
             response => {
                 this.pacientes = response;
-            });
+            });*/
     }
 
     goAcompanhamento(): void {

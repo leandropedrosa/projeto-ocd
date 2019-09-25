@@ -1,15 +1,14 @@
 package br.ufg.api.ocd.dto;
 
-import br.ufg.api.ocd.model.Lesao;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
-import java.text.ParseException;
 
 @Getter
+@Setter
 public class LocalAtendimentoDTO {
-
-    private Integer id;
+    private String id;
     @NotBlank(message = "{usuario.status.not.blank}")
     private String nome;
     @NotBlank(message = "{usuario.login.not.blank}")
@@ -20,13 +19,4 @@ public class LocalAtendimentoDTO {
     private String bairro;
     @NotBlank(message = "{usuario.nome.not.blank}")
     private String cidade;
-
-    public LocalAtendimentoDTO(Integer id, String nome, String tipo, String regiao, String bairro, String cidade) {
-        this.id = id;
-        this.nome = nome;
-        this.tipo = tipo;
-        this.regiao = regiao;
-        this.bairro = bairro;
-        this.cidade = cidade;
-    }
 }

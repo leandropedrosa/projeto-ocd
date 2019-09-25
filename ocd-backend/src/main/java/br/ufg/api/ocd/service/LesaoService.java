@@ -4,9 +4,7 @@ import br.ufg.api.ocd.model.Lesao;
 import br.ufg.api.ocd.repository.LesaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class LesaoService {

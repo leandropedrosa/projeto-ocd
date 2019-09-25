@@ -19,8 +19,8 @@ public class LesaoController implements LesaoSwagger {
 
     @Autowired
     LesaoService serv;
-
-    private ModelMapper modelMapper = new ModelMapper();
+    @Autowired
+    private ModelMapper modelMapper;
 
     @GetMapping
     public List<LesaoDTO> getAll() {

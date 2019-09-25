@@ -1,19 +1,18 @@
-import { User } from "./user.model";
-import { LocalAtendimento } from "./localAtendimento.model";
-import { FatoresDeRisco } from "./fatoresDeRisco.model";
-import { Lesao } from "./lesao.model";
+import {FatoresDeRisco} from "./fatoresDeRisco.model";
+import {Lesao} from "./lesao.model";
 
 export class Rastreamento {
     // passo1
-    id: number;
+    id: string;
     nomePaciente: string;
     nomeMae: string;
     bairro: string;
     cidade: string;
     dtNascimento: string;
-    sexo: number = 0;
+    sexo: string;
     cpf: string;
     email: string;
+    numTelefone: string
 
     // passo2
     localAtendimento: string;

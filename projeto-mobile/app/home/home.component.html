@@ -8,8 +8,8 @@
                 <Label class="header" text="Status dos pacientes:"></Label>
                 <TextField [(ngModel)]="textFieldValue" hint="Pesquisar..."></TextField>
             </StackLayout>
-            <StackLayout row="1" style="height:60%">
-                <ListView class="list-group" [items]="pacientes" (itemTap)="onItemTap($event)">
+            <StackLayout row="1" style="height:60%" >
+                <ListView class="list-group" [items]="pacientes" (itemTap)="onItemTap($event)" width="1450">
                     <ng-template let-paciente="item">
                         <FlexboxLayout flexDirection="row" class="list-group-item">
                             <Label [text]="paciente.nomePaciente" class="list-group-item-heading"

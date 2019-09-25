@@ -9,39 +9,37 @@
                     </StackLayout>
                     <Slider value="80"></Slider>
                     <StackLayout row="0" orientation="vertical">
-                        <ScrollView orientation="vertical">
+                        <ScrollView orientation="vertical" width="1450">
                             <StackLayout class="page-inner">
-                                <RadListView [items]="standings">
-                                    <ng-template let-item="item" let-i="index">
-                                        <GridLayout columns="80,160"
-                                            class="p-5" [backgroundColor]="i == 0 ? '#ccc' : 'white'">
-                                            <Label col="0" text="Nome do Paciente: "></Label>
-                                            <Label col="1" [text]="rastreamento.nomePaciente"></Label>
-                                            <Label col="0" text="Nome da Mãe: "></Label>
-                                            <Label col="1" [text]="rastreamento.nomeMae"></Label>
-                                            <Label col="0" text="Bairro: "></Label>
-                                            <Label col="1" [text]="rastreamento.bairro"></Label>
-                                            <Label col="0" text="Cidade: "></Label>
-                                            <Label col="1" [text]="rastreamento.cidade"></Label>
-                                            <Label col="0" text="Data de Nascimento: "></Label>
-                                            <Label col="1" [text]="rastreamento.dtNascimento"></Label>
-                                            <Label col="0" text="Sexo: "></Label>
-                                            <Label col="1" [text]="rastreamento.sexo"></Label>
-                                            <Label col="0" text="CPF: "></Label>
-                                            <Label col="1" [text]="rastreamento.cpf"></Label>
-                                            <Label col="0" text="e-mail: "></Label>
-                                            <Label col="1" [text]="rastreamento.email"></Label>
-                                            <Label col="0" text="Local de Atendimento: "></Label>
-                                            <Label col="1" [text]="rastreamento.localAtendimento"></Label>
-                                            <Label col="0" text="Data de Atendimento: "></Label>
-                                            <Label col="9" [text]="rastreamento.dtAtendimento"></Label>
-                                            <Label col="0" text="Fatores de Risco: "></Label>
-                                            <Label col="1" [text]="fatores"></Label>
-                                            <Label col="0" text="Lesões: "></Label>
-                                            <Label col="1" [text]="lesoes"></Label>
-                                        </GridLayout>
-                                    </ng-template>
-                                </RadListView>
+                                <ng-template let-item="item" let-i="index">
+                                    <GridLayout columns="80,160"
+                                                class="p-5" [backgroundColor]="i == 0 ? '#ccc' : 'white'">
+                                        <Label col="0" text="Nome do Paciente: "></Label>
+                                        <Label col="1" [text]="rastreamento.nomePaciente"></Label>
+                                        <Label col="0" text="Nome da Mãe: "></Label>
+                                        <Label col="1" [text]="rastreamento.nomeMae"></Label>
+                                        <Label col="0" text="Bairro: "></Label>
+                                        <Label col="1" [text]="rastreamento.bairro"></Label>
+                                        <Label col="0" text="Cidade: "></Label>
+                                        <Label col="1" [text]="rastreamento.cidade"></Label>
+                                        <Label col="0" text="Data de Nascimento: "></Label>
+                                        <Label col="1" [text]="rastreamento.dtNascimento"></Label>
+                                        <Label col="0" text="Sexo: "></Label>
+                                        <Label col="1" [text]="rastreamento.sexo"></Label>
+                                        <Label col="0" text="CPF: "></Label>
+                                        <Label col="1" [text]="rastreamento.cpf"></Label>
+                                        <Label col="0" text="e-mail: "></Label>
+                                        <Label col="1" [text]="rastreamento.email"></Label>
+                                        <Label col="0" text="Local de Atendimento: "></Label>
+                                        <Label col="1" [text]="rastreamento.localAtendimento"></Label>
+                                        <Label col="0" text="Data de Atendimento: "></Label>
+                                        <Label col="9" [text]="rastreamento.dataAtendimento"></Label>
+                                        <Label col="0" text="Fatores de Risco: "></Label>
+                                        <Label col="1" [text]="fatores"></Label>
+                                        <Label col="0" text="Lesões: "></Label>
+                                        <Label col="1" [text]="lesoes"></Label>
+                                    </GridLayout>
+                                </ng-template>
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>
@@ -49,11 +47,11 @@
                         <GridLayout row="auto" columns="*, *">
                             <StackLayout row="0" col="0">
                                 <Button text="< Anterior" class="btn btn-outline-secondary m-t-20"
-                                    (tap)="continuarFluxo('PASSO3')"></Button>
+                                        (tap)="continuarFluxo('PASSO3')"></Button>
                             </StackLayout>
                             <StackLayout row="0" col="1">
                                 <Button text="Finalizar" class="btn btn-outline-primary m-t-20"
-                                    (tap)="finalizar()"></Button>
+                                        (tap)="finalizar()"></Button>
                             </StackLayout>
                         </GridLayout>
                     </StackLayout>
@@ -62,6 +60,6 @@
         </FlexboxLayout>
     </div>
     <div *ngSwitchCase="'PASSO3'">
-        <passo3 android:[rastreamento]="rastreamento" ios:[rastreamento]="rastreamento"></passo3>
+        <passo3></passo3>
     </div>
 </div>

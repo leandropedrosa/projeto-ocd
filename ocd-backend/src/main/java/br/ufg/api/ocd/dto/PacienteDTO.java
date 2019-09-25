@@ -1,15 +1,15 @@
 package br.ufg.api.ocd.dto;
 
-import br.ufg.api.ocd.model.Lesao;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
-import java.text.ParseException;
 
 @Getter
+@Setter
 public class PacienteDTO {
 
-    private Integer id;
+    private String id;
     @NotBlank(message = "{paciente.nomePaciente.not.blank}")
     private String nomePaciente;
     @NotBlank(message = "{paciente.regiao.not.blank}")
@@ -20,13 +20,4 @@ public class PacienteDTO {
     private String ultimoProcedimento;
     @NotBlank(message = "{paciente.status.not.blank}")
     private String status;
-
-    public PacienteDTO(Integer id, String nomePaciente, String regiao, String ultimaData, String ultimoProcedimento, String status) {
-        this.id = id;
-        this.status = status;
-        this.nomePaciente = nomePaciente;
-        this.regiao = regiao;
-        this.ultimaData = ultimaData;
-        this.ultimoProcedimento = ultimoProcedimento;
-    }
 }
