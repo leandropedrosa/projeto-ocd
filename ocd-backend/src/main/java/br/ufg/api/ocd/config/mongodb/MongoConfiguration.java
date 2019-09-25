@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableAutoConfiguration(exclude = {MongoAutoConfiguration.class, MongoDataAutoConfiguration.class, DataSourceAutoConfiguration.class})
+@EnableAutoConfiguration(exclude = {MongoAutoConfiguration.class,
+        MongoDataAutoConfiguration.class, DataSourceAutoConfiguration.class})
 public class MongoConfiguration {
 }
