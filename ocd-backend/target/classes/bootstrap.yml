@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: API-ODC
+  profiles:
+    active: ${profile:dev}
+  cloud:
+    config:
+      uri: http://localhost:8888
+management:
+  security:
+    enabled: false
