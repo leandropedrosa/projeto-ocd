@@ -1,0 +1,31 @@
+<ActionBar class="action-bar" title="Sobre Vida 1.0">
+    <ActionItem android.position="actionBar" ios.position="right" (tap)="onMenuHomeTap()">
+        <Label text="&#xf015;" class="fa action-button"></Label>
+    </ActionItem>
+</ActionBar>
+<FlexboxLayout class="page">
+    <StackLayout class="form">
+        <GridLayout rows="auto, auto, auto">
+            <StackLayout row="0">
+                <Label class="header" text="Status dos pacientes:"></Label>
+                <TextField [(ngModel)]="textFieldValue" hint="Pesquisar..."></TextField>
+            </StackLayout>
+            <StackLayout row="1" style="height:60%" >
+                <ListView class="list-group" [items]="pacientes" (itemTap)="onItemTap($event)" width="1450">
+                    <ng-template let-paciente="item">
+                        <FlexboxLayout flexDirection="row" class="list-group-item">
+                            <Label [text]="paciente.nomePaciente" class="list-group-item-heading"
+                                verticalAlignment="center" style="width: 40%"></Label>
+                            <Label [text]="paciente.ultimaData" class="list-group-item-heading"
+                                verticalAlignment="center" style="width: 30%"></Label>
+                            <Label [text]="paciente.ultimoProcedimento" class="list-group-item-heading"
+                                verticalAlignment="center" style="width: 20%"></Label>
+                            <Label [text]="paciente.status" class="list-group-item-heading"
+                                verticalAlignment="center" style="width: 10%"></Label>
+                        </FlexboxLayout>
+                    </ng-template>
+                </ListView>
+            </StackLayout>
+        </GridLayout>
+    </StackLayout>
+</FlexboxLayout>

@@ -49,7 +49,8 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        (this.authenticationService.loginBasic(this.user).subscribe(
+        this.routerExtensions.navigate(["/Navigation"], { clearHistory: true });
+       /* (this.authenticationService.loginBasic(this.user).subscribe(
             data => {
                 this.processing = false;
                 this.routerExtensions.navigate(["/home"], { clearHistory: true });
@@ -59,7 +60,7 @@ export class LoginComponent implements OnInit {
                 alert("Infelizmente não conseguimos encontrar seu CPF.");
             }
         )
-        );
+        );*/
 
     }
 

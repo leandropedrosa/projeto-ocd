@@ -12,3 +12,8 @@
 .btn-primary:disabled {
   opacity: 0.5;
 }
+.action-bar {
+  background-color: #0bbdd5;
+  color: #ffffff;
+  padding-right: 10;
+}
