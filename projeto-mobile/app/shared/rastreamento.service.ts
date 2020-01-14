@@ -16,6 +16,6 @@ export class RastreamentoService {
     }
 
     public finalizar(rastreamento) {
-        return this.httpClient.post<Rastreamento>(environment.apiUrl + '/matriciamento', rastreamento);
+        return this.httpClient.post<Rastreamento>(environment.apiUrl + '/rastreamento', rastreamento);
     }
 }

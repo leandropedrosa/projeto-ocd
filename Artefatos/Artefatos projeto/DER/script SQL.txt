@@ -1,0 +1,436 @@
+Scripts validados no https://sqliteonline.com
+
+CREATE TABLE IF NOT EXISTS cidade (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT);
+INSERT INTO cidade (nome) VALUES ( 'Goiânia' )
+
+
+
+CREATE TABLE IF NOT EXISTS bairro (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE, id_cidade INTEGER, FOREIGN KEY (id_cidade) REFERENCES cidade (id));
+INSERT INTO bairro (nome, id_cidade) VALUES ( 'ST. UNIVERSITÁRIO', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('ST. AEROPORTO', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('SETOR OESTE', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('SETOR BUENO', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JARDIM AMÉRICA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('SETOR COIMBRA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('SETOR SUL', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('VILA NOVA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('BAIRRO FLORESTA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('BAIRRO DA VITÓRIA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('FINSOCIAL', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JD. CURITIBA I', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JD. CURITIBA II', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JD. CURITIBA III', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('VILA MUTIRÃO I', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JD. PRIMAVERA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('RECANTO DO BOSQUE', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('NOVA ESPERANÇA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('SETOR AEROVIÁRIO', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('VILA ABAJÁ', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('VILA IRANI', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('CAMPINAS', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JD. PETRÓPOLIS', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('BAIRRO CAPUAVA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('VILA SANTA HELENA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('BAIRRO SÃO FRANCISCO', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('SETOR CENTRO OESTE', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('SETOR URIAS MAGALHÃES', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JD. BALNEÁRIO MEIA PONTE', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('ST. CRIMÉIA OESTE', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('MARECHAL RONDON', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JD. GUANABARA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JD. GUANABARA II', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('CONJ. ITATIAIA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('NOVA VILA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('VILA MONTECELLI', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('SETOR NORTE FERROVIÁRIO', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JARDIM EUROPA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('NOVO HORIZONTE', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('SETOR SUDOESTE', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JARDIM VILA BOA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JARDIM PRESIDENTE', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JARDIM PLANALTO', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('RIO FORMOSO', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('ANDREIA CRISTINA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('CHÁCARA DO GOVERNADOR', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('PARQUE SANTA CRUZ', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JARDIM BELA VISTA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('PARQUE ATHENEU', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('VILA REDENÇÃO', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('PEDRO LUDOVICO', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('PARQUE AMAZÔNIA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JARDIM GOIÁS', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('SETOR MARISTA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('PARQUE DAS LARANJEIRAS', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('BAIRRO N. SENHORA DE FÁTIMA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('CIDADE JARDIM', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('SETOR RODOVIÁRIO', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('CONJ. MARQUES DE ABREU', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('PARQUE IND. JOÃO BRAZ', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('CONJ. VERA CRUZ I', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('CONJ. VERA CRUZ II', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('PARQUE DOS BURITIS', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('VILA CANAÃ', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('BAIRRO GOIÁ I', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JD. NOVO MUNDO', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('VILA PEDROSO', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('CONJ. RIVIERA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JD. LAGEADO', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JD. FERNANDO I', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JD. FERNANDO II', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('JD. DAS AROEIRAS', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('VILA MORAES', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('VILA SANTA ISABEL', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('VILA MARIA LUIZA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('COLÔNIA SANTA MARTA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('VILA OSVALDO ROSA', (select id from cidade where nome = 'Goiânia')); 
+INSERT INTO bairro (nome, id_cidade) VALUES ('VILA BANDEIRANTE', (select id from cidade where nome = 'Goiânia')); 
+
+
+
+
+CREATE TABLE IF NOT EXISTS distrito (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE, id_cidade INTEGER, id_bairro INTEGER, FOREIGN KEY (id_cidade) REFERENCES cidade (id),  FOREIGN KEY (id_bairro) REFERENCES bairro (id));
+
+INSERT INTO distrito (nome, id_cidade, id_bairro) VALUES ( 'Oeste', (select id from cidade where nome = 'Goiânia'), (select id from bairro where nome = 'BAIRRO GOIÁ I'));
+INSERT INTO distrito (nome, id_cidade, id_bairro) VALUES ( 'Leste', (select id from cidade where nome = 'Goiânia'), (select id from bairro where nome = 'JD. NOVO MUNDO'));
+INSERT INTO distrito (nome, id_cidade, id_bairro) VALUES ( 'Sul', (select id from cidade where nome = 'Goiânia'), (select id from bairro where nome = 'JARDIM AMÉRICA'));
+INSERT INTO distrito (nome, id_cidade, id_bairro) VALUES ( 'Norte', (select id from cidade where nome = 'Goiânia'), (select id from bairro where nome = 'JD. GUANABARA'));
+INSERT INTO distrito (nome, id_cidade, id_bairro) VALUES ( 'Central', (select id from cidade where nome = 'Goiânia'), (select id from bairro where nome = 'SETOR NORTE FERROVIÁRIO'));
+INSERT INTO distrito (nome, id_cidade, id_bairro) VALUES ( 'Noroeste', (select id from cidade where nome = 'Goiânia'), (select id from bairro where nome = 'VILA MUTIRÃO I'));
+INSERT INTO distrito (nome, id_cidade, id_bairro) VALUES ( 'Sudoeste', (select id from cidade where nome = 'Goiânia'), (select id from bairro where nome = 'SETOR SUDOESTE'));
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS tipo_local_atendimento (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT);
+INSERT INTO tipo_local_atendimento (nome) VALUES ( 'CAIS' ); 
+INSERT INTO tipo_local_atendimento (nome) VALUES ( 'CIAMS' ); 
+INSERT INTO tipo_local_atendimento (nome) VALUES ( 'UPA' ); 
+INSERT INTO tipo_local_atendimento (nome) VALUES ( 'CENTROS DE SAÚDE' ); 
+INSERT INTO tipo_local_atendimento (nome) VALUES ( 'CENTRO DE SAÚDE DA FAMÍLIA - CSF' ); 
+INSERT INTO tipo_local_atendimento (nome) VALUES ( 'UNIDADES DE ATENDIMENTO À SAÚDE MENTAL' ); 
+INSERT INTO tipo_local_atendimento (nome) VALUES ( 'CEO - CENTRO DE ESPECIALIDADES ODONTOLOGICAS' ); 
+INSERT INTO tipo_local_atendimento (nome) VALUES ( 'OUTRAS UNIDADES' );
+
+
+
+CREATE TABLE IF NOT EXISTS local_atendimento (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, id_distrito INTEGER, id_tipo_local_atendimento INTEGER, FOREIGN KEY (id_distrito) REFERENCES distrito (id), FOREIGN KEY (id_tipo_local_atendimento) REFERENCES tipo_local_atendimento (id));
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Amendoeiras",2,1);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Bairro Goiá",1,1);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Campinas",5,1);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Cândida De Morais",6,1);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Chácara Do Governador",2,1);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Deputado João Natal",5,1);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Finsocial",6,1);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jardim Guanabara III",4,1);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jardim Novo Mundo",2,1);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jardim América",3,2);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Novo Horizonte",7,2);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Pedro Ludovico",3,2);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Urias Magalhães",4,2);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("João Batista De Sousa Júnior - Upa Itaipu",7,3);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Maria Pires Perillo - Upa Noroeste",6,3);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Benedito Dos Santos Vieira Setor Perim",4,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Cidade Jardim (Antigo Rodoviário) - Michele Muniz Do Carmo",5,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Conjunto Riviera",2,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Dr. Afonso H. Da S. E Souza Vila Água Branca",2,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Esplanada Do Anicuns",5,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Fama",5,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Hortência Mendonça - Vila Redenção",3,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Isabel Maria Da Silva - Vila Maria Dilce",4,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jardim Vila Boa",7,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jd. Balneário M. Ponte",4,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("José Do Egídio Martins - Vila União",7,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Marinho Lemos – Negrão De Lima",5,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Norte Ferroviário",5,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Parque Amazônia",3,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Parque Anhanguera",7,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Parque Ind. João Braz",1,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Setor Criméia Leste",5,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Vila Canaã",5,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Vila Clemente",4,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Vila Mauá",7,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Vila Moraes",5,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Vila Santa Helena",5,4);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Andréia Cristina",7,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Antonio Carlos Pires",4,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Aruanã III",2,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Bairro Da Vitória II",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Bairro Goiá",1,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Bairro São Francisco",1,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Barravento",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Boa Vista / Floresta",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Buena Vista",1,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Cachoeira Dourada",4,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Campus Samambaia",4,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Condomínio Das Esmeraldas",7,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Condomínio Morada Do Sol",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Conjunto Itatiaia",4,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Vera Cruz I",1,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Vera Cruz II",1,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Criméia Oeste",5,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Distrito De Vila Rica",4,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Dom Fernando II",2,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Estrela Dalva",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Garavelo B",7,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Grajaú",7,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jardim Aroeira",2,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jardim Caravelas",7,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jardim Colorado",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jardim Curitiba I E II",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jardim Curitiba III",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jardim Guanabara I",4,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jardim Mariliza",2,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jardim Mirabel",1,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jardim Novo Planalto",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jardim Primavera",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Jardim Aritana",1,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Leste Universitário",5,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Madre Germana II",7,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Núcleo De Apoio A Saúde Da Familia - Nasf Curitiba I",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Parque Atheneu I",2,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Parque Dos Buritis",1,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Parque Eldorado Oeste",1,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Parque Santa Rita",7,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Parque Tremendão",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Real Conquista",7,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Militão Rodrigues (Antigo Recanto Das Minas Gerais)",2,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residencial Brisa Da Mata",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residencial Ana Clara",7,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residencial Eli Forte",7,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residencial Goiânia Viva",1,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residencial Itaipu",7,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residencial Jardim Do Cerrado",1,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residencial Jardim Do Cerrado Vi",1,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residencial Vale Dos Sonhos",4,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residencial Ville De France",2,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residencial Ytapuã",1,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("São Carlos",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Setor Luana Park",1,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Setor Recanto Do Bosque",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Setor São Judas Tadeu",4,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Setor Santo Hilário",2,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Vila Mutirão",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Vf-18 - Finsocial",6,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Vila Pedroso",2,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Vila Regina",1,5);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Ambulatório Municipal De Psiquiatria",3,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Centro De Atenção Psicossocial – Caps Noroeste/Jardim Liberdade",6,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Centro De Atenção Psicossocial - Caps Beija-Flor",7,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Centro De Atenção Psicossocial - Caps Esperança",1,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Centro De Atenção Psicossocial - Caps Girassol",5,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Centro De Atenção Psicossocial - Caps Novo Mundo",2,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Centro De Atenção Psicossocial - Caps Vida",3,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Centro De Atenção Psicossocial - Caps – Ad/Casa",3,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Centro De Atenção Psicossocial Infanto-Juvenil – Caps Água Viva",3,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Centro De Atenção Psicossocial Infanto Juvenil - Caps Negrão De Lima",5,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Centro De Convivencia Cuca Fresca",3,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Pronto Socorro Psiquiátrico Wassily Chuc",3,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residência Terapêutica Beija-Flor I",7,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residência Terapêutica Beija-Flor II (Unidade Feminina)",7,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residência Terapêutica Mendanha I (Unidade Feminina)",1,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residência Terapêutica Mendanha II (Unidade Masculina)",1,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residência Terapêutica Novo Mundo I",2,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Residencia Terapeutica Novo Mundo II",2,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Associação De Trab. E Prod. Solidária Em Saúde Mental - Gerarte I",3,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Unidade De Trab. E Prod. Solidária Da Saúde Mental - Gerarte II",5,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Centro De Comercialização De Economia Solidária - Loja Arte E Saúde",3,6);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Centro De Referencia - Crdt",3,7);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Cais Jardim Novo Mundo",5,7);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Cais Cândida De Moraes",5,7);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Ciams Novo Horizonte",7,7);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Ambulatório Municipal De Queimaduras",5,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Vigilancia Em Saude Do Trabalhador",5,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Centro De Referência Em Ortopedia E Fisioterapia Crof",5,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Centro De Referência Em Atenção À Saúde Da Pessoa Idosa - Craspi",5,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Crdt -Cândido J. S. De Moura",5,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Vigilância Em Zoonoses",7,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Farmácia De Insumos E Medicamentos Especiais",5,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Farmacia Distrital Central",5,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Farmacia Distrital Oeste",1,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Farmacia Popular / Faculdade De Farmacia Da Universidade Federal De Goiás - Ufg",5,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Farmacia Popular Do Brasil",5,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Hospital Da Mulher E Maternidade Dona Iris",3,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Maternidade Nascer Cidadão",6,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Ouvidoria Da Saúde",6,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Serviço De Ver. De Óbitos - Svo",5,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Serviço Esp. Em Eng. De Segurança E Em Medicina Do Trabalho – Sesmt",6,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Consultorio De Rua",5,8);
+INSERT INTO local_atendimento (nome, id_distrito, id_tipo_local_atendimento ) VALUES ("Centro Municipal De Vacinação",3,8);
+ 
+
+CREATE TABLE IF NOT EXISTS tipo_atencao (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE);
+INSERT INTO tipo_atencao (nome) VALUES ( 'Atenção primária' );
+INSERT INTO tipo_atencao (nome) VALUES ( 'Atenção secundária' );
+
+
+
+CREATE TABLE IF NOT EXISTS usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, cpf INTEGER, nome TEXT, senha TEXT, id_tipo_atencao INTEGER, id_local_atendimento INTEGER, FOREIGN KEY (id) REFERENCES tipo_atencao, FOREIGN KEY (id) REFERENCES local_atendimento);
+
+
+
+CREATE TABLE IF NOT EXISTS tipo_atendimento (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE);
+INSERT INTO tipo_atendimento (nome) VALUES ( 'Intervenção' );
+INSERT INTO tipo_atendimento (nome) VALUES ( 'Acompanhamento' );
+INSERT INTO tipo_atendimento (nome) VALUES ( 'Resultado' );
+
+
+
+CREATE TABLE IF NOT EXISTS paciente (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE, data_nascimento DATE, sexo TEXT UNIQUE, email TEXT, telefone_celular TEXT, nome_da_mae TEXT, telefone_responsavel TEXT, id_bairro INTEGER, FOREIGN KEY (id) REFERENCES bairro);
+
+
+
+CREATE TABLE IF NOT EXISTS atendimento (id INTEGER PRIMARY KEY AUTOINCREMENT, data_atendimento DATE, id_usuario INTEGER,  id_paciente INTEGER,  id_tipo_atendimento INTEGER, FOREIGN KEY (id) REFERENCES usuario, FOREIGN KEY (id) REFERENCES paciente, FOREIGN KEY (id) REFERENCES  tipo_atendimento);
+
+
+
+CREATE TABLE IF NOT EXISTS fatores_risco (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE);
+INSERT INTO fatores_risco (nome) VALUES ( 'Idade' );
+INSERT INTO fatores_risco (nome) VALUES ( 'Sol' );
+INSERT INTO fatores_risco (nome) VALUES ( 'Fumante' );
+INSERT INTO fatores_risco (nome) VALUES ( 'Álcool' );
+INSERT INTO fatores_risco (nome) VALUES ( 'História da doença secundária' );
+
+
+
+
+CREATE TABLE IF NOT EXISTS avaliacao_clinica (id INTEGER PRIMARY KEY AUTOINCREMENT, usuario_sera_encaminhado BOOLEAN,  id_atendimento INTEGER, FOREIGN KEY (id) REFERENCES atendimento);
+
+
+
+CREATE TABLE IF NOT EXISTS fator_risco_avaliacao_clinica (id INTEGER PRIMARY KEY AUTOINCREMENT, id_fatores_risco INTEGER, id_avaliacao_clinica INTEGER, FOREIGN KEY (id) REFERENCES fatores_risco, FOREIGN KEY (id) REFERENCES avaliacao_clinica);
+
+
+
+
+CREATE TABLE IF NOT EXISTS tipo_regiao (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE);
+INSERT INTO tipo_regiao (nome) VALUES ( 'Região A' );
+INSERT INTO tipo_regiao (nome) VALUES ( 'Região B' );
+INSERT INTO tipo_regiao (nome) VALUES ( 'Região C' );
+INSERT INTO tipo_regiao (nome) VALUES ( 'Região D' );
+INSERT INTO tipo_regiao (nome) VALUES ( 'Região E' );
+INSERT INTO tipo_regiao (nome) VALUES ( 'Região F' );
+INSERT INTO tipo_regiao (nome) VALUES ( 'Região G' );
+INSERT INTO tipo_regiao (nome) VALUES ( 'Região H' );
+INSERT INTO tipo_regiao (nome) VALUES ( 'Região I' );
+INSERT INTO tipo_regiao (nome) VALUES ( 'Região J' );
+
+
+
+
+CREATE TABLE IF NOT EXISTS regiao_boca (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE, caminho_imagem TEXT, id_tipo_regiao INTEGER, FOREIGN KEY (id) REFERENCES tipo_regiao (id));
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Comissura labial esquerda', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Comissura labial direita', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Lábio inferior (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Lábio inferior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Lábio inferior (região de linha média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Lábio superior (lado esquerdo', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Lábio superior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Lábio superior (região de linha média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
+
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa labial superior (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região B')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa labial superior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região B')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa labial superior (região de linha média', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região B')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo superior anterior', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região B')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Freio labial superior', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região B')); 
+
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa labial inferior (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região C')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa labial inferior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região C')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa labial inferior (região de linha média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região C')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo inferior anterior', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região C')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Freio labial inferior', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região C')); 
+
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa jugal esquerda (posterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa jugal esquerda (média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa jugal esquerda (anterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa jugal direita (posterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa jugal direita (média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa jugal direita (anterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo inferior posterior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo inferior posterior (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo superior posterior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo superior (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
+
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( '?????', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região E')); 
+
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Palato duro', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região F')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Palato mole', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região F')); 
+
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Borda lateral direita da língua (posterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região G')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Borda lateral direita da língua (média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região G')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Borda lateral direita da língua (anterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região G')); 
+
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Borda lateral esquerda da língua (posterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região H')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Borda lateral esquerda da língua (média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região H')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Borda lateral esquerda da língua (anterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região H')); 
+
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Assoalho bucal (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região I')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Assoalho bucal (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região I')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Assoalho bucal (região de linha média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região I')); 
+
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Gengiva superior anterior', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região J')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Gengiva superior posterior (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região J')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Gengiva superior posterior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região J')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Gengiva inferior anterior', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região J')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Gengiva inferior posterior (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região J')); 
+INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Gengiva inferior posterior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região J')); 
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS tipo_lesao (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE);
+INSERT INTO tipo_lesao (nome) VALUES ( 'Potencialmente Maligna' );
+INSERT INTO tipo_lesao (nome) VALUES ( 'Maligna' );
+INSERT INTO tipo_lesao (nome) VALUES ( 'Outras' );
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS lesao (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE, id_tipo_lesao INTEGER, FOREIGN KEY (id) REFERENCES tipo_lesao (id));
+INSERT INTO lesao (nome, id_tipo_lesao) VALUES ( 'Leucoplasia', (select id from tipo_lesao where nome = 'Potencialmente Maligna')); 
+INSERT INTO lesao (nome, id_tipo_lesao) VALUES ( 'Eritroplasia', (select id from tipo_lesao where nome = 'Potencialmente Maligna')); 
+INSERT INTO lesao (nome, id_tipo_lesao) VALUES ( 'Queilite actínica', (select id from tipo_lesao where nome = 'Potencialmente Maligna')); 
+INSERT INTO lesao (nome, id_tipo_lesao) VALUES ( 'Eritroleucoplasia', (select id from tipo_lesao where nome = 'Potencialmente Maligna')); 
+INSERT INTO lesao (nome, id_tipo_lesao) VALUES ( 'Líquen', (select id from tipo_lesao where nome = 'Potencialmente Maligna')); 
+
+INSERT INTO lesao (nome, id_tipo_lesao) VALUES ( 'Sim', (select id from tipo_lesao where nome = 'Maligna')); 
+INSERT INTO lesao (nome, id_tipo_lesao) VALUES ( 'Não', (select id from tipo_lesao where nome = 'Maligna')); 
+
+INSERT INTO lesao (nome, id_tipo_lesao) VALUES ( 'Forma classificada', (select id from tipo_lesao where nome = 'Outras')); 
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS local_da_lesao (id INTEGER PRIMARY KEY AUTOINCREMENT, id_lesao INTEGER,  id_regiao_boca INTEGER,  id_avaliacao_clinica INTEGER, FOREIGN KEY (id) REFERENCES lesao, FOREIGN KEY (id) REFERENCES regiao_boca, FOREIGN KEY (id) REFERENCES  avaliacao_clinica);
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS diagnostico (id INTEGER PRIMARY KEY AUTOINCREMENT, hipotese_diagnostico TEXT, confirma_rastreamento BOOLEAN, observacao TEXT, id_atendimento INTEGER, FOREIGN KEY (id) REFERENCES atendimento);
+
+
+
+
+
+CREATE TABLE IF NOT EXISTS encaminhamento (id INTEGER PRIMARY KEY AUTOINCREMENT, data_encaminhamento DATE, orientação TEXT, id_local_atendimento INTEGER, id_atendimento INTEGER, FOREIGN KEY (id) REFERENCES local_atendimento, FOREIGN KEY (id) REFERENCES atendimento);
+
+
+
+
+CREATE TABLE IF NOT EXISTS tipo_de_procedimento (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE);
+INSERT INTO tipo_de_procedimento (nome) VALUES ( 'Biopsia' );
+INSERT INTO tipo_de_procedimento (nome) VALUES ( 'Citologia' );
+INSERT INTO tipo_de_procedimento (nome) VALUES ( 'Histopatológico' );
+INSERT INTO tipo_de_procedimento (nome) VALUES ( 'Outros' );
+
+
+
+
+CREATE TABLE IF NOT EXISTS resultado_da_conduta (id INTEGER PRIMARY KEY AUTOINCREMENT, anexo BLOB, observacao TEXT, id_tipo_de_procedimento INTEGER, id_encaminhamento INTEGER, FOREIGN KEY (id) REFERENCES tipo_de_procedimento, FOREIGN KEY (id) REFERENCES encaminhamento);
+
+
+

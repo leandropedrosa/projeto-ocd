@@ -2,7 +2,8 @@
     <StackLayout class="form">
         <Image class="logo" src="~/images/logo.png"></Image>
         <PreviousNextView>
-            <GridLayout rows="auto, auto, auto">
+            <GridLayout rows="auto, auto, auto, auto">
+
                 <StackLayout row="0" class="input-field">
                     <TextField class="input" hint="CPF" [isEnabled]="!processing"
                         autocorrect="false" autocapitalizationType="none"
@@ -17,16 +18,13 @@
                         [returnKeyType]="isLoggingIn ? 'done' : 'next'"></TextField>
                     <StackLayout class="hr-light"></StackLayout>
                 </StackLayout>
-                <!--
+
                 <StackLayout row="2" class="input-field">
-                    <Label text="Tipo de Atenção"></Label>
                     <ListPicker [items]="nivelDeAtencao" selectedIndex="0"
                         (selectedIndexChange)="selectedIndexChanged($event)"
-                        class="p-15" ></ListPicker>
+                        class="input" ></ListPicker>
                 </StackLayout>
-                -->
-
-                <ActivityIndicator rowSpan="2" [busy]="processing"></ActivityIndicator>
+                <ActivityIndicator rowSpan="3" [busy]="processing"></ActivityIndicator>
             </GridLayout>
         </PreviousNextView>
 

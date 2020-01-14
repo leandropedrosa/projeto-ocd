@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     ngOnInit(): void {
         this.page.actionBarHidden = true;
         this.user = new User();
-        //this.carregaTipoUsuario();
+        this.carregaTipoUsuario();
     }
 
     toggleForm() {
@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
     }
 
     login() {
-        this.routerExtensions.navigate(["/Navigation"], { clearHistory: true });
+        this.routerExtensions.navigate(["/navigation"], { clearHistory: true });
        /* (this.authenticationService.loginBasic(this.user).subscribe(
             data => {
                 this.processing = false;
@@ -102,8 +102,8 @@ export class LoginComponent implements OnInit {
     }
 
     carregaTipoUsuario(): void {
-        this.nivelDeAtencao.push("Primária");
-        this.nivelDeAtencao.push("Secundária");
+        this.nivelDeAtencao.push("Atenção Primária");
+        this.nivelDeAtencao.push("Atenção Secundária");
     }
 }
 

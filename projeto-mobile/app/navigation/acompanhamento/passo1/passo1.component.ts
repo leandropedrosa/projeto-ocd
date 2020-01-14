@@ -27,7 +27,7 @@ export class Passo1Component implements OnInit {
 
     ngOnInit(): void {
         this.route.queryParams.subscribe(params => {
-            this.rastreamento =  JSON.parse(params['matriciamento']);
+            this.rastreamento =  JSON.parse(params['rastreamento']);
         });
 
         console.dir(this.rastreamento);

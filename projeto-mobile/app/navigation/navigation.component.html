@@ -1,53 +1,17 @@
-<RadSideDrawer drawerTransition="PushTransition">
-
-    <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
-        <StackLayout class="sidedrawer-header">
-            <Image src="https://placem.at/people?random=11&w=500&h=500&txt=0"
-                   class="sidedrawer-avatar"></Image>
-            <Label class="sidedrawer-header-text var" text="Jane Doe"></Label>
-            <Label class="sidedrawer-header-footnote var" text="jane@mail.com"></Label>
+<ActionBar class="action-bar" title="Sobre Vida 1.0">
+    <ActionItem>
+        <StackLayout>
+            <Button class="fa btn-primary" text="&#xf0c9;" fontSize="20"></Button>
         </StackLayout>
-
-        <ScrollView row="1">
-            <StackLayout class="sidedrawer-content">
-
-                <StackLayout class="hr-light"></StackLayout>
-
-                <GridLayout columns="auto, *" class="sidedrawer-list-item"
-                            title="Home" tap="onNavigationItemTap">
-                    <Label row="0" col="0" text="&#xf015;" class="fa sidedrawer-icon"></Label>
-                    <Label row="0" col="1" text="Home" class="m-l-20 sidedrawer-item"></Label>
-                </GridLayout>
-
-                <StackLayout class="hr-light"></StackLayout>
-
-                <GridLayout columns="auto, *" class="sidedrawer-list-item"
-                            title="Friends" tap="onNavigationItemTap">
-                    <Label row="0" col="0" text="&#xf007;" class="fa sidedrawer-icon"></Label>
-                    <Label row="0" col="1" text="Friends" class="m-l-20 sidedrawer-item"></Label>
-                </GridLayout>
-
-                <StackLayout class="hr-light"></StackLayout>
-
-                <GridLayout columns="auto, *" class="sidedrawer-list-item"
-                            title="To-Do List" tap="onNavigationItemTap">
-                    <Label row="0" col="0" text="&#xf0ca;" class="fa sidedrawer-icon"></Label>
-                    <Label row="0" col="1" text="To-Do List" class="m-l-20 sidedrawer-item"></Label>
-                </GridLayout>
-
-                <StackLayout class="hr-light"></StackLayout>
-
-                <GridLayout columns="auto, *" class="sidedrawer-list-item"
-                            title="Settings" tap="onNavigationItemTap">
-                    <Label row="0" col="0" text="&#xf013;" class="fa sidedrawer-icon"></Label>
-                    <Label row="0" col="1" text="Settings" class="m-l-20 sidedrawer-item"></Label>
-                </GridLayout>
-
-                <StackLayout class="hr-light"></StackLayout>
-
-            </StackLayout>
-        </ScrollView>
+    </ActionItem>
+</ActionBar>
+<StackLayout>
+    <GridLayout rows="auto, *, auto">
+        <StackLayout row="0" class="m-b-25">
+            <Label class="t-30 text-center title" text="Bem Vindo"></Label>
+            <Label class="t-18 text-center font-weight-bold" [text]="loggedUser"></Label>
+            <StackLayout class="hr"></StackLayout>
+        </StackLayout>
+        <router-outlet name="center"></router-outlet>
     </GridLayout>
-
-    <page-router-outlet tkMainContent class="page page-content"></page-router-outlet>
-</RadSideDrawer>
+</StackLayout>

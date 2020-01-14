@@ -15,14 +15,6 @@ import {NativeScriptUISideDrawerModule} from "nativescript-ui-sidedrawer/angular
 import {AppRoutingModule} from "./app-routing.module";
 import {NavigationModule} from "./navigation/navigation.module";
 import {PreloginComponent} from "~/prelogin/prelogin.component";
-import {NativeScriptCommonModule} from "nativescript-angular/common";
-import {NavigationRoutingModule} from "~/navigation/navigation-routing.module";
-import {AcompanhamentoModule} from "~/navigation/acompanhamento/acompanhamento.module";
-import {NativeScriptUICalendarModule} from "nativescript-ui-calendar/angular";
-import {NativeScriptUIChartModule} from "nativescript-ui-chart/angular";
-import {NativeScriptUIDataFormModule} from "nativescript-ui-dataform/angular";
-import {NativeScriptUIAutoCompleteTextViewModule} from "nativescript-ui-autocomplete/angular";
-import {NativeScriptUIGaugeModule} from "nativescript-ui-gauge/angular";
 
 registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanager").PreviousNextView);
 
@@ -48,14 +40,15 @@ registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanage
     providers: [
         UserService,
         DatePipe,
-        { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}
-       // { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
-       // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}
+        // { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+        // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
 })
 export class AppModule {
-    ngDoBootstrap(app) { }
+    ngDoBootstrap(app) {
+    }
 }
