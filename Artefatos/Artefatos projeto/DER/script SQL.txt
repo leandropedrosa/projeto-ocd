@@ -265,7 +265,7 @@ INSERT INTO tipo_atencao (nome) VALUES ( 'Atenção secundária' );
 
 
 
-CREATE TABLE IF NOT EXISTS usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, cpf INTEGER, nome TEXT, senha TEXT, status TEXT, email TEXT, id_tipo_atencao INTEGER, id_local_atendimento INTEGER, FOREIGN KEY (id) REFERENCES tipo_atencao, FOREIGN KEY (id) REFERENCES local_atendimento);
+CREATE TABLE IF NOT EXISTS usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, cpf INTEGER, nome TEXT, senha TEXT, status TEXT, email TEXT, telefone TEXT, id_tipo_atencao INTEGER, id_local_atendimento INTEGER, FOREIGN KEY (id) REFERENCES tipo_atencao, FOREIGN KEY (id) REFERENCES local_atendimento);
 
 
 
@@ -284,12 +284,12 @@ CREATE TABLE IF NOT EXISTS atendimento (id INTEGER PRIMARY KEY AUTOINCREMENT, da
 
 
 
-CREATE TABLE IF NOT EXISTS fatores_risco (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE);
-INSERT INTO fatores_risco (nome) VALUES ( 'Idade' );
-INSERT INTO fatores_risco (nome) VALUES ( 'Sol' );
-INSERT INTO fatores_risco (nome) VALUES ( 'Fumante' );
-INSERT INTO fatores_risco (nome) VALUES ( 'Álcool' );
-INSERT INTO fatores_risco (nome) VALUES ( 'História da doença secundária' );
+CREATE TABLE IF NOT EXISTS fator_risco (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE);
+INSERT INTO fator_risco (nome) VALUES ( 'Idade' );
+INSERT INTO fator_risco (nome) VALUES ( 'Sol' );
+INSERT INTO fator_risco (nome) VALUES ( 'Fumante' );
+INSERT INTO fator_risco (nome) VALUES ( 'Álcool' );
+INSERT INTO fator_risco (nome) VALUES ( 'História da doença secundária' );
 
 
 
@@ -298,7 +298,7 @@ CREATE TABLE IF NOT EXISTS avaliacao_clinica (id INTEGER PRIMARY KEY AUTOINCREME
 
 
 
-CREATE TABLE IF NOT EXISTS fator_risco_avaliacao_clinica (id INTEGER PRIMARY KEY AUTOINCREMENT, id_fatores_risco INTEGER, id_avaliacao_clinica INTEGER, FOREIGN KEY (id) REFERENCES fatores_risco, FOREIGN KEY (id) REFERENCES avaliacao_clinica);
+CREATE TABLE IF NOT EXISTS fator_risco_avaliacao_clinica (id INTEGER PRIMARY KEY AUTOINCREMENT, id_fator_risco INTEGER, id_avaliacao_clinica INTEGER, FOREIGN KEY (id) REFERENCES fator_risco, FOREIGN KEY (id) REFERENCES avaliacao_clinica);
 
 
 
