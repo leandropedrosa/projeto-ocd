@@ -1,6 +1,5 @@
 package br.ufg.api.ocd.service;
 
-import br.ufg.api.ocd.model.Rastreamento;
 import br.ufg.api.ocd.repository.RastreamentoRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

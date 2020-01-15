@@ -30,40 +30,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Usuario {
     @Id
     private String id;
-    private String status;
     @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
     private String cpf;
     private String nome;
-    private String password;
-    private String cargo;
-    private String regiao;
-    private String token;
+    private String senha;
+    private String status;
     private String email;
-    //@Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
-    //@DBRef
-    //private Set<Role> roles;
+    private String telefone;
+    private TipoAtencao tipoAtencao;
+    private LocalAtendimento localAtendimento;
 
-    public Usuario() {
-    }
-    public Usuario(Usuario user) {
-        super();
-        this.status = user.status;
-        this.cpf = user.cpf;
-        this.nome = user.nome;
-        this.password = user.password;
-        this.cargo = user.cargo;
-        this.regiao = user.regiao;
-        this.email = user.email;
-    }
-
-    public Usuario(String status, String cpf, String nome, String password, String cargo, String regiao, String email) {
-        super();
-        this.status = status;
-        this.cpf = cpf;
-        this.nome = nome;
-        this.password = password;
-        this.cargo = cargo;
-        this.regiao = regiao;
-        this.email = email;
-    }
 }

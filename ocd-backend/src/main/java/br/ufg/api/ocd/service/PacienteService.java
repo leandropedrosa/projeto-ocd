@@ -1,6 +1,5 @@
 package br.ufg.api.ocd.service;
 
-import br.ufg.api.ocd.model.Paciente;
 import br.ufg.api.ocd.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
