@@ -1,7 +1,6 @@
 package br.ufg.api.ocd.swagger;
 
 import br.ufg.api.ocd.dto.RastreamentoDTO;
-import br.ufg.api.ocd.model.Rastreamento;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
