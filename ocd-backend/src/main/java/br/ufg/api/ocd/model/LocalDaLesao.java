@@ -5,16 +5,13 @@ import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.annotation.Id;
 
-import java.util.Date;
-
-@Document(collection = "atendimento")
+@Document(collection = "localDaLesao")
 @Getter
 @Setter
-public class Atendimento {
+public class LocalDaLesao {
     @Id
     private String id;
-    private Date dataAtendimento;
-    private Usuario usuario;
-    private Paciente paciente;
-    private TipoAtendimento tipoAtendimento;
+    private Lesao lesao;
+    private RegiaoBoca regiaoBoca;
+    private AvaliacaoClinica avaliacaoClinica;
 }

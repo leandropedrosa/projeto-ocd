@@ -36,6 +36,7 @@ public class Usuario {
     private String senha;
     private String status;
     private String email;
+    private String telefone;
     private TipoAtencao tipoAtencao;
     private LocalAtendimento localAtendimento;
 

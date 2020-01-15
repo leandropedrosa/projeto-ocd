@@ -7,14 +7,15 @@ import org.springframework.data.annotation.Id;
 
 import java.util.Date;
 
-@Document(collection = "atendimento")
+@Document(collection = "encaminhamento")
 @Getter
 @Setter
-public class Atendimento {
+public class Encaminhamento {
     @Id
     private String id;
-    private Date dataAtendimento;
-    private Usuario usuario;
-    private Paciente paciente;
-    private TipoAtendimento tipoAtendimento;
+    private Date dataEncaminhamento;
+    private String orientacao;
+    private LocalAtendimento localAtendimento;
+    private Atendimento atendimento;
+
 }
