@@ -265,7 +265,7 @@ INSERT INTO tipo_atencao (nome) VALUES ( 'Atenção secundária' );
 
 
 
-CREATE TABLE IF NOT EXISTS usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, cpf INTEGER, nome TEXT, senha TEXT, id_tipo_atencao INTEGER, id_local_atendimento INTEGER, FOREIGN KEY (id) REFERENCES tipo_atencao, FOREIGN KEY (id) REFERENCES local_atendimento);
+CREATE TABLE IF NOT EXISTS usuario (id INTEGER PRIMARY KEY AUTOINCREMENT, cpf INTEGER, nome TEXT, senha TEXT, status TEXT, email TEXT, id_tipo_atencao INTEGER, id_local_atendimento INTEGER, FOREIGN KEY (id) REFERENCES tipo_atencao, FOREIGN KEY (id) REFERENCES local_atendimento);
 
 
 
