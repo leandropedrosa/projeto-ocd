@@ -1,7 +1,6 @@
 package br.ufg.api.ocd.controller;
 
 import br.ufg.api.ocd.dto.LesaoDTO;
-import br.ufg.api.ocd.service.LesaoService;
 import br.ufg.api.ocd.swagger.LesaoSwagger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

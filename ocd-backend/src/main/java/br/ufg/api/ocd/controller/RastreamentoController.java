@@ -1,7 +1,6 @@
 package br.ufg.api.ocd.controller;
 
 import br.ufg.api.ocd.dto.RastreamentoDTO;
-import br.ufg.api.ocd.service.RastreamentoService;
 import br.ufg.api.ocd.swagger.RastreamentoSwagger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

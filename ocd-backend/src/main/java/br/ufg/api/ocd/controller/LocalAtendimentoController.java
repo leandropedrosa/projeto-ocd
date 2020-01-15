@@ -1,7 +1,6 @@
 package br.ufg.api.ocd.controller;
 
 import br.ufg.api.ocd.dto.LocalAtendimentoDTO;
-import br.ufg.api.ocd.service.LocalAtendimentoService;
 import br.ufg.api.ocd.swagger.LocalAtendimentoSwagger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
