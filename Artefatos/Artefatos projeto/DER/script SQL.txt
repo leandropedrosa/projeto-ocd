@@ -280,7 +280,7 @@ CREATE TABLE IF NOT EXISTS paciente (id INTEGER PRIMARY KEY AUTOINCREMENT, nome 
 
 
 
-CREATE TABLE IF NOT EXISTS atendimento (id INTEGER PRIMARY KEY AUTOINCREMENT, data_atendimento DATE, id_usuario INTEGER,  id_paciente INTEGER,  id_tipo_atendimento INTEGER, FOREIGN KEY (id) REFERENCES usuario, FOREIGN KEY (id) REFERENCES paciente, FOREIGN KEY (id) REFERENCES  tipo_atendimento);
+CREATE TABLE IF NOT EXISTS atendimento (id INTEGER PRIMARY KEY AUTOINCREMENT, data_atendimento DATE, descrição TEXT, id_usuario INTEGER,  id_paciente INTEGER,  id_tipo_atendimento INTEGER, id_local_atendimento INTEGER, FOREIGN KEY (id) REFERENCES usuario, FOREIGN KEY (id) REFERENCES paciente, FOREIGN KEY (id) REFERENCES  tipo_atendimento, FOREIGN KEY (id) REFERENCES local_atendimento);
 
 
 
@@ -303,77 +303,77 @@ CREATE TABLE IF NOT EXISTS fator_risco_avaliacao_clinica (id INTEGER PRIMARY KEY
 
 
 
-CREATE TABLE IF NOT EXISTS tipo_regiao (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE);
-INSERT INTO tipo_regiao (nome) VALUES ( 'Região A' );
-INSERT INTO tipo_regiao (nome) VALUES ( 'Região B' );
-INSERT INTO tipo_regiao (nome) VALUES ( 'Região C' );
-INSERT INTO tipo_regiao (nome) VALUES ( 'Região D' );
-INSERT INTO tipo_regiao (nome) VALUES ( 'Região E' );
-INSERT INTO tipo_regiao (nome) VALUES ( 'Região F' );
-INSERT INTO tipo_regiao (nome) VALUES ( 'Região G' );
-INSERT INTO tipo_regiao (nome) VALUES ( 'Região H' );
-INSERT INTO tipo_regiao (nome) VALUES ( 'Região I' );
-INSERT INTO tipo_regiao (nome) VALUES ( 'Região J' );
+CREATE TABLE IF NOT EXISTS tipo_regiao (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE, caminho_imagem TEXT);
+INSERT INTO tipo_regiao (nome, caminho_imagem) VALUES ( 'Região A', 'caminho da imagem' );
+INSERT INTO tipo_regiao (nome, caminho_imagem) VALUES ( 'Região B', 'caminho da imagem' );
+INSERT INTO tipo_regiao (nome, caminho_imagem) VALUES ( 'Região C', 'caminho da imagem' );
+INSERT INTO tipo_regiao (nome, caminho_imagem) VALUES ( 'Região D', 'caminho da imagem' );
+INSERT INTO tipo_regiao (nome, caminho_imagem) VALUES ( 'Região E', 'caminho da imagem' );
+INSERT INTO tipo_regiao (nome, caminho_imagem) VALUES ( 'Região F', 'caminho da imagem' );
+INSERT INTO tipo_regiao (nome, caminho_imagem) VALUES ( 'Região G', 'caminho da imagem' );
+INSERT INTO tipo_regiao (nome, caminho_imagem) VALUES ( 'Região H', 'caminho da imagem' );
+INSERT INTO tipo_regiao (nome, caminho_imagem) VALUES ( 'Região I', 'caminho da imagem' );
+INSERT INTO tipo_regiao (nome, caminho_imagem) VALUES ( 'Região J', 'caminho da imagem' );
 
 
 
 
-CREATE TABLE IF NOT EXISTS regiao_boca (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE, caminho_imagem TEXT, id_tipo_regiao INTEGER, FOREIGN KEY (id) REFERENCES tipo_regiao (id));
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Comissura labial esquerda', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Comissura labial direita', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Lábio inferior (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Lábio inferior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Lábio inferior (região de linha média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Lábio superior (lado esquerdo', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Lábio superior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Lábio superior (região de linha média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região A')); 
+CREATE TABLE IF NOT EXISTS regiao_boca (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT UNIQUE, id_tipo_regiao INTEGER, FOREIGN KEY (id) REFERENCES tipo_regiao (id));
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Comissura labial esquerda', (select id from tipo_regiao where nome = 'Região A')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Comissura labial direita', (select id from tipo_regiao where nome = 'Região A')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Lábio inferior (lado esquerdo)', (select id from tipo_regiao where nome = 'Região A')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Lábio inferior (lado direito)', (select id from tipo_regiao where nome = 'Região A')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Lábio inferior (região de linha média)', (select id from tipo_regiao where nome = 'Região A')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Lábio superior (lado esquerdo', (select id from tipo_regiao where nome = 'Região A')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Lábio superior (lado direito)', (select id from tipo_regiao where nome = 'Região A')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Lábio superior (região de linha média)', (select id from tipo_regiao where nome = 'Região A')); 
 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa labial superior (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região B')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa labial superior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região B')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa labial superior (região de linha média', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região B')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo superior anterior', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região B')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Freio labial superior', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região B')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Mucosa labial superior (lado esquerdo)', (select id from tipo_regiao where nome = 'Região B')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Mucosa labial superior (lado direito)', (select id from tipo_regiao where nome = 'Região B')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Mucosa labial superior (região de linha média', (select id from tipo_regiao where nome = 'Região B')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo superior anterior', (select id from tipo_regiao where nome = 'Região B')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Freio labial superior', (select id from tipo_regiao where nome = 'Região B')); 
 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa labial inferior (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região C')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa labial inferior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região C')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa labial inferior (região de linha média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região C')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo inferior anterior', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região C')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Freio labial inferior', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região C')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Mucosa labial inferior (lado esquerdo)', (select id from tipo_regiao where nome = 'Região C')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Mucosa labial inferior (lado direito)', (select id from tipo_regiao where nome = 'Região C')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Mucosa labial inferior (região de linha média)', (select id from tipo_regiao where nome = 'Região C')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo inferior anterior', (select id from tipo_regiao where nome = 'Região C')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Freio labial inferior', (select id from tipo_regiao where nome = 'Região C')); 
 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa jugal esquerda (posterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa jugal esquerda (média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa jugal esquerda (anterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa jugal direita (posterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa jugal direita (média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Mucosa jugal direita (anterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo inferior posterior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo inferior posterior (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo superior posterior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo superior (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Mucosa jugal esquerda (posterior)', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Mucosa jugal esquerda (média)', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Mucosa jugal esquerda (anterior)', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Mucosa jugal direita (posterior)', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Mucosa jugal direita (média)', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Mucosa jugal direita (anterior)', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo inferior posterior (lado direito)', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo inferior posterior (lado esquerdo)', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo superior posterior (lado direito)', (select id from tipo_regiao where nome = 'Região D')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Fundo de vestíbulo superior (lado esquerdo)', (select id from tipo_regiao where nome = 'Região D')); 
 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( '?????', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região E')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( '?????', (select id from tipo_regiao where nome = 'Região E')); 
 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Palato duro', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região F')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Palato mole', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região F')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Palato duro', (select id from tipo_regiao where nome = 'Região F')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Palato mole', (select id from tipo_regiao where nome = 'Região F')); 
 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Borda lateral direita da língua (posterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região G')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Borda lateral direita da língua (média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região G')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Borda lateral direita da língua (anterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região G')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Borda lateral direita da língua (posterior)', (select id from tipo_regiao where nome = 'Região G')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Borda lateral direita da língua (média)', (select id from tipo_regiao where nome = 'Região G')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Borda lateral direita da língua (anterior)', (select id from tipo_regiao where nome = 'Região G')); 
 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Borda lateral esquerda da língua (posterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região H')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Borda lateral esquerda da língua (média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região H')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Borda lateral esquerda da língua (anterior)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região H')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Borda lateral esquerda da língua (posterior)', (select id from tipo_regiao where nome = 'Região H')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Borda lateral esquerda da língua (média)', (select id from tipo_regiao where nome = 'Região H')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Borda lateral esquerda da língua (anterior)', (select id from tipo_regiao where nome = 'Região H')); 
 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Assoalho bucal (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região I')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Assoalho bucal (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região I')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Assoalho bucal (região de linha média)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região I')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Assoalho bucal (lado direito)', (select id from tipo_regiao where nome = 'Região I')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Assoalho bucal (lado esquerdo)', (select id from tipo_regiao where nome = 'Região I')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Assoalho bucal (região de linha média)', (select id from tipo_regiao where nome = 'Região I')); 
 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Gengiva superior anterior', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região J')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Gengiva superior posterior (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região J')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Gengiva superior posterior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região J')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Gengiva inferior anterior', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região J')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Gengiva inferior posterior (lado esquerdo)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região J')); 
-INSERT INTO regiao_boca (nome, caminho_imagem, id_tipo_regiao) VALUES ( 'Gengiva inferior posterior (lado direito)', 'caminho da imagem', (select id from tipo_regiao where nome = 'Região J')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Gengiva superior anterior', (select id from tipo_regiao where nome = 'Região J')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Gengiva superior posterior (lado esquerdo)', (select id from tipo_regiao where nome = 'Região J')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Gengiva superior posterior (lado direito)', (select id from tipo_regiao where nome = 'Região J')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Gengiva inferior anterior', (select id from tipo_regiao where nome = 'Região J')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Gengiva inferior posterior (lado esquerdo)', (select id from tipo_regiao where nome = 'Região J')); 
+INSERT INTO regiao_boca (nome, id_tipo_regiao) VALUES ( 'Gengiva inferior posterior (lado direito)', (select id from tipo_regiao where nome = 'Região J')); 
 
 
 
