@@ -1,15 +1,15 @@
 package br.ufg.api.ocd.model;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Date;
+import java.util.List;
 
 @Document(collection = "encaminhamento")
-@Getter
-@Setter
+@Data
 public class Encaminhamento {
     @Id
     private String id;
@@ -17,5 +17,8 @@ public class Encaminhamento {
     private String orientacao;
     private LocalAtendimento localAtendimento;
     private Atendimento atendimento;
+
+    @DBRef(lazy = true)
+    private List<ResultadoDaConduta> resultadoDasCondutasList;
 
 }

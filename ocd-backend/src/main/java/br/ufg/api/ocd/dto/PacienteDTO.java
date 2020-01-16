@@ -1,23 +1,21 @@
 package br.ufg.api.ocd.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import br.ufg.api.ocd.model.Bairro;
+import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
+import java.util.Date;
+import java.util.List;
 
-@Getter
-@Setter
+@Data
 public class PacienteDTO {
-
     private String id;
-    @NotBlank(message = "{paciente.nomePaciente.not.blank}")
-    private String nomePaciente;
-    @NotBlank(message = "{paciente.regiao.not.blank}")
-    private String regiao;
-    @NotBlank(message = "{paciente.ultimaData.not.blank}")
-    private String ultimaData;
-    @NotBlank(message = "{paciente.ultimoProcedimento.not.blank}")
-    private String ultimoProcedimento;
-    @NotBlank(message = "{paciente.status.not.blank}")
-    private String status;
+    private String nome;
+    private Date dataNascimento;
+    private String sexo;
+    private String email;
+    private String telefoneCelular;
+    private String nomeDaMae;
+    private String telefoneResponsavel;
+    private Bairro bairro;
+    private List<AtendimentoDTO> atendimentos;
 }

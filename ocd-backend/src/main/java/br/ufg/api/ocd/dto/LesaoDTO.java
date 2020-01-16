@@ -1,14 +1,17 @@
 package br.ufg.api.ocd.dto;
 
+import br.ufg.api.ocd.model.TipoLesao;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.index.IndexDirection;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 import javax.validation.constraints.NotBlank;
 
-@Getter
-@Setter
+@Data
 public class LesaoDTO {
     private String id;
-    @NotBlank(message = "{lesao.nome.not.blank}")
     private String nome;
+    private TipoLesaoDTO tipoLesao;
 }

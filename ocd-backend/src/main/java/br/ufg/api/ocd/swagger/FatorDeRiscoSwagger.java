@@ -1,6 +1,7 @@
 package br.ufg.api.ocd.swagger;
 
 import br.ufg.api.ocd.dto.FatoresDeRiscoDTO;
+import br.ufg.api.ocd.model.FatorRisco;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -14,7 +15,7 @@ import java.util.List;
 public interface FatorDeRiscoSwagger {
 
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Busca todos os Fatores de Risco", notes = "Busca todos os Fatores de Risco", response = FatorDeRisco.class)
+    @ApiOperation(value = "Busca todos os Fatores de Risco", notes = "Busca todos os Fatores de Risco", response = FatorRisco.class)
     @ApiResponses({
             @ApiResponse(code = 201, message = "Você não está autorizado a ver o recurso"),
             @ApiResponse(code = 401, message = "Não autorizado"),

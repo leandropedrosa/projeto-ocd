@@ -29,9 +29,9 @@ public class UsuarioController implements UsuarioSwagger {
         return modelMapper.map(serv.findByCpf(cpf), UsuarioDTO.class);
     }
 
-    @RequestMapping(value = "/login/{cpf}/{password}", method = RequestMethod.POST)
-    public UsuarioDTO login(@PathVariable("cpf") String cpf, @PathVariable("password") String password){
-        return modelMapper.map(serv.findByCpfAndPassword(cpf, password), UsuarioDTO.class);
+    @RequestMapping(value = "/login/{cpf}/{password}/{tipoAtencao}", method = RequestMethod.POST)
+    public UsuarioDTO login(@PathVariable("cpf") String cpf, @PathVariable("password") String password, @PathVariable("tipoAtencao") String tipoAtencao){
+        return modelMapper.map(serv.findByCpfAndPasswordAndTipoAtencao(cpf, password,tipoAtencao), UsuarioDTO.class);
     }
 
     @GetMapping(path = "/basicauth")

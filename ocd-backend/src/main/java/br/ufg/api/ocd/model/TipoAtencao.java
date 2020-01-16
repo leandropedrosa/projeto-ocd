@@ -1,15 +1,15 @@
 package br.ufg.api.ocd.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Builder;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.annotation.Id;
 
 @Document(collection = "tipoAtencao")
-@Getter
-@Setter
+@Data
+@Builder
 public class TipoAtencao {
     @Id
     private String id;

@@ -1,6 +1,7 @@
 package br.ufg.api.ocd.controller;
 
 import br.ufg.api.ocd.dto.FatoresDeRiscoDTO;
+import br.ufg.api.ocd.service.FatorRiscoService;
 import br.ufg.api.ocd.swagger.FatorDeRiscoSwagger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 public class FatorDeRiscoController implements FatorDeRiscoSwagger {
 
     @Autowired
-    FatorDeRiscoService serv;
+    FatorRiscoService serv;
     @Autowired
     private ModelMapper modelMapper;
 
@@ -27,5 +28,7 @@ public class FatorDeRiscoController implements FatorDeRiscoSwagger {
                 .map(post -> modelMapper.map(post, FatoresDeRiscoDTO.class))
                 .collect(Collectors.toList());
     }
+
+
 }
 

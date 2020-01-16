@@ -1,6 +1,7 @@
 package br.ufg.api.ocd.swagger;
 
 import br.ufg.api.ocd.dto.LesaoDTO;
+import br.ufg.api.ocd.model.Lesao;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;

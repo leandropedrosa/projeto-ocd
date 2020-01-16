@@ -1,14 +1,20 @@
 package br.ufg.api.ocd.service;
 
-import br.ufg.api.ocd.model.Role;
 import br.ufg.api.ocd.model.Usuario;
 import br.ufg.api.ocd.repository.RoleRepository;
 import br.ufg.api.ocd.repository.UsuarioRepository;
-import com.google.common.hash.HashCode;
-import com.google.common.hash.Hashing;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.List;
+import java.util.Optional;
+
 //import org.springframework.security.core.GrantedAuthority;
 //import org.springframework.security.core.authority.SimpleGrantedAuthority;
 //import org.springframework.security.core.userdetails.User;
@@ -17,17 +23,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.userdetails.UsernameNotFoundException;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 //import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
-import java.io.File;
-import java.io.IOException;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.*;
 
 @Service
-public class UsuarioService{// implements UserDetailsService {
+public class UsuarioService {// implements UserDetailsService {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
@@ -37,39 +35,40 @@ public class UsuarioService{// implements UserDetailsService {
     @Autowired
     private RoleRepository roleRepository;
 
-    public Boolean save(Usuario usuario) {
-        usuario.setPassword(retornaMD5(usuario.getPassword()));
-        usuario.setStatus("Esperando Ativação");
-        Role userRole = roleRepository.findByName("USER");
-        //usuario.setRoles(new HashSet<>(Arrays.asList(userRole)));
-        repository.save(usuario);
-        logger.info("-- Usuario Salvo --");
-        return true;
+    @Transactional
+    public Usuario salvar(Usuario usuario){
+        return repository.save(usuario);
     }
-/*
-    @Override
-    public UserDetails loadUserByUsername(String cpf) throws UsernameNotFoundException {
-        Usuario user = repository.findByCpf(cpf);
 
-        if(user == null) {
-            throw new UsernameNotFoundException("User not found");
+    public void deleteAll(){
+        repository.deleteAll();
+    }
+
+
+    /*
+        @Override
+        public UserDetails loadUserByUsername(String cpf) throws UsernameNotFoundException {
+            Usuario user = repository.findByCpf(cpf);
+
+            if(user == null) {
+                throw new UsernameNotFoundException("User not found");
+            }
+
+            List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("USER"));
+
+            return new User(user.getCpf(), user.getPassword(), authorities);
         }
 
-        List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority("USER"));
+        private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles) {
+            Set<GrantedAuthority> roles = new HashSet<>();
+            userRoles.forEach((role) -> {
+                roles.add(new SimpleGrantedAuthority(role.getName()));
+            });
 
-        return new User(user.getCpf(), user.getPassword(), authorities);
-    }
-
-    private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles) {
-        Set<GrantedAuthority> roles = new HashSet<>();
-        userRoles.forEach((role) -> {
-            roles.add(new SimpleGrantedAuthority(role.getName()));
-        });
-
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<>(roles);
-        return grantedAuthorities;
-    }
-*/
+            List<GrantedAuthority> grantedAuthorities = new ArrayList<>(roles);
+            return grantedAuthorities;
+        }
+    */
     public List<Usuario> getAll() {
         return repository.findAll();
     }
@@ -78,8 +77,12 @@ public class UsuarioService{// implements UserDetailsService {
         return repository.findByCpf(email);
     }
 
-    public Usuario findByCpfAndPassword(String cpf, String password) {
-        return repository.findByCpfAndPassword(cpf, retornaMD5(password));
+    public Usuario findByCpfAndPasswordAndTipoAtencao(String cpf, String password, String tipoAtencao) {
+
+        return repository.findByCpfAndSenha(cpf, retornaMD5(password));
+    /*    if (usuario.getTipoAtencao().equals(tipoAtencao)) {
+            return usuario;
+        } else return null;*/
     }
 
     public Optional<Usuario> findById(String id) {
@@ -87,7 +90,7 @@ public class UsuarioService{// implements UserDetailsService {
         return repository.findById(id);
     }
 
-    private static String retornaMD5(String senha){
+    private static String retornaMD5(String senha) {
         String sen = "";
         MessageDigest md = null;
         try {

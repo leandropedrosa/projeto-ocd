@@ -1,6 +1,7 @@
 package br.ufg.api.ocd.swagger;
 
 import br.ufg.api.ocd.dto.LocalAtendimentoDTO;
+import br.ufg.api.ocd.model.LocalAtendimento;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -15,7 +16,7 @@ import java.util.List;
 public interface LocalAtendimentoSwagger {
 
     @ResponseStatus(HttpStatus.OK)
-    @ApiOperation(value = "Busca pelos locais de atendimento por região", notes = "Busca pelos locais de atendimento por região", response = Rastreamento.class)
+    @ApiOperation(value = "Busca pelos locais de atendimento por região", notes = "Busca pelos locais de atendimento por região", response = LocalAtendimento.class)
     @ApiResponses({
             @ApiResponse(code = 201, message = "Você não está autorizado a ver o recurso"),
             @ApiResponse(code = 401, message = "Não autorizado"),

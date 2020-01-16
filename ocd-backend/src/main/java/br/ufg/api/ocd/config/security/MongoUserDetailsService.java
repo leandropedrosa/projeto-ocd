@@ -31,7 +31,7 @@ public class MongoUserDetailsService implements UserDetailsService {
         } else {
             authorities = Arrays.asList(new SimpleGrantedAuthority("USER"));
         }
-        return new User(user.getCpf(), user.getPassword(), authorities);
+        return new User(user.getCpf(), user.getSenha(), authorities);
     }
 
 }
