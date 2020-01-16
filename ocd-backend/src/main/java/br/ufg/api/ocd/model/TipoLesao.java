@@ -1,5 +1,6 @@
 package br.ufg.api.ocd.model;
 
+import lombok.Builder;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.IndexDirection;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Document(collection = "tipoLesao")
 @Data
+@Builder
 public class TipoLesao {
     @Id
     private String id;
