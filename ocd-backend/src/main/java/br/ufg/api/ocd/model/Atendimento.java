@@ -15,7 +15,7 @@ import java.util.List;
 @Data
 public class Atendimento {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date dataAtendimento;

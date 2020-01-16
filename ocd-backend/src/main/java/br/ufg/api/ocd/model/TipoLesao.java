@@ -14,7 +14,7 @@ import java.util.List;
 public class TipoLesao {
     @Id
     private String id;
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
+   // @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
     private String nome;
 
     @DBRef(lazy = true)

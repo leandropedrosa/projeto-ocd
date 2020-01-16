@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Lesao {
     @Id
     private String id;
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
+    //@Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
     private String nome;
     private TipoLesao tipoLesao;
 

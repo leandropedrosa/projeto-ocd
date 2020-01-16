@@ -15,7 +15,7 @@ import java.util.List;
 public class Paciente {
     @Id
     private String id;
-    @Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
+    //@Indexed(unique = true, direction = IndexDirection.DESCENDING, dropDups = true)
     private String nome;
     private Date dataNascimento;
     private String sexo;
