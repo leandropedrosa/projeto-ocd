@@ -5,16 +5,15 @@ import {NativeScriptFormsModule} from "nativescript-angular/forms";
 import {registerElement} from "nativescript-angular";
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {AppComponent} from "./app.component";
-import {LoginComponent} from "./login/login.component";
+import {LoginComponent} from "./components/login/login.component";
 import {NativeScriptUIListViewModule} from "nativescript-ui-listview/angular/listview-directives";
 import {DatePipe} from '@angular/common';
-import {UserService} from "./shared/user.service";
-import {HttpInterceptorService} from "~/shared/httpInterceptor.service";
+import {HttpInterceptorService} from "~/shared/service/httpInterceptor.service";
 import {NativeScriptBottomNavigationBarModule} from "nativescript-bottom-navigation/angular";
 import {NativeScriptUISideDrawerModule} from "nativescript-ui-sidedrawer/angular";
 import {AppRoutingModule} from "./app-routing.module";
-import {NavigationModule} from "./navigation/navigation.module";
-import {PreloginComponent} from "~/prelogin/prelogin.component";
+import {NavigationModule} from "./components/navigation/navigation.module";
+import {PreloginComponent} from "~/components/prelogin/prelogin.component";
 
 registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanager").PreviousNextView);
 
@@ -38,7 +37,6 @@ registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanage
         PreloginComponent,
     ],
     providers: [
-        UserService,
         DatePipe,
         {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}
         // { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

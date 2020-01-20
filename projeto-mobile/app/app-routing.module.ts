@@ -1,8 +1,8 @@
 import {NgModule} from "@angular/core";
 import {Routes} from "@angular/router";
 import {NativeScriptRouterModule} from "nativescript-angular/router";
-import {LoginComponent} from './login/login.component';
-import {PreloginComponent} from "./prelogin/prelogin.component";
+import {LoginComponent} from './components/login/login.component';
+import {PreloginComponent} from "./components/prelogin/prelogin.component";
 
 const routes: Routes = [
     {path: "", redirectTo: '/prelogin', pathMatch: 'full' },

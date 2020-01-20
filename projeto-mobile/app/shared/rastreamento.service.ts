@@ -12,10 +12,10 @@ export class RastreamentoService {
     }
 
     getPaciente(regiao: String) {
-        return this.httpClient.get<Paciente[]>(environment.apiUrl + '/paciente/' + regiao);
+        return this.httpClient.get<Paciente[]>(environment.API_URL + '/paciente/' + regiao);
     }
 
     public finalizar(rastreamento) {
-        return this.httpClient.post<Rastreamento>(environment.apiUrl + '/rastreamento', rastreamento);
+        return this.httpClient.post<Rastreamento>(environment.API_URL + '/rastreamento', rastreamento);
     }
 }

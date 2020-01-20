@@ -4,6 +4,7 @@ import br.ufg.api.ocd.model.Atendimento;
 import br.ufg.api.ocd.repository.AtendimentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class AtendimentoService {
         return repository.findAllByPaciente_Nome(nome);
     }
 
-
+    @Transactional
     public Atendimento salvar(Atendimento atendimento) {
 
         diagnosticoService.salvarTodos(atendimento.getDiagnosticos());
