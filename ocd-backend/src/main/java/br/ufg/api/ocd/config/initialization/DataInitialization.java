@@ -3,7 +3,6 @@ package br.ufg.api.ocd.config.initialization;
 
 import br.ufg.api.ocd.model.*;
 import br.ufg.api.ocd.repository.*;
-import br.ufg.api.ocd.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -71,7 +70,7 @@ public class DataInitialization implements ApplicationListener<ContextRefreshedE
     RoleRepository roleRepository;
 
     @Autowired
-    UsuarioService usuarioService;
+    UsuarioRepository usuarioRepository;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -125,8 +124,8 @@ public class DataInitialization implements ApplicationListener<ContextRefreshedE
     }
 
     private void criarScripts() {
-        List<VersaoBanco> lista = versaoBancoRepository.findAllOrderByDataAsc();
-        criarScriptsIniciaisMobile(scriptsRepository, lista.get(0));
+        //  List<VersaoBanco> lista = versaoBancoRepository.findAllOrderByDataAsc();
+        //  criarScriptsIniciaisMobile(scriptsRepository, lista.get(0));
     }
 
     private void criarDistrito() {
@@ -251,13 +250,13 @@ public class DataInitialization implements ApplicationListener<ContextRefreshedE
 
 
     private void criarUsuario() {
-        usuarioService.deleteAll();
+        usuarioRepository.deleteAll();
 
         //    Role adminRole = roleRepository.findByName("ADMIN");
         //  Role userRole = roleRepository.findByName("USER");
 
-        usuarioService.salvar(Usuario.builder().cpf("admin").email("teste@teste.com").nome("Teste").senha(passwordEncoder.encode("p@55w0Rd")).status("Ativo").build());
-        usuarioService.salvar(Usuario.builder().cpf("1111111111").email("teste@teste.com").nome("Teste").senha(passwordEncoder.encode("p@55w0Rd")).status("Ativo").build());
+        usuarioRepository.save(Usuario.builder().cpf("admin").email("teste@teste.com").nome("Teste").senha(passwordEncoder.encode("p@55w0Rd")).status("Ativo").build());
+        usuarioRepository.save(Usuario.builder().cpf("1111111111").email("teste@teste.com").nome("Teste").senha(passwordEncoder.encode("p@55w0Rd")).status("Ativo").build());
     }
 
     private void salvaVersaoBanco(VersaoBanco versaoBanco) {

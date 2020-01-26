@@ -1,21 +1,22 @@
-import {NgModule, NO_ERRORS_SCHEMA} from "@angular/core";
-import {NativeScriptModule} from "nativescript-angular/nativescript.module";
-import {NativeScriptHttpClientModule} from "nativescript-angular/http-client";
-import {NativeScriptFormsModule} from "nativescript-angular/forms";
-import {registerElement} from "nativescript-angular";
-import {HTTP_INTERCEPTORS} from '@angular/common/http';
-import {AppComponent} from "./app.component";
-import {LoginComponent} from "./components/login/login.component";
-import {NativeScriptUIListViewModule} from "nativescript-ui-listview/angular/listview-directives";
-import {DatePipe} from '@angular/common';
-import {HttpInterceptorService} from "~/shared/service/httpInterceptor.service";
-import {NativeScriptBottomNavigationBarModule} from "nativescript-bottom-navigation/angular";
-import {NativeScriptUISideDrawerModule} from "nativescript-ui-sidedrawer/angular";
-import {AppRoutingModule} from "./app-routing.module";
-import {NavigationModule} from "./components/navigation/navigation.module";
-import {PreloginComponent} from "~/components/prelogin/prelogin.component";
+import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { AppRoutingModule } from "./app.routing";
+import { AppComponent } from "./app.component";
 
-registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanager").PreviousNextView);
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
+
+import { ActionBarComponent } from './action-bar/action-bar.component';
+
+import { HomeComponent } from './home/home.component';
+import { DogTabComponent } from './dog-tab/dog-tab.component';
+import { DogsComponent } from './dogs/dogs.component';
+import { DogDetailsComponent } from './dog-details/dog-details.component';
+import { CatTabComponent } from './cat-tab/cat-tab.component';
+import { CatsComponent } from './cats/cats.component';
+import { CatDetailsComponent } from './cat-details/cat-details.component';
+
+import { DogService } from './dog.service';
+import {TesteComponent} from "./teste/teste.component";
 
 @NgModule({
     bootstrap: [
@@ -23,30 +24,26 @@ registerElement("PreviousNextView", () => require("nativescript-iqkeyboardmanage
     ],
     imports: [
         NativeScriptModule,
-        NativeScriptFormsModule,
-        NativeScriptUIListViewModule,
-        NativeScriptHttpClientModule,
         AppRoutingModule,
-        NavigationModule,
-        NativeScriptBottomNavigationBarModule,
-        NativeScriptUISideDrawerModule,
+        NativeScriptFormsModule
     ],
     declarations: [
         AppComponent,
-        LoginComponent,
-        PreloginComponent,
+        ActionBarComponent,
+        HomeComponent,
+        DogTabComponent,
+        CatTabComponent,
+        DogsComponent,
+        DogDetailsComponent,
+        CatsComponent,
+        CatDetailsComponent,
+        TesteComponent
     ],
     providers: [
-        DatePipe,
-        {provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}
-        // { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
-        // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        DogService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
     ]
 })
-export class AppModule {
-    ngDoBootstrap(app) {
-    }
-}
+export class AppModule { }
