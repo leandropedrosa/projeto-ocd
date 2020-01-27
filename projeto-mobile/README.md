@@ -10,7 +10,18 @@ Primeiro passo, acesse o [site oficial](http://nodejs.org) e clique em Download,
 juntamente com: 
 `sudo apt install npm`
 
+### **Instalando Angular**:
+`npm i -g @angular/cli`
+
+`npm i --save-dev @angular/cli`
+
 ### **Instalando nativescript**:
 `npm install -g nativescript@latest`
+
+`npm i -g @nativescript/schematics`
+
+`npm i --save-dev @nativescript/schematics`
+
+
 ### Finalmente:
 `tns preview`
