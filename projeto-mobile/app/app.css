@@ -20,3 +20,15 @@
     color: #ffffff;
     padding-right: 10;
 }
+
+.icon {
+    padding-top: 25;
+}
+
+.hr-top {
+    margin-bottom: 10;
+}
+
+.hr-bottom {
+    margin-top: -20;
+}
