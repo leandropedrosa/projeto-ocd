@@ -4,10 +4,10 @@
 @import '~nativescript-theme-core/css/core.light.android.css';
 
 .btn-primary {
-    height: 50;
+    height: 50px;
     background-color: #0bbdd5;
-    border-radius: 5;
-    font-size: 20;
+    border-radius: 5px;
+    font-size: 20px;
     font-weight: 600;
     color: white;
 }
@@ -18,17 +18,17 @@
 .action-bar {
     background-color: #0bbdd5;
     color: #ffffff;
-    padding-right: 10;
+    padding-right: 10px;
 }
 
 .icon {
-    padding-top: 25;
+    padding-top: 25px;
 }
 
 .hr-top {
-    margin-bottom: 10;
+    margin-bottom: 10px;
 }
 
 .hr-bottom {
-    margin-top: -20;
+    margin-top: -20px;
 }
