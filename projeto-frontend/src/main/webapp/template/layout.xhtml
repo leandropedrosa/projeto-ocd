@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="br"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+
+    <ui:fragment rendered="#{!SuperControl.moduloAula}">
+        <title>Pacto Treino</title>
+    </ui:fragment>
+    <ui:fragment rendered="#{SuperControl.moduloAula}">
+        <title>Aula Cheia</title>
+    </ui:fragment>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+    <meta name="mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-title" content="TreinoWeb"/>
+
+    <link rel="shortcut icon" sizes="256x256" href='#{resource["imagens/logo.png"]}'/>
+    <link rel="shortcut icon" sizes="196x196" href='#{resource["imagens/logo.png"]}'/>
+    <link rel="shortcut icon" sizes="152x152" href='#{resource["imagens/logo.png"]}'/>
+
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href='#{resource["logo.png"]}'/>
+    <link rel="apple-touch-icon-precomposed" href='#{resource["imagens/logo.png"]}'/>
+
+
+    <ui:fragment rendered="#{!SuperControl.moduloAula}">
+        <link rel="icon" type="image/png" href='#{resource["imagens/favicon.png"]}'/>
+    </ui:fragment>
+    <ui:fragment rendered="#{SuperControl.moduloAula}">
+        <link rel="icon" type="image/png" href='#{resource["imagens/favicon_ac.png"]}'/>
+    </ui:fragment>
+
+    <h:outputStylesheet library="css" name="font-awesome3.2.3.min.css"/>
+
+    <h:outputStylesheet library="css" name="chosen.min.css"/>
+    <h:outputStylesheet library="css" name="cadastros_v1.css"/>
+    <h:outputStylesheet library="css" name="all_1.10.min.css"/>
+    <h:outputStylesheet library="css" name="faqtoid.css"/>
+
+    <ui:insert name="CSS">
+
+
+    </ui:insert>
+    <script type="text/javascript">
+        PrimeFaces.locales['br'] = {
+            closeText: 'fechar',
+            prevText: 'anterior',
+            nextText: 'proximo',
+            currentText: 'atual',
+            monthNames: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+            monthNamesShort: ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"],
+            dayNames: ['Domingo', 'Segunda-Feira', 'Terça-Feira', 'Quarta-Feira', 'Quinta-Feira', 'Sexta-Feira', 'Sábado'],
+            dayNamesShort: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+            //dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sab'],
+            dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+            weekHeader: 'Sem',
+            firstDay: 0,
+            isRTL: false,
+            showMonthAfterYear: false,
+            yearSuffix: '',
+            month: 'Mês',
+            week: 'Semana',
+            day: 'Dia',
+            allDayText: 'Dia Todo'
+        };
+
+        function blurTudo() {
+            $('.tudo').addClass('blur');
+        }
+
+        function blurNada() {
+            $('.tudo').removeClass('blur');
+        }
+
+
+        $(document).keyup(function (e) {
+            if (e.which === 37) {
+                if ($('#prevFaqtoidTourTip').is(':visible')) {
+                    document.getElementById('prevFaqtoidTourTip').click();
+                }
+            } else if (e.which === 39) {
+                if ($('#nextFaqtoidTourTip').is(':visible')) {
+                    document.getElementById('nextFaqtoidTourTip').click();
+                }
+            } else if (e.which === 27) {
+                if ($('#stopFaqtoidTourTip').is(':visible')) {
+                    document.getElementById('stopFaqtoidTourTip').click();
+                }
+            }
+        });
+    </script>
+
+    <style>
+        .blur {
+            -webkit-filter: blur(6px);
+            -moz-filter: blur(6px);
+            -o-filter: blur(6px);
+            -ms-filter: blur(6px);
+            filter: blur(6px);
+        }
+
+        .faqtoidTourHighlight {
+            -webkit-filter: none !important;
+            -moz-filter: none !important;
+            -o-filter: none !important;
+            -ms-filter: none !important;
+            filter: none !important;
+        }
+
+        form {
+            margin: 0 !important;
+        }
+
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(#{resource[ "imagens/preloader.gif" ]}) center no-repeat #fff;
+        }
+
+    </style>
+</h:head>
+<h:body ontouchstart="" onmouseover="">
+
+    <!--<p:tooltip showEffect="slide" hideEffect="slide"/>-->
+    <h:form prependId="true" id="fmLay" autocomplete="off">
+
+
+        <!--USADO PARA BURLAR O AUTOCOMPLETE NO CHROME-->
+        <!--NÃO RETIRAR-->
+        <div style="position: absolute;top: -200px;">
+            <input type="email" name="email" style="visibility: hidden;"></input>
+            <input type="password" name="password" autocomplete="new-password" style="visibility: hidden;"></input>
+        </div>
+        <div class="se-pre-con"></div>
+        <script>
+            $(window).load(function () {
+                // Animate loader off screen
+                $(".se-pre-con").hide();
+            });
+        </script>
+
+
+        <p:dialog modal="true" id="panelCarregando"
+                  styleClass="panelCarregando"
+                  showHeader="false"
+                  closeOnEscape="false"
+                  widgetVar="carregando"
+                  draggable="false"
+                  closable="false"
+                  maximizable="false"
+                  minimizable="false"
+                  resizable="false"
+                  width="210"
+                  minWidth="220">
+            <i class="fa-icon-spin fa-icon-refresh fa-icon-2x" style="vertical-align: middle;"/>
+            <h:outputText id="panelCarregandoStatus"
+                          style="font-weight: bold; vertical-align: middle; margin-left: 10px; font-size: 14px;"
+                          value="Por favor, aguarde..."/>
+        </p:dialog>
+
+        <p:ajaxStatus style="width:64px;height:64px;position:fixed;right:5px;bottom:5px"
+                      onstart="carregando.show();carregando.jq.addClass('panelCarregando');resetTime();"
+                      oncomplete="carregando.hide();statusToParent(); if (typeof montarTips == 'function') montarTips()"
+                      onerror="carregando.hide();"/>
+        <ui:include src="./includes/topo.xhtml"/>
+        <ui:insert name="JS">
+
+        </ui:insert>
+
+        <p:remoteCommand global="false" name="setFlagLoginWiki"
+                         action="#{MenuControle.writeFlag('LOGGED_WIKI', true)}"/>
+
+        <ui:fragment rendered="#{!MenuControle.readFlag('LOGGED_WIKI')}">
+            <h:outputScript library="js" name="w.js"/>
+        </ui:fragment>
+
+        <h:panelGroup layout="block" style="#{MenuControle.modoFullScreen ? 'margin-top: -50px;' : ''}">
+            <ui:insert name="conteudo">
+                Conteudo
+            </ui:insert>
+
+        </h:panelGroup>
+        <ui:include src="./includes/rodape.xhtml"/>
+
+
+        <h:outputScript target="head" library="primefaces" name="jquery/jquery.js"/>
+
+        <!-- -->
+        <h:outputScript target="head" library="js" name="bootstrap.min.js"/>
+        <h:outputScript target="head" library="js" name="bootstrap-affix.js"/>
+        <h:outputScript target="head" library="js" name="jquery.cookie.js"/>
+        <h:outputScript target="head" library="js" name="chosen.proto.js"/>
+        <h:outputScript target="head" library="js" name="time.js"/>
+        <h:outputScript target="head" library="js" name="allPaginas_v5.1.min.js"/>
+
+
+        <!--<h:outputScript target="head" library="js" name="script.min.js"/>-->
+
+        <p:growl id="growl" autoUpdate="true" escape="fasle" globalOnly="true" sticky="true"
+                 severity="warn,error,severe"
+        />
+
+        <p:growl id="messages" life="4000" autoUpdate="true" sticky="false" severity="info"/>
+
+        <p:remoteCommand name="logoutRemote" action="#{LoginControle.logout(SuperControl.usuario.chave)}"
+                         oncomplete="document.location.href = urlLogout;" rendered="#{!LoginControle.vindoLogin}"/>
+
+        <p:remoteCommand name="logoutRemote" action="#{LoginControle.logoutToLogin}"
+                         oncomplete="#{LoginControle.urlLogout}" rendered="#{LoginControle.vindoLogin}"/>
+
+        <p:remoteCommand name="logoutRemotetoLogin" action="#{LoginControle.logoutToLogin}"
+                         oncomplete="#{LoginControle.urlLogout}"/>
+
+
+        <c:set var="timeSession" value="#{session.getMaxInactiveInterval()}"/>
+
+        <script type="text/javascript">
+            var maxInactiveInterval = ${timeSession};
+            urlLogoutRedirect = "${urlLogout}";
+            diferenca = ${timeSession} *
+            1000;
+            dataFinal = new Date(agora.getTime() + diferenca);
+
+            function handleMessage(data) {
+                var obj = $.parseJSON(data);
+                var professor = "#{SuperControl.usuario.professor.codigo}";
+                if (professor == obj.codProfessor) {
+                    contaMaisNotificacao(false);
+                }
+                //validar se está na tela de alunos
+                var estaNaTelaAlunos = #{fn:endsWith(request.requestURI, 'alunos.xhtml')};
+                if (estaNaTelaAlunos) {
+                    document.getElementById('fmLay:valorNovoCliente').value = obj.codCliente;
+                    atualizarNaAcademia();
+                }
+            }
+
+            var originalPrimeFacesAjaxResponseFunction = PrimeFaces.ajax.AjaxResponse;
+            PrimeFaces.ajax.AjaxResponse = function (data, status, xhr) {
+                var errorName = $(data.documentElement).find("error-name").text();
+                if (errorName == 'javax.faces.application.ViewExpiredException') {
+                    alert('Para sua segurança, sua sessão foi encerrada... Sua página será recarregada.');
+                    window.location.reload();
+                } else {
+                    originalPrimeFacesAjaxResponseFunction.apply(this, arguments);
+                }
+            };
+
+            function statusToParent() {
+                try {
+                    window.opener.atualizarStatusParent();
+                } catch (err) {
+                }
+
+            }
+
+            function atualizarStatusParent() {
+                try {
+                    document.getElementById('fmLay:botaoAtualizarParent').click();
+                } catch (err) {
+                }
+
+            }
+
+            function blurTudo() {
+            }
+
+            function blurNada() {
+            }
+
+            $(document).keyup(function (e) {
+                if (e.which === 37) {
+                    if ($('#prevFaqtoidTourTip').is(':visible')) {
+                        document.getElementById('prevFaqtoidTourTip').click();
+                    }
+                } else if (e.which === 39) {
+                    if ($('#nextFaqtoidTourTip').is(':visible')) {
+                        document.getElementById('nextFaqtoidTourTip').click();
+                    }
+                } else if (e.which === 27) {
+                    if ($('#stopFaqtoidTourTip').is(':visible')) {
+                        document.getElementById('stopFaqtoidTourTip').click();
+                    }
+                }
+            });
+
+        </script>
+    </h:form>
+
+</h:body>
+</html>

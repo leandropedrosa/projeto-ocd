@@ -1,0 +1,268 @@
+<!--suppress XmlUnusedNamespaceDeclaration -->
+<ui:composition
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <span id="includeRodape" class="tudo" style="">
+        <style>
+            footer{
+                z-index: 0 !important;
+            }
+            .popDoRodape{
+                z-index: 0 !important;
+            }
+        </style>
+        <div  class="navbar navbar-inverse navbar-fixed-bottom nav-bottom tudo" style="">
+            <div class="navbar-inner" style="position: relative">
+                <div class="container-fluid innerMNU statusBarra">
+                    <ui:fragment rendered="#{SuperControl.usuario.empresasZW.size() > 1}">
+                        <ul class="nav pull-left">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                   style="background-color: darkblue;">
+                                    <i class="fa-icon-chevron-up"/>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <ui:repeat value="#{SuperControl.usuario.empresasZW}" var="emp">
+                                        <ui:fragment rendered="#{SuperControl.usuario.empresaLogada.codigo != emp.codigo}">
+                                            <li><p:commandLink actionListener="#{LoginControle.trocarEmpresa(emp)}" action="pretty:" ajax="false">
+                                                    ${emp.nome}                                                
+                                                </p:commandLink>
+                                            </li>
+                                        </ui:fragment>
+                                    </ui:repeat>
+                                </ul>
+                            </li>
+                        </ul>
+                    </ui:fragment>
+
+                    <div class="pull-left footerUnidade tudo">#{SuperControl.usuario.empresaLogada.nome}</div>
+                    <h:panelGroup id="pnlBarraMeio" layout="block" styleClass="barraMeio">
+                        <h:panelGroup layout="block" styleClass="span1 notificaBarraInferior #{NotificacaoControle.totalNaoLidas > 0 ? 'ativa' : ''}" rendered="#{!fn:endsWith(request.requestURI, 'notificacoes.xhtml')}">
+                            <p:commandLink ajax="true" global="true" action="#{NotificacaoControle.listarRodape()}" update=":fmLay:pnlBarraMeio,:fmLay:pnlContemListaNotf"
+                                           oncomplete="mostraEscondeNotifica()">
+                                <f:param name="op" value="listarRodape"/>
+                                <i class="fa-icon-asterisk"/>
+                                <h:panelGroup layout="block" styleClass="contaNotifica">
+                                    <h:outputText escape="false" value="#{NotificacaoControle.totalNaoLidas > 0 ? NotificacaoControle.totalNaoLidas : ''}"/>
+                                </h:panelGroup>
+                            </p:commandLink>
+                        </h:panelGroup>
+                        <h:panelGroup layout="block" styleClass="span1 alunosBarraInferior" rendered="#{!fn:endsWith(request.requestURI, 'alunos.xhtml')}">
+                            <p:commandLink onclick="mostraEscondeAlunos()">
+                                <i class="fa-icon-group"/>
+                            </p:commandLink>
+                        </h:panelGroup>
+                    </h:panelGroup>
+
+                    <div class="pull-right" style="line-height: 30px; vertical-align: middle;padding-right: 5px;"
+                         title="#{SuperControl.horaServidor}">
+                        <span id="dataHoje">Segunda-feira, 30 de Setembro de 2013</span> <span id="horaAgora">11:39</span> <span id="dashFoo">-</span>
+                        <span style="color: red; font-family: 'Oxygen Mono',sans-serif;" id="tempoLogout">30:00</span>
+                    </div>                
+                    <script>
+                                startCountdown();
+                    </script>
+                </div>
+                <h:panelGroup layout="block" styleClass="popDoRodape contemUltimasNotifica" rendered="#{!fn:endsWith(request.requestURI, 'notificacoes.xhtml')}">
+                    <h:panelGroup id="pnlContemListaNotf" layout="block" styleClass="contemTabelaNotifica semHeaderColunas">
+                        <h:commandLink styleClass="headerPopDoRodape" onclick="return mostraEscondeNotifica();">
+                            <h:outputLabel styleClass="pull-left" value="#{SuperControl.usuario.nomeApresentar}" />
+                            <h:outputLabel styleClass="pull-right" value="#{fn:length(NotificacaoControle.notificacoes)}" />
+                        </h:commandLink>
+                        <c:set var="isRodapeTabela" value="listaNotfRodape"/>
+                        <f:subview id="contemNotifGaveta">
+                            <ui:include src="./tabelaNotificacoes.xhtml"/>
+                        </f:subview>
+                    </h:panelGroup>
+                </h:panelGroup>
+                <h:panelGroup id="pnlContemListaAcomp" layout="block" styleClass="popDoRodape contemAcompanhados" rendered="#{!fn:endsWith(request.requestURI, 'alunos.xhtml')}">
+                    <h:panelGroup layout="block" styleClass="contemTabelaAcomp semHeaderColunas">
+                        <h:commandLink styleClass="headerPopDoRodape" onclick="return mostraEscondeAlunos();">
+                            <h:outputLabel styleClass="pull-left" value="#{SuperControl.usuario.nomeApresentar}" />
+                            <h:panelGroup styleClass="totalAcomp">
+                                <h:outputText rendered="#{ClientesControle.totalTabela != fn:length(ClientesControle.clientes)}"
+                                              value="#{ClientesControle.totalTabela} de "/>
+                                <h:outputText value="#{fn:length(ClientesControle.clientes)} "/>
+                                <h:outputText value="#{fn:length(ClientesControle.clientes) > 1 ? title['principal.alunos']: title['agenda.aluno']}"/>
+                            </h:panelGroup>
+                        </h:commandLink>
+                        <f:subview id="contemAlunosGaveta">
+                            <ui:include src="./tabelaAlunos.xhtml"/>
+                        </f:subview>
+                    </h:panelGroup>
+                </h:panelGroup>
+            </div>
+        </div>
+
+        <ui:fragment rendered="#{!MenuControle.modoFullScreen and !(SuperControl.mobile and not SuperControl.smallMobile)}">
+            <footer class="tudo">
+                <div class="footer">
+                    <div class="container narrow row-fluid">
+
+                        <h:panelGroup layout="block" class="span8" rendered="#{SuperControl.moduloAula}">
+                            <div class="span7">
+
+                                <div layout="block" class="span8 container">
+                                    <h3><h:outputText rendered="#{SuperControl.usuario.cadastroHabilitado}" value="Cadastros"/></h3>
+                                    <ol class="fadedSubs span6" style="margin-left: 0;">
+                                            <ui:fragment rendered="#{SuperControl.usuario.isItemHabilitado('CADASTRO_AULAS', 'CONSULTAR')}">
+                                                <li><h:commandLink action="pretty:aulas">#{title['cadastro.aulas']}</h:commandLink></li>
+                                            </ui:fragment>
+                                            <ui:fragment rendered="true">
+                                                <li><h:commandLink action="pretty:modalidades">Modalidades</h:commandLink></li>
+                                                <li><h:commandLink action="pretty:ambientes">Ambientes</h:commandLink></li>
+                                            </ui:fragment>
+                                            <ui:fragment rendered="#{SuperControl.usuario.isItemHabilitado('ALUNOS', 'CONSULTAR')}">
+                                                <li><h:commandLink action="#{SuperControl.redirect('/alunos/todosalunos')}">#{title['cadastros.todosalunos']}</h:commandLink></li>
+                                            </ui:fragment>
+                                            <li><h:commandLink action="pretty:colaboradores">#{title['colaboradores']}</h:commandLink></li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                            <div class="span5">
+                                <h3 style="color:rgba(0,0,0,0);">-</h3>
+
+                                <div class="span6" style="margin-left: 0;">
+                                    <ol>
+                                        <li><h:commandLink action="pretty:agendaTotal">Agenda</h:commandLink></li>
+                                        <ui:fragment>
+                                            <li><h:commandLink action="pretty:gestaoSalaCheia">Business Intelligence</h:commandLink></li>
+                                        </ui:fragment>
+
+                                        </ol>
+                                </div>
+
+                            </div>
+                        </h:panelGroup>
+
+
+                        <h:panelGroup layout="block" class="span8" rendered="#{!SuperControl.moduloAula}">
+                            <div class="span7">
+
+                                <div layout="block" class="span8 container">
+                                    <h3><h:outputText rendered="#{SuperControl.usuario.cadastroHabilitado}" value="Cadastros"/></h3>
+                                    <ol class="fadedSubs span6" style="margin-left: 0;">
+                                        <li><h:commandLink action="pretty:musculo"
+                                                           rendered="#{SuperControl.usuario.isItemHabilitado('MUSCULOS', 'CONSULTAR')}">
+                                                #{title['cadastros.musculos']}</h:commandLink></li>
+
+                                        <li><h:commandLink action="pretty:gmusculo"
+                                                           rendered="#{SuperControl.usuario.isItemHabilitado('GRUPOS_MUSCULARES', 'CONSULTAR')}">
+                                                #{title['cadastros.gruposmusculares']}</h:commandLink></li>
+
+                                        <li><h:commandLink action="pretty:aparelhos"
+                                                           rendered="#{SuperControl.usuario.isItemHabilitado('APARELHOS', 'CONSULTAR')}">
+                                                #{title['cadastros.aparelhos']}</h:commandLink></li>
+
+                                        <li><h:commandLink action="pretty:atividades"
+                                                           rendered="#{SuperControl.usuario.isItemHabilitado('ATIVIDADES', 'CONSULTAR')}">
+                                                #{title['cadastros.atividades']}</h:commandLink></li>
+
+                                        <li><h:commandLink action="#{SuperControl.redirect('/cadastros/fichas/predefinidas')}"
+                                                           rendered="#{SuperControl.usuario.isItemHabilitado('FICHAS_PRE_DEFINIDAS', 'CONSULTAR')}">
+                                                Fichas Predefinidas</h:commandLink></li>
+                                    </ol>
+                                    <ol class="fadedSubs span6">
+                                        <li><h:commandLink action="pretty:catatividades"
+                                                           rendered="#{SuperControl.usuario.isItemHabilitado('CATEGORIA_ATIVIDADE', 'CONSULTAR')}">
+                                                #{title['cadastros.categoriaAtividades']}</h:commandLink></li>
+
+                                        <li><h:commandLink action="pretty:catfichas"
+                                                           rendered="#{SuperControl.usuario.isItemHabilitado('CATEGORIA_FICHAS', 'CONSULTAR')}">
+                                                #{title['cadastros.categoriaficha']}</h:commandLink></li>
+
+                                        <li><h:commandLink action="pretty:nivel"
+                                                           rendered="#{SuperControl.usuario.isItemHabilitado('NIVEIS', 'CONSULTAR')}">
+                                                #{title['cadastros.nivel']}</h:commandLink></li>
+
+                                        <li><h:commandLink action="pretty:objetivos"
+                                                           rendered="#{SuperControl.usuario.isItemHabilitado('OBJETIVOS', 'CONSULTAR')}">
+                                                #{title['cadastros.objetivos']}</h:commandLink></li>
+
+                                        <li><h:commandLink action="pretty:imagem"
+                                                           rendered="#{SuperControl.usuario.isItemHabilitado('IMAGENS', 'CONSULTAR')}">
+                                                #{title['cadastros.imagens']}</h:commandLink></li>
+                                    </ol>
+                                </div>
+                                <ui:remove>
+                                    <div class="span4">
+                                        <h3>Gestão</h3>
+                                        <ol class="fadedSubs">
+                                            <li>Geral</li>
+                                        </ol>
+                                    </div>
+                                </ui:remove>
+                            </div>
+                            <div class="span5">
+                                <h3 style="color:rgba(0,0,0,0);">-</h3>
+
+                                <div class="span6" style="margin-left: 0;">
+                                    <ol>
+
+                                        <li><h:commandLink action="#{SuperControl.redirect('/alunos/todosalunos')}"
+                                                           rendered="#{SuperControl.usuario.isItemHabilitado('ALUNOS', 'CONSULTAR')}">
+                                                #{title['cadastros.todosalunos']}</h:commandLink></li>
+
+                                        <li class=""><h:commandLink action="pretty:agenda">#{title['principal.agenda']}</h:commandLink></li>
+
+                                        <li class=""><h:commandLink action="#{SuperControl.redirect('/notificacoes/listarTodas')}"
+                                                                    rendered="#{SuperControl.usuario.isItemHabilitado('NOTIFICACOES', 'CONSULTAR')}">
+                                                #{title['principal.notificacoes']}</h:commandLink></li>
+
+                                        <li class=""><h:commandLink action="pretty:acompanhar"
+                                                                    rendered="#{SuperControl.usuario.isItemHabilitado('ACOMPANHAR', 'CONSULTAR')}">Acompanhar</h:commandLink></li>
+                                    </ol>
+                                </div>
+                                
+                            </div>
+                        </h:panelGroup>
+                        <div class="span4 assinatura">
+                            <a href="http://www.pacto.vc" target="_blank">
+                                <h:graphicImage library="imagens" name="assi_logo.png"/>
+                            </a>
+
+                            <div class="sociais">
+                                
+                                <a href="https://www.facebook.com/pactosolucoes"
+                                   target="_blank"
+                                   title="Facebook" style="margin-left: 5px;">
+                                    <i class="fa-icon-facebook iconRodape" />
+                                </a>
+                                <a href="https://www.instagram.com/pactosolucoes"
+                                   target="_blank"
+                                   title="Instagram" style="margin-left: 10px;">
+                                    <i class="fa-icon-instagram iconRodape" />
+                                </a>
+                                
+                                <a href="https://www.twitter.com/pactosolucoes"
+                                   target="_blank"
+                                   title="Twitter" style="margin-left: 5px;">
+                                    <i class="fa-icon-twitter iconRodape" />
+                                </a>
+                                <a href="https://www.youtube.com/pactosolucoes"
+                                   target="_blank"
+                                   title="Youtube" style="margin-left: 5px;">
+                                    <i class="fa-icon-youtube-play iconRodape" />
+                                </a>
+                                
+                            </div>
+                            <div>
+                                <div>Pacto Treino #{SuperControl.versao}</div>
+                                <div>IP.: #{SuperControl.ip} #{SuperControl.instance}</div>                            
+                                <div>Copyright 2013-2018 © - Todos os direitos reservados</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+
+        </ui:fragment>
+    </span>
+</ui:composition>

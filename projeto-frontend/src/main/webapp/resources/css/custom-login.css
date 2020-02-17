@@ -1,0 +1,893 @@
+/****** Fontes *********/
+@font-face {
+    font-family: 'Oxygen';
+    src: url(#{resource[ 'font/OxygenRegular.ttf' ]});
+}
+
+body {
+    position: absolute;
+    overflow: hidden;
+    /*background-image: url(#{resource[ "imagens/pacto-treino-web-loginbg-06.png" ]});*/
+    background-color: #e2dedf !important;
+    background-repeat: no-repeat;
+    /*background-position: left -10%;*/
+    /*background-size: 75%;*/
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    background-image: url(#{resource[ "imagens/bg_vid.jpg" ]});
+    background-position: 100% 20%;
+    background-size: 1620px auto;
+}
+
+body > form {
+    width: 100%;
+    height: 100%;
+}
+
+.container-fluid, .row-fluid {
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.row-fluid [class*="span"] {
+    margin: 0;
+}
+
+.mainBG {
+    /*background-color: #e2dedf !important;*/
+    z-index: 5;
+    position: relative;
+    text-align: center;
+    width: 76.9231% !important;
+    max-width: calc(100% - 315px);
+}
+
+.mainBG img {
+    margin: 20px 0;
+}
+
+div.span12.oldWelcome {
+    display: none;
+}
+.videoWelcome {
+    display: block;
+}
+
+#right-panel {
+    z-index: 6;
+    width: 110px;
+    background-color: #363636;
+    background-image: none;
+    position: absolute;
+    right: 190px;
+    top: 0;
+    padding: 20px 0;
+    height: 100%;
+    text-align: center;
+}
+
+.contemModulos {
+    margin: 0;
+}
+
+#sidepage {
+    height: 100%;
+    right: 0;
+    left: auto;
+    bottom: 0;
+    top: 0;
+    z-index: 10;
+    position: fixed;
+    width: 300px;
+}
+
+.contemModulos li {
+    list-style: none;
+}
+
+.contemModulos li a {
+    color: white;
+    text-decoration: none;
+}
+
+.contemModulos li a img {
+    margin: 10px 0;
+}
+
+.contemModulos li a:hover {
+    color: lightgray;
+    text-decoration: none;
+}
+
+#loginPanel {
+    text-align: center;
+    font-family: 'Armata', sans-serif;
+    background-color: white;
+    height: 100%;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 10;
+}
+
+.toggleSliderLogin {
+    display: none;
+}
+
+#loginPanel img {
+    margin: 50px auto 32px;
+}
+
+#loginPanel #formHolder {
+    border: 1px solid #9d9d9d;
+    border-radius: 5px;
+    display: block;
+    width: 85%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#loginPanel #formHolder h3 {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    color: #363636;
+    text-align: left;
+    padding: 15px 0 10px 20px;
+    margin: 0;
+}
+
+#loginPanel #formHolder #formInner {
+    background: #f2efef;
+    padding: 1px;
+}
+
+.fields {
+    border: solid 1px #9d9d9d;
+    border-radius: 5px;
+    padding: 5px 0 5px 0;
+    background-color: white;
+    background-position: 5px 0;
+    background-repeat: no-repeat;
+    background-size: 16%;
+    width: 75%;
+    margin: 5px auto;
+}
+
+.fields input {
+    padding: 0;
+    margin: 0 0 0 40px;
+    border: none;
+    background: none;
+    box-shadow: none;
+    width: 75%;
+    box-shadow: none !important;
+}
+
+.usrChave {
+    background-image: url(#{resource[ "imagens/login_Chave.png" ]});
+}
+
+.usrName {
+    background-image: url(#{resource[ "imagens/login_User.png" ]});
+}
+
+.usrPass {
+    background-image: url(#{resource[ "imagens/login_Pass.png" ]});
+}
+
+#formInnerNotes {
+    font-size: 10px;
+    font-family: "Oxygen", sans-serif;
+    padding-top: 3px;
+
+}
+
+label {
+    font-size: 10px !important;
+    font-family: "Oxygen", sans-serif;
+    padding-top: 3px;
+    width: auto;
+    display: inline-block;
+    line-height: 13px;
+    vertical-align: middle;
+    margin-right: 18px;
+}
+
+label span {
+    margin-left: 5px;
+}
+
+#botaoLoginTab {
+    display: none;
+}
+
+.abrePan, .abrePan:hover, .abrePan:focus {
+    font-family: "Oxygen", sans-serif;
+    color: white;
+    background-color: #28476f;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 5px 15px;
+    float: left;
+    margin: 10px 0 12px 10%;
+    text-decoration: none;
+}
+
+.abrePan.btn-danger {
+    background-color: #DA4F49 !important;
+}
+
+#coverAllBlack {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 20000;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+}
+.rememberMe {
+    display: none;
+}
+/* iPad 10" Retrato */
+@media (min-width:768px) and (max-width:979px) {
+    body {
+        background-image: url(#{resource["imagens/bg_vid_tall.jpg"]});
+        background-position: 70% top;
+        background-size: 200%;
+    }
+}
+/* iPad 10" Paisagem */
+@media (min-width:979px) and (max-width:1024px) {
+    body {
+        background-position: 76% 20%;
+    }
+}
+/* Outro */
+@media screen and (min-width: 599px) and (max-width: 767px) {
+    body {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: url(#{resource[ "imagens/bg_vid.jpg" ]});
+        background-position: center top;
+        background-size: 1400px;
+    }
+    .mainBG {
+        background-color: #e2dedf !important;
+        z-index: 5;
+        position: relative;
+        text-align: center;
+        width: 100% !important;
+        height: 100px;
+        vertical-align: bottom;
+        display: none !important;
+    }
+
+    .mainBG img {
+        margin: 15% 0 0 0;
+    }
+    .oldWelcome {
+        display: block;
+    }
+    .videoWelcome {
+        display: none;
+    }
+    #right-panel {
+        z-index: 6;
+        width: 100%;
+        background-color: #363636;
+        background-image: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        left: 0;
+        padding: 0;
+        height: 65px;
+        text-align: center;
+    }
+
+    .contemModulos {
+        margin: 0;
+        width: 100%;
+        height: 65px;
+    }
+
+    #sidepage {
+        height: 65px;
+        right: 0;
+        left: 0;
+        top: 0 !important;
+        z-index: 10;
+        position: absolute;
+        width: 100%;
+        background-color: black !important;
+    }
+
+    .contemModulos li {
+        list-style: none;
+        display: inline-block;
+        margin: 0 20px;
+        vertical-align: text-top;
+    }
+
+    .contemModulos li a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .contemModulos li a img {
+        margin: 10px 0;
+        width: auto;
+        height: 45px;
+    }
+
+    .contemModulos li a:hover {
+        color: lightgray;
+        text-decoration: none;
+    }
+
+    .contemModulos li .cancelarBtn i {
+        line-height: 65px;
+        vertical-align: middle;
+        height: 65px;
+        display: block;
+    }
+
+    .contemModulos li .etiqueta {
+        display: none;
+    }
+
+    #loginPanel {
+        text-align: left;
+        vertical-align: text-top;
+    }
+
+    #loginPanel img {
+        width: 120px;
+        margin: 10px;
+        vertical-align: text-top;
+        float: left;
+    }
+
+    #loginPanel #formHolder {
+        border: medium none;
+        display: inline-block;
+        width: 76%;
+        float: right;
+        border-radius: 0;
+    }
+
+    #loginPanel #formHolder h3 {
+        padding: 10px;
+        width: 105px;
+        display: inline-block;
+    }
+
+    #loginPanel #formHolder #formInner {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+        width: 180px;
+        background-color: transparent;
+    }
+
+    .fields {
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+        border: medium none;
+        width: 60px;
+        display: inline-block;
+        background-color: transparent;
+        background-position: 0 center;
+        background-repeat: no-repeat;
+        background-image: none !important;
+        position: relative;
+    }
+
+    .fields input {
+        margin: 0;
+        border: medium none;
+        background: none transparent;
+        width: 0;
+        box-shadow: none !important;
+        height: 65px;
+        padding: 0 0 0 60px;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        transition: width 400ms ease, background 400ms ease, left 400ms ease;
+        position: absolute;
+        top: -36px;
+        left: 0;
+        border-radius: 0;
+
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+
+        -webkit-perspective: 1000;
+        -moz-perspective: 1000;
+        -ms-perspective: 1000;
+        perspective: 1000;
+
+        -webkit-backface-visibility: hidden;
+
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    .usrChave input {
+        background-image: url(#{resource[ "imagens/login_Chave.png" ]});
+        z-index: 19;
+    }
+
+    .usrChave input:focus {
+        background-image: url(#{resource[ "imagens/login_Chave.png" ]});
+        width: 180px;
+        background-color: #dbdbdb;
+        left: 0px;
+        z-index: 20;
+    }
+
+    .usrName input {
+        background-image: url(#{resource[ "imagens/login_User.png" ]});
+        z-index: 19;
+    }
+
+    .usrName input:focus {
+        width: 180px;
+        background-color: #dbdbdb;
+        left: -60px;
+        z-index: 20;
+    }
+
+    .usrPass input {
+        background-image: url(#{resource[ "imagens/login_Pass.png" ]});
+        z-index: 19;
+    }
+
+    .usrPass input:focus {
+        width: 180px;
+        background-color: #dbdbdb;
+        left: -120px;
+        z-index: 20;
+    }
+
+    #formInnerNotes {
+        display: none;
+    }
+
+    .rememberMe {
+        display: inline-block;
+        width: 85px;
+        color: white;
+        background-color: #da2d3d;
+        font-size: 18px;
+        height: 65px;
+        line-height: 65px;
+        vertical-align: middle;
+        border: none;
+        text-align: center;
+        transition: background-color 500ms ease;
+
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+
+        -webkit-perspective: 1000;
+        -moz-perspective: 1000;
+        -ms-perspective: 1000;
+        perspective: 1000;
+
+        -webkit-backface-visibility: hidden;
+
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .rememberMe.ativado {
+        background-color: #487645;
+    }
+
+    label {
+        font-size: 10px !important;
+        font-family: "Oxygen", sans-serif;
+        padding-top: 3px;
+        width: auto;
+        display: inline-block;
+        line-height: 13px;
+        vertical-align: middle;
+        margin-right: 18px;
+    }
+
+    label span {
+        margin-left: 5px;
+    }
+
+    #divBotaoLogin {
+        /*display: inline-block;*/
+        float: right;
+        display: none;
+    }
+
+    #botaoLoginTab {
+        display: inline-block;
+        float: right;
+        font-size: 22px;
+        padding: 20px 20px 20px 22px;
+        border-radius: 0;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    .abrePan, .abrePan:hover, .abrePan:focus {
+        display: inline-block;
+    }
+
+    #coverAllBlack {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 20000;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #000;
+    }
+}
+@media screen and (min-width: 319px) and (max-width: 598px) {
+    html {
+        overflow: hidden !important;
+        height: 100%;
+    }
+    body {
+        display: block;
+        background-position: center 60%;
+        background-size: 90%;
+        background-image: url(#{resource[ "imagens/pacto-treino-web-loginbg-06b.png" ]});
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        min-height: 100%;
+        overflow: hidden !important;
+    }
+    .mainBG {
+        background-color: #e2dedf !important;
+        z-index: 5;
+        position: relative;
+        text-align: center;
+        width: 100% !important;
+        height: 100px;
+        vertical-align: bottom;
+    }
+
+    .mainBG img {
+        width: 60%;
+        margin: 5% 0 0 0;
+    }
+    .oldWelcome {
+        display: block;
+    }
+    .videoWelcome {
+        display: none;
+    }
+    #right-panel {
+        z-index: 6;
+        width: 90%;
+        background-color: rgb(54, 54, 54);
+        background-image: none;
+        position: absolute;
+        right: auto;
+        top: 100%;
+        left: 5%;
+        padding: 0;
+        height: 60%;
+        text-align: center;
+    }
+
+    .contemModulos {
+        margin: 0;
+        width: 100%;
+        height: 65px;
+    }
+
+    #sidepage {
+        right: auto;
+        z-index: 10;
+        position: absolute;
+        width: 90%;
+        background-color: black !important;
+        height: 90%;
+        left: 5%;
+        /*top: -webkit-calc(100% - 40px);*/
+        top: calc(100% - 40px);
+        bottom: auto !important;
+        -webkit-transition: top 600ms ease;
+        transition: top 600ms ease;
+
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+
+        -webkit-perspective: 1000;
+        -moz-perspective: 1000;
+        -ms-perspective: 1000;
+        perspective: 1000;
+
+        -webkit-backface-visibility: hidden;
+
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    #sidepage.abreLogin {
+        top: 10% !important;
+    }
+
+    .contemModulos li {
+        list-style: none;
+        display: inline-block;
+        margin: 0 20px;
+        vertical-align: text-top;
+    }
+
+    .contemModulos li a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .contemModulos li a img {
+        margin: 10px 0;
+        width: auto;
+        height: 45px;
+    }
+
+    .contemModulos li a:hover {
+        color: lightgray;
+        text-decoration: none;
+    }
+
+    .contemModulos li .cancelarBtn i {
+        line-height: 65px;
+        vertical-align: middle;
+        height: 65px;
+        display: block;
+    }
+
+    .contemModulos li .etiqueta {
+        display: none;
+    }
+
+    #loginPanel {
+        text-align: center;
+        vertical-align: text-top;
+    }
+
+    .toggleSliderLogin {
+        display: block;
+        width: 100%;
+        text-align: center;
+        background-color: #363636;
+        color: white;
+        padding: 10px 0;
+    }
+
+    #loginPanel img {
+        width: 130px;
+        margin: 10px;
+    }
+
+    #loginPanel #formHolder {
+        border: medium none;
+        display: inline-block;
+        width: 100%;
+        float: right;
+        border-radius: 0;
+    }
+
+    #loginPanel #formHolder h3 {
+        padding: 10px;
+        width: 100%;
+        display: none;
+        font-size: 22px;
+        font-weight: normal;
+        margin: 0 0 0 20%;
+    }
+
+    #loginPanel #formHolder #formInner {
+        display: block;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        background-color: transparent;
+    }
+
+    .fields {
+        border-radius: 0;
+        padding: 0;
+        margin: 0;
+        border: medium none;
+        width: 100%;
+        display: block;
+        background-color: transparent;
+        background-position: 0 center;
+        background-repeat: no-repeat;
+        background-image: none !important;
+        position: relative;
+    }
+
+    .fields input {
+        margin: 0;
+        border: medium none;
+        background: none #e8e8e8;
+        width: -webkit-calc(100% - 60px);
+        width: calc(100% - 60px);
+        box-shadow: none !important;
+        height: 60px;
+        padding: 0 0 0 60px;
+        overflow: hidden;
+        background-repeat: no-repeat;
+        transition: background 400ms ease;
+        position: relative;
+        top: 0;
+        left: 0;
+        border-radius: 0;
+        font-size: 24px;
+        vertical-align: middle;
+        line-height: 60px;
+    }
+
+    .usrChave input {
+        background-image: url(#{resource[ "imagens/login_Chave.png" ]});
+        z-index: 19;
+    }
+
+    .usrChave input:focus {
+        background-color: #dbdbdb;
+    }
+
+    .usrName input {
+        background-image: url(#{resource[ "imagens/login_User.png" ]});
+        z-index: 19;
+    }
+
+    .usrName input:focus {
+        background-color: #dbdbdb;
+    }
+
+    .usrPass input {
+        background-image: url(#{resource[ "imagens/login_Pass.png" ]});
+        z-index: 19;
+    }
+
+    .usrPass input:focus {
+        background-color: #dbdbdb;
+    }
+
+    #formInnerNotes {
+        display: none;
+    }
+
+    .rememberMe {
+        display: block;
+        width: 100%;
+        color: white;
+        background-color: #da2d3d;
+        font-size: 18px;
+        height: 52px;
+        line-height: 52px;
+        vertical-align: middle;
+        border: none;
+        transition: background-color 500ms ease;
+        position: absolute;
+        bottom: 53px;
+
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+
+        -webkit-perspective: 1000;
+        -moz-perspective: 1000;
+        -ms-perspective: 1000;
+        perspective: 1000;
+
+        -webkit-backface-visibility: hidden;
+
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+
+    .rememberMe.ativado {
+        background-color: #487645;
+    }
+
+    label {
+        font-size: 10px !important;
+        font-family: "Oxygen", sans-serif;
+        padding-top: 3px;
+        width: auto;
+        display: inline-block;
+        line-height: 13px;
+        vertical-align: middle;
+        margin-right: 18px;
+    }
+
+    label span {
+        margin-left: 5px;
+    }
+
+    #divBotaoLogin {
+        /*display: inline-block;*/
+        float: right;
+        display: none;
+    }
+
+    #botaoLoginTab {
+        display: block;
+        float: none;
+        font-size: 22px;
+        padding: 15px 0 15px 0;
+        border-radius: 0;
+        margin: 0;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        border: none;
+    }
+    .abrePan, .abrePan:hover, .abrePan:focus {
+        display: inline-block;
+    }
+
+    #coverAllBlack {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        z-index: 20000;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #000;
+    }
+}
+@media screen and (min-height: 320px) and (max-height: 480px) and (max-device-width: 480px) {
+    .fields input.light {
+        height: 40px;
+        line-height: 40px;
+        font-size: 16px;
+        background-size: 14%;
+    }
+    .rememberMe.light {
+        height: 40px;
+        line-height: 40px;
+        bottom: 43px;
+    }
+    #botaoLoginTab.light {
+        padding: 10px 0 10px 0;
+    }
+}
