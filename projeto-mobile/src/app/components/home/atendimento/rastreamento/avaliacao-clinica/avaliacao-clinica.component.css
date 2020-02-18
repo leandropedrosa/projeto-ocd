@@ -1,0 +1,79 @@
+/* Add mobile styles for the component here.  */
+.body {
+    padding-top: 0;
+    background-color: #ffffff;
+}
+
+.list-separator {
+    border-bottom-width: 1;
+    border-bottom-color: #eeeeee;
+}
+
+.first-line {
+    margin-top: 12;
+    color: #0bbdd5;
+}
+
+.second-line {
+    font-size: 12;
+}
+
+.icon-selected {
+    width: 24;
+}
+
+.btn-tab {
+    padding: 10 15;
+    font-weight: bold;
+    /*background-color: #0bbdd5;*/
+    color: #cccccc;
+    border-bottom-width: 2;
+    border-bottom-color: #cccccc;
+}
+
+.btn-tab-active {
+    color: #0bbdd5;
+    border-bottom-color: #0bbdd5;
+}
+
+.title {
+    font-size: 16;
+    text-align: left;
+    color: #0bbdd5;
+}
+
+.sub-title {
+    font-size: 14;
+    text-align: left;
+}
+
+.home-panel{
+    vertical-align: center;
+    font-size: 20;
+    margin: 15;
+}
+
+.description-label{
+    margin-bottom: 15;
+}
+
+.action-bar {
+    background-color: #f2f4f5;
+}
+
+.actionBarLabel {
+    font-family: 'Open Sans', 'OpenSans-Bold';
+    font-weight: bold;
+}
+
+.countryName {
+    color: #33393d;
+    font-family: 'Open Sans', 'OpenSans-Bold';
+    font-weight: bold;
+}
+
+.countryPop {
+    color: black;
+    font-family: 'Open Sans', 'OpenSans-Regular';
+    font-size: 12;
+}

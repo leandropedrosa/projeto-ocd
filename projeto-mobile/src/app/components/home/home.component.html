@@ -1,0 +1,34 @@
+<ActionBar class="action-bar" title="Sobre Vida 1.0" visibility="visible">
+    <ActionItem>
+        <ActionItem.actionView>
+            <StackLayout>
+                <Button class="fa btn-primary" text="&#xf0c9;" fontSize="20"></Button>
+            </StackLayout>
+        </ActionItem.actionView>
+    </ActionItem>
+</ActionBar>
+<StackLayout>
+    <GridLayout rows="auto, *, auto">
+        <StackLayout row="0" class="m-b-25">
+            <Label class="t-30 text-center title" text="Bem Vindo"></Label>
+            <Label class="t-18 text-center font-weight-bold" [text]="loggedUser"></Label>
+            <StackLayout class="hr"></StackLayout>
+        </StackLayout>
+        <GridLayout row="1" rows="auto, auto" columns="*, *" class="menu-container">
+            <StackLayout row="0" col="0" data-name="home" class="menu-item">
+                <Button text="&#xf007;" class="fa menu-icon" (tap)="direciona('perfil')"></Button>
+                <Label text="Perfil" class="text-center"></Label>
+            </StackLayout>
+            <StackLayout row="0" col="1" data-name="users" class="menu-item">
+                <Button text="&#xf0c0;" class="fa menu-icon" (tap)="direciona('lista-pacientes')"></Button>
+                <Label text="Pacientes" class="text-center"></Label>
+            </StackLayout>
+            <StackLayout row="1" col="0" data-name="id-card-o" class="menu-item">
+                <Button text="&#xf073;" class="fa menu-icon" (tap)="direciona('atendimento')"></Button>
+                <Label text="Atendimentos" class="text-center"></Label>
+            </StackLayout>
+        </GridLayout>
+        <Button row="2" class="btn btn-rounded-sm btn-primary btn-margin font-weight-bold t-18 flexbox-item"
+                (tap)="logout()" text="Log out"></Button>
+    </GridLayout>
+</StackLayout>
