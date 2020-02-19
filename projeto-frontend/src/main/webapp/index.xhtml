@@ -1,0 +1,407 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>SISTEMA</title>
+
+	<!-- Bootstrap -->
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="css/waves.min.css" type="text/css" rel="stylesheet" />
+	<link rel="stylesheet" href="css/nanoscroller.css" />
+	<link href="css/menu-light.css" type="text/css" rel="stylesheet" />
+	<link href="css/style.css" type="text/css" rel="stylesheet" />
+	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+</h:head>
+
+<h:body>
+
+ 		<ui:include src="includes/header.xhtml" />
+        <section class="page">
+		<ui:include src="includes/sidebar.xhtml" />
+<div id="wrapper">
+                <div class="content-wrapper container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="page-title">
+                                <h1>Dashboard <small></small></h1>
+                                <ol class="breadcrumb">
+                                    <li><a href="#"><i class="fa fa-home"></i></a></li>
+                                    <li class="active">Dashboard</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div><!-- end .page title-->
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3 margin-b-30">
+                            <div class="tile">
+                                <div class="tile-title clearfix">
+                                    Total orders
+                                    <span class="pull-right"><i class="fa fa-caret-up"></i> 33%</span>
+                                </div><!--.tile-title-->
+                                <div class="tile-body clearfix">
+                                    <i class="fa fa-cart-plus"></i>
+                                    <h4 class="pull-right">2.5K</h4>
+                                </div><!--.tile-body-->
+                                <div class="tile-footer">
+                                    <a href="#">View Details...</a>
+                                </div><!--.tile footer-->
+                            </div><!-- .tile-->
+                        </div><!--end .col-->
+                        <div class="col-sm-6 col-md-3 margin-b-30">
+                            <div class="tile">
+                                <div class="tile-title clearfix">
+                                    Total Sales
+                                    <span class="pull-right"><i class="fa fa-caret-up"></i> 33%</span>
+                                </div><!--.tile-title-->
+                                <div class="tile-body clearfix">
+                                    <i class="fa fa-credit-card"></i>
+                                    <h4 class="pull-right">22.5M</h4>
+                                </div><!--.tile-body-->
+                                <div class="tile-footer">
+                                    <a href="#">View Details...</a>
+                                </div><!--.tile footer-->
+                            </div><!-- .tile-->
+                        </div><!--end .col-->
+                        <div class="col-sm-6 col-md-3 margin-b-30">
+                            <div class="tile">
+                                <div class="tile-title clearfix">
+                                    Users
+                                    <span class="pull-right"><i class="fa fa-caret-up"></i> 50%</span>
+                                </div><!--.tile-title-->
+                                <div class="tile-body clearfix">
+                                    <i class="fa fa-users"></i>
+                                    <h4 class="pull-right">2.5K</h4>
+                                </div><!--.tile-body-->
+                                <div class="tile-footer">
+                                    <a href="#">View Details...</a>
+                                </div><!--.tile footer-->
+                            </div><!-- .tile-->
+                        </div><!--end .col-->
+                        <div class="col-sm-6 col-md-3 margin-b-30">
+                            <div class="tile">
+                                <div class="tile-title clearfix">
+                                    Total orders
+                                    <span class="pull-right"><i class="fa fa-caret-up"></i> 33%</span>
+                                </div><!--.tile-title-->
+                                <div class="tile-body clearfix">
+                                    <i class="fa fa-cart-plus"></i>
+                                    <h4 class="pull-right">2.5K</h4>
+                                </div><!--.tile-body-->
+                                <div class="tile-footer">
+                                    <a href="#">View Details...</a>
+                                </div><!--.tile footer-->
+                            </div><!-- .tile-->
+                        </div><!--end .col-->
+                    </div><!--end .row-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="panel panel-card recent-activites">
+                                <!-- Start .panel -->
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">Half year earnings</h4>
+                                    <div class="panel-actions">
+                                        <a href="#" class="panel-action panel-action-toggle" data-panel-toggle=""></a>
+                                        <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
+                                    </div>
+                                </div>
+                                <div class="panel-body text-center">
+                                    <div>
+                                        <canvas id="lineChart" height="100"></canvas>
+                                    </div>
+
+                                </div>
+                            </div><!-- End .panel --> 
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="panel panel-card ">
+                                <!-- Start .panel -->
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"> Sales e Earnings</h4>
+                                    <div class="panel-actions">
+                                        <a href="#" class="panel-action panel-action-toggle" data-panel-toggle=""></a>
+                                        <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div>
+                                        <canvas id="barChart" height="140"></canvas>
+                                    </div>
+                                </div>
+                            </div><!-- End .panel -->  
+                        </div><!--end .col-->
+                        <div class="col-md-6">
+                            <div class="panel panel-card ">
+                                <!-- Start .panel -->
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"> Last sales locations</h4>
+                                    <div class="panel-actions">
+                                        <a href="#" class="panel-action panel-action-toggle" data-panel-toggle=""></a>
+                                        <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <div id="world-map" style="width: 100%; height: 280px"></div>
+                                </div>
+                            </div><!-- End .panel -->                       
+                        </div><!--end .col-->
+
+                    </div><!--end .row-->
+
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="panel panel-card recent-activites">
+                                <!-- Start .panel -->
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"> Recent Activities</h4>
+                                    <div class="panel-actions">
+                                        <a href="#" class="panel-action panel-action-toggle" data-panel-toggle=""></a>
+                                        <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
+                                    </div>
+                                </div>
+                                <div class="panel-body pad-0">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <a href="#">Lorem ipsum dolor</a>
+                                            <small><i class="fa fa-clock-o"></i> 13/08/2015 04:51:21</small>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">Lorem ipsum dolor</a>
+                                            <small><i class="fa fa-clock-o"></i> 13/08/2015 04:51:21</small>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">Lorem ipsum dolor</a>
+                                            <small><i class="fa fa-clock-o"></i> 13/08/2015 04:51:21</small>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a href="#">Lorem ipsum dolor</a>
+                                            <small><i class="fa fa-clock-o"></i> 13/08/2015 04:51:21</small>
+                                        </li>                            
+                                    </ul>
+                                </div>
+                            </div><!-- End .panel -->                       
+                        </div><!--end .col-->
+                        <div class="col-md-8">
+
+                            <div class="panel panel-card recent-activites">
+                                <!-- Start .panel -->
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"> Recent Orders</h4>
+                                    <div class="panel-actions">
+                                        <a href="#" class="panel-action panel-action-toggle" data-panel-toggle=""></a>
+                                        <a href="#" class="panel-action panel-action-dismiss" data-panel-dismiss=""></a>
+                                    </div>
+                                </div>
+                                <div class="panel-body pad-0">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover table-recent-orders">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Customer</th>
+                                                    <th>Status</th>
+                                                    <th>Date</th>
+                                                    <th>Total</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>4563</td>
+                                                    <td>David</td>
+                                                    <td><span class="text-danger">Pending</span></td>
+                                                    <td>04 / 08 / 2015</td>
+                                                    <td>$5679.99</td>
+                                                    <td><span class="action-icon"><a href="#" data-toggle="tooltip" data-placement="top" title="View" class="btn btn-xs btn-primary"><i class="fa fa-eye-slash"></i></a></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>8997</td>
+                                                    <td>John</td>
+                                                    <td><span class="text-success">Success</span></td>
+                                                    <td>04 / 08 / 2015</td>
+                                                    <td>$5679.99</td>
+                                                    <td><span class="action-icon"><a href="#" data-toggle="tooltip" data-placement="top" title="View" class="btn btn-xs btn-primary"><i class="fa fa-eye-slash"></i></a></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2342</td>
+                                                    <td>Mohinder</td>
+                                                    <td><span class="text-warning">Pending</span></td>
+                                                    <td>04 / 08 / 2015</td>
+                                                    <td>$5679.99</td>
+                                                    <td><span class="action-icon"><a href="#" data-toggle="tooltip" data-placement="top" title="View" class="btn btn-xs btn-primary"><i class="fa fa-eye-slash"></i></a></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5677</td>
+                                                    <td>Mohinder</td>
+                                                    <td><span class="text-warning">Pending</span></td>
+                                                    <td>04 / 08 / 2015</td>
+                                                    <td>$5679.99</td>
+                                                    <td><span class="action-icon"><a href="#" data-toggle="tooltip" data-placement="top" title="View" class="btn btn-xs btn-primary"><i class="fa fa-eye-slash"></i></a></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>6756</td>
+                                                    <td>Camron</td>
+                                                    <td><span class="text-success">Success</span></td>
+                                                    <td>04 / 08 / 2015</td>
+                                                    <td>$5679.99</td>
+                                                    <td><span class="action-icon"><a href="#" data-toggle="tooltip" data-placement="top" title="View" class="btn btn-xs btn-primary"><i class="fa fa-eye-slash"></i></a></span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2342</td>
+                                                    <td>Mohinder</td>
+                                                    <td><span class="text-warning">Pending</span></td>
+                                                    <td>04 / 08 / 2015</td>
+                                                    <td>$5679.99</td>
+                                                    <td><span class="action-icon"><a href="#" data-toggle="tooltip" data-placement="top" title="View" class="btn btn-xs btn-primary"><i class="fa fa-eye-slash"></i></a></span></td>
+                                                </tr>                                            
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div><!--end .col-->
+                    </div><!--end .row-->
+                </div> 
+            </div>
+        </section>
+
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+        <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="js/metisMenu.min.js"></script>
+        <script src="js/jquery.nanoscroller.min.js"></script>
+        <script src="js/jquery-jvectormap-1.2.2.min.js"></script>
+        <!-- Flot -->
+        <script src="js/flot/jquery.flot.js"></script>
+        <script src="js/flot/jquery.flot.tooltip.min.js"></script>
+        <script src="js/flot/jquery.flot.resize.js"></script>
+        <script src="js/flot/jquery.flot.pie.js"></script>
+        <script src="js/chartjs/Chart.min.js"></script>
+        <script src="js/pace.min.js"></script>
+        <script src="js/waves.min.js"></script>
+        <script src="js/morris_chart/raphael-2.1.0.min.js"></script>
+        <script src="js/morris_chart/morris.js"></script>
+
+        <script src="js/jquery-jvectormap-world-mill-en.js"></script>
+        <!--        <script src="js/jquery.nanoscroller.min.js"></script>-->
+        <script type="text/javascript" src="js/custom.js"></script>
+        <!-- ChartJS-->
+        <script src="js/chartjs/Chart.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+
+                var lineData = {
+                    labels: ["January", "February", "March", "April", "May"],
+                    datasets: [
+                        {
+                            label: "Example dataset",
+                            fillColor: "rgba(0,0,0,0.1)",
+                            strokeColor: "rgba(1,168,254,0.6)",
+                            labelsColor: "rgba(1,168,254,1)",
+                            pointColor: "rgba(1,168,254,0.7)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(1,168,254,1)"
+                           
+                            
+                        },
+                        {
+                            label: "Example dataset",
+                            fillColor: "rgba(1,168,254,0.6)",
+                            strokeColor: "rgba(1,168,254,0.7)",
+                            pointColor: "rgba(1,168,254,1)",
+                            pointStrokeColor: "rgba(1,168,254,0.7)",
+                            pointHighlightFill: "rgba(1,168,254,0.7)",
+                            pointHighlightStroke: "rgba(1,168,254,1)",
+                            data: [28, 48, 40, 19, 86],
+                             gridTextColor: '#fff',
+                       
+                        }
+                    ]
+                };
+                
+                var lineOptions = {
+                    scaleShowGridLines: true,
+                    scaleGridLineColor: "rgba(0,0,0,.05)",
+                    scaleGridLineWidth: 1,
+                    bezierCurve: true,
+                    bezierCurveTension: 0.4,
+                    pointDot: true,
+                    pointDotRadius: 4,
+                    pointDotStrokeWidth: 1,
+                    pointHitDetectionRadius: 20,
+                    datasetStroke: true,
+                    datasetStrokeWidth: 2,
+                    datasetFill: true,
+                    responsive: true,
+                    scaleFontColor:'#949ba2'
+                   
+
+                };
+
+
+                var ctx = document.getElementById("lineChart").getContext("2d");
+                var myNewChart = new Chart(ctx).Line(lineData, lineOptions);
+
+            });
+        </script>
+
+
+        <script type="text/javascript">
+            $(function () {
+
+                var barData = {
+                    labels: ["January", "February", "March", "April", "May", "June", "July"],
+                    datasets: [
+                        {
+                            label: "My First dataset",
+                            fillColor: "rgba(1,168,254,0.4)",
+                            strokeColor: "rgba(1,168,254,0.6)",
+                            highlightFill: "rgba(1,168,254,0.75)",
+                            highlightStroke: "rgba(1,168,254,1)",
+                            data: [65, 59, 80, 81, 56, 55, 40]
+                        },
+                        {
+                            label: "My Second dataset",
+                            fillColor: "rgba(1,168,254,0.5)",
+                            strokeColor: "rgba(1,168,254,0.8)",
+                            highlightFill: "rgba(1,168,254,0.75)",
+                            highlightStroke: "rgba(1,168,254,1)",
+                            data: [28, 48, 40, 19, 86, 27, 90]
+                        }
+                    ]
+                };
+
+                var barOptions = {
+                    scaleBeginAtZero: true,
+                    scaleShowGridLines: true,
+                    scaleGridLineColor: "rgba(1,168,254,0.1)",
+                    scaleGridLineWidth: 1,
+                    barShowStroke: true,
+                    barStrokeWidth: 2,
+                    barValueSpacing: 5,
+                    barDatasetSpacing: 1,
+                    responsive: true,
+                    scaleFontColor:'#949ba2'
+                };
+
+
+                var ctx = document.getElementById("barChart").getContext("2d");
+                var myNewChart = new Chart(ctx).Bar(barData, barOptions);
+
+            });
+        </script>
+           
+</h:body>
+</html>

@@ -1,0 +1,164 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+</h:head>
+
+<h:body>
+
+	<nav class="navbar navbar-default yamm navbar-fixed-top">
+		<div class="container-fluid">
+			<button type="button"
+				class="navbar-minimalize minimalize-styl-2  pull-left ">
+				<i class="fa fa-bars"></i>
+			</button>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+					<span class="sr-only">|||</span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/sisar">SISAR</a>
+			</div>
+			<span class="search-icon"><i class="fa fa-search"></i></span>
+			<div class="search" style="display: none;">
+				<form role="form">
+					<input type="text" class="form-control" autocomplete="off"
+						placeholder="Digite o número do processo e pressione ENTER" /> <span
+						class="search-close"><i class="fa fa-times"></i></span>
+				</form>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a href="#"
+						class="dropdown-toggle button-wave" data-toggle="dropdown"
+						role="button" aria-haspopup="true" aria-expanded="false">MENU
+							<span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li class=""><a href="#"><i class="fa fa-th-large"></i>
+									<span class="nav-label">Dashboard </span><span class="fa arrow"></span></a>
+							</li>
+							<li><a href="mailbox.jsf"><i class="fa fa-envelope"></i>
+									<span class="nav-label">Mailbox </span><span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level collapse">
+									<li><a href="mailbox.jsf">Inbox</a></li>
+									<li><a href="mail_detail.jsf">Email view</a></li>
+									<li><a href="mail_compose.jsf">Compose email</a></li>
+								</ul></li>
+							<li><a href="#"><i class="fa fa-bar-chart"></i> <span
+									class="nav-label">Graphs</span><span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level collapse">
+									<li><a href="flot_charts.jsf">Flot charts</a></li>
+									<li><a href="morris_js.jsf">Morris.js</a></li>
+									<li><a href="chart_js.jsf">Chart.js</a></li>
+									<li><a href="chartist.jsf">Chartist</a></li>
+									<li><a href="chart_sparkline.jsf">Sparkline</a></li>
+								</ul></li>
+
+							<li><a href="#"><i class="fa fa-edit"></i> <span
+									class="nav-label">Forms</span><span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level collapse">
+									<li><a href="form_basic.jsf">Basic form</a></li>
+									<li><a href="form_advanced.jsf">Advanced form</a></li>
+									<li><a href="form_wizard.jsf">Wizard form</a></li>
+									<li><a href="form_file_upload.jsf">File upload</a></li>
+									<li><a href="form_text_editor.jsf">Text editor</a></li>
+									<li><a href="form_inline_edit.jsf">Inline edit</a></li>
+								</ul></li>
+							<li><a href="#"><i class="fa fa-files-o"></i> <span
+									class="nav-label">Other Pages</span><span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level collapse">
+									<li><a href="lockscreen.jsf">Lockscreen</a></li>
+									<li><a href="login.jsf">Login</a></li>
+									<li><a href="register.jsf">Register</a></li>
+									<li><a href="404.jsf">404 Page</a></li>
+									<li><a href="empty_page.jsf">Empty page</a></li>
+									<li><a href="gallery.jsf">gallery</a></li>
+									<li><a href="price_tables.jsf">Price tables</a></li>
+									<li><a href="page_contact.jsf">Contact Page</a></li>
+								</ul></li>
+							<li><a href="#"><i class="fa fa-shopping-cart"></i> <span
+									class="nav-label">E-commerce</span><span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level collapse">
+									<li><a href="orders.jsf">orders</a></li>
+									<li><a href="order-view.jsf">order View</a></li>
+									<li><a href="products.jsf">Products</a></li>
+
+
+								</ul></li>
+							<li><a href="#"><i class="fa fa-flask"></i> <span
+									class="nav-label">UI Elements</span><span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level collapse">
+									<li><a href="typography.jsf">Typography</a></li>
+									<li><a href="icons.jsf">Icons</a></li>
+									<li><a href="buttons.jsf">Buttons</a></li>
+									<li><a href="video.jsf">Video</a></li>
+									<li><a href="tabs_panels.jsf">Panels</a></li>
+									<li><a href="tabs.jsf">Tabs</a></li>
+									<li><a href="alert_notifications.jsf">Alert e
+											notifications</a></li>
+								</ul></li>
+
+							<li><a href="grid_options.jsf"><i class="fa fa-laptop"></i>
+									<span class="nav-label">Grid options</span></a></li>
+							<li><a href="#"><i class="fa fa-table"></i> <span
+									class="nav-label">Tables</span><span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level collapse">
+									<li><a href="table_basic.jsf">Static Tables</a></li>
+									<li><a href="table_data_tables.jsf">Data Tables</a></li>
+								</ul></li>
+							<li><a href="#"><i class="fa fa-users"></i> <span
+									class="nav-label">Users</span><span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level collapse">
+									<li><a href="user_profile.jsf">profile</a></li>
+									<li><a href="user_list.jsf">User list</a></li>
+
+								</ul></li>
+							<li><a href="#"><i class="fa fa-map-marker"></i> <span
+									class="nav-label">maps</span><span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level collapse">
+									<li><a href="google_maps.jsf">Google maps</a></li>
+									<li><a href="vector_maps.jsf">Vector Maps</a></li>
+								</ul></li>
+							<li><a href="#"><i class="fa fa-pencil"></i> <span
+									class="nav-label">Blog</span><span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level collapse">
+									<li><a href="blog_list.jsf">Blog list</a></li>
+									<li><a href="blog_post.jsf">Blog post</a></li>
+								</ul></li>
+							<li><a href="calendar.jsf"><i class="fa fa-calendar"></i>
+									<span class="nav-label">Calendar </span></a></li>
+
+							<li><a href="#"><i class="fa fa-sitemap"></i> <span
+									class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>
+								<ul class="nav nav-second-level collapse">
+									<li><a href="#">Third Level <span class="fa arrow"></span></a>
+										<ul class="nav nav-third-level">
+											<li><a href="#">Third Level Item</a></li>
+										</ul></li>
+									<li><a href="#">Second Level Item</a></li>
+								</ul></li>
+							<li class="divider"></li>
+							<li><a href="#"><i class="fa fa-user"></i> Meus Dados</a></li>
+							<li><a href="#"><i class="fa fa-key"></i> Alterar Senha</a></li>
+							<li><a href="#"><i class="fa fa-power-off"></i> Sair</a></li>
+							<li><a href="#"><p:spacer width="5" /> </a></li>
+						</ul></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right navbar-top-drops">
+					<li class=""><a href="#" class=" button-wave"><i
+							class="fa fa-power-off"></i></a></li>
+
+				</ul>
+			</div>
+		</div>
+		<!--/.container-fluid -->
+	</nav>
+</h:body>
+</html>
