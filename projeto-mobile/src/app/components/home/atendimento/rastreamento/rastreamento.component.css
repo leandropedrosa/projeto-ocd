@@ -1,0 +1,122 @@
+/*
+* orange: #f6bd00
+* blue: #0bbdd5
+* gris: #636363
+*/
+
+.action-bar {
+    background-color: #0bbdd5;
+    color: #ffffff;
+    padding-right: 10;
+}
+
+ListView {
+    separator-color: transparent;
+}
+
+.item-stepper {
+    color: #ffffff;
+    font-weight: bold;
+    border-color: #cccccc;
+    border-width: 1;
+    text-align: center;
+    background-color: #cccccc;
+    clip-path: polygon(50% 0%, 100% 21%, 89% 76%, 50% 100%, 12% 76%, 0 22%);
+    padding: 10 0;
+}
+
+.current-step {
+    background-color: #f6bd00;
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.successful-step {
+    background-color: #f6bd00;
+    color: #0bbdd5;
+    border-color: #f6bd00;
+}
+
+.line-stepper {
+    background-color: #f6bd00;
+    border-width: 1;
+    border-color: #f6bd00;
+}
+
+.item-image--stepper {
+    width: 100;
+    height: 30;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center top;
+}
+
+.home {
+    background-color: white;
+}
+
+.cloud {
+    width: 360;
+    margin-top: 24;
+}
+
+.body {
+    background-color: #ffffff;
+}
+
+.btn-next {
+    background-color: #f6bd00;
+    color: #ffffff;
+    padding: 10 15;
+    font-weight: bold;
+}
+
+.btn-previous {
+    background-color: #0bbdd5;
+    color: #ffffff;
+    padding: 10 15;
+    font-weight: bold;
+}
+
+.btn-previous:disabled {
+    background-color: #cccccc;
+}
+
+.btn-next:disabled {
+    background-color: #cccccc;
+}
+
+.bottom-content {
+    background-color: #ffffff;
+}
+
+.arrow-next {
+    font-weight: bold;
+    color: #0bbdd5;
+}
+
+/* Select Date */
+
+.overlay {
+    background-color: #0bbdd5;
+    opacity: 0.5;
+}
+
+.select-date {
+    background-color: #ffffff;
+    margin: 0 24;
+    border-radius: 10;
+}
+
+.title-select-date {
+    padding: 16 0 4 0;
+    text-align: center;
+    color: #0bbdd5;
+    font-weight: 500;
+}
+
+.scf-card {
+    border-radius: 10;
+    margin: 10;
+    padding: 24 0;
+}

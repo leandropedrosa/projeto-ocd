@@ -1,0 +1,36 @@
+<StackLayout class="body scf-card animate-bounceInLeft-delay-0ms">
+    <ScrollView orientation="vertical">
+        <GridLayout rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto"
+                    scrollDirection="Vertical" columns="*,*">
+
+            <Label row="0" col="0" colSpan="2" text="Nome" class="title-label"></Label>
+            <TextField row="1" col="0" colSpan="2" class="scf-input"></TextField>
+
+            <Label row="2" col="0" colSpan="2" text="Dt. Nascimento" class="title-label"></Label>
+            <TextField editable="false" row="3" col="0" colSpan="1" textAlignment="center" text='{{ departureDate | date:"d/M/y" }}'
+                       class="scf-input" (tap)="onOpenSelectDate(true)"></TextField>
+
+            <Label row="4" col="0" colSpan="2" text="Sexo" class="title-label"></Label>
+            <TextField row="5" col="0" colSpan="1" class="scf-input"
+                       editable="false" [text]="typeOfService" (tap)="onTypeServiceTap()"></TextField>
+
+            <Label row="6" col="0" colSpan="2" text="Email" class="title-label"></Label>
+            <TextField row="7" col="0" colSpan="2" class="scf-input"></TextField>
+
+            <Label row="8" col="0" colSpan="2" text="Telefone" class="title-label"></Label>
+            <TextField row="9" col="0" colSpan="2" class="scf-input"></TextField>
+
+            <Label row="10" col="0" colSpan="2" text="Nome da mãe" class="title-label"></Label>
+            <TextField row="11" col="0" colSpan="2" class="scf-input"></TextField>
+
+            <Label row="12" col="0" colSpan="2" text="Cidade" class="title-label"></Label>
+            <TextField row="13" col="0" colSpan="2" editable="false" [text]="fromAirport"
+                       (tap)="onOpenSearchAirportTap(true)"
+                       class="scf-input"></TextField>
+
+            <Label row="14" col="0" colSpan="2" text="Bairro" class="title-label"></Label>
+            <TextField row="15" col="0" colSpan="2" [text]="toAirport" (tap)="onOpenSearchAirportTap(false)"
+                       class="scf-input" editable="false"></TextField>
+        </GridLayout>
+    </ScrollView>
+</StackLayout>

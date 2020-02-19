@@ -1,0 +1,47 @@
+<GridLayout rows="48, 18, *" columns="24,*,24" class="body scf-card animate-bounceInLeft-delay-0ms">
+
+    <GridLayout row="0" col="0" colSpan="3" rows="*" columns="*,*">
+        <Button row="1" col="0" text="Fatores de Risco" (tap)="onButtonTapDeparture()"
+            id="btnTabDeparture" class="btn-tab btn-tab-active">
+        </Button>
+        <Button row="1" col="1" text="Lesões" (tap)="onButtonTapReturn()" id="btnTabReturn"
+            class="btn-tab">
+        </Button>
+    </GridLayout>
+
+    <GridLayout row="5" col="0" colSpan="3"  *ngIf="tela === 0">
+        <RadListView [items]="dataList.items" selectionBehavior="Press" multipleSelection="true">
+            <ng-template let-item="item" let-i="index" let-selected="item.selected">
+                <GridLayout rows="28,24,8" columns="24,*,18,68,24">
+                    <Label row="0" col="1" rowSpan="3" [text]='item.description'
+                        horizontalAlignment="left" verticalAlignment="center"
+                        class="arrow-next"></Label>
+                    <Label row="2" col="0" colSpan="5" class="list-separator"></Label>
+                </GridLayout>
+            </ng-template>
+            <ListViewLinearLayout tkListViewLayout itemHeight="50" scrollDirection="Vertical"></ListViewLinearLayout>
+        </RadListView>
+    </GridLayout>
+    <GridLayout row="5" col="0" colSpan="3" tkExampleTitle tkToggleNavButton  *ngIf="tela === 1">
+        <RadListView [items]="countries" marginRight="-2">
+            <ListViewGridLayout tkListViewLayout scrollDirection="Vertical"
+                                itemHeight="200" spanCount="2">
+            </ListViewGridLayout>
+            <ng-template tkListItemTemplate let-item="item">
+                <GridLayout backgroundColor="White">
+                    <GridLayout margin="15">
+                        <Image [src]="item.image" (tap)="onTypeServiceTap(item.name)"></Image>
+                        <GridLayout verticalAlignment="bottom">
+                            <StackLayout  paddingTop="8"
+                                         paddingBottom="8" paddingLeft="16" paddingRight="16">
+                                <Label text="{{ item.name }}" class="countryName"></Label>
+                                <Label text="{{ item.population }}"
+                                       class="countryPop"></Label>
+                            </StackLayout>
+                        </GridLayout>
+                    </GridLayout>
+                </GridLayout>
+            </ng-template>
+        </RadListView>
+    </GridLayout>
+</GridLayout>
