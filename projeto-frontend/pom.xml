@@ -181,7 +181,7 @@
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
-            <version>1.9.2</version>
+            <version>1.9.4</version>
         </dependency>
         <dependency>
             <groupId>httpclient</groupId>
@@ -367,7 +367,7 @@
                     <dependency>
                         <groupId>commons-beanutils</groupId>
                         <artifactId>commons-beanutils</artifactId>
-                        <version>1.7.0</version>
+                        <version>1.9.4</version>
                     </dependency>
                     <dependency>
                         <groupId>backport-util-concurrent</groupId>
