@@ -18,7 +18,7 @@
         <deployUser>admin</deployUser>
         <deployPwd>123456</deployPwd>
 
-        <spring.version>5.1.4.RELEASE</spring.version>
+        <spring.version>5.3.19</spring.version>
         <aspectj.version>1.8.9</aspectj.version>
         <jwt-auth0.version>3.4.0</jwt-auth0.version>
 
